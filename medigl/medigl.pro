@@ -1,18 +1,10 @@
-HEADERS = glwidget.h \
-    medidialog.h
-SOURCES = glwidget.cpp \
+QT += opengl
+TARGET = medigl
+TEMPLATE = app
+HEADERS += glwidget.h \
+    medidialog.h \
+    shaders.h
+SOURCES += glwidget.cpp \
     main.cpp \
     medidialog.cpp
-QT += opengl
-
-# install
-target.path = $$[QT_INSTALL_EXAMPLES]/opengl/hellogl
-sources.files = $$SOURCES \
-    $$HEADERS \
-    $$RESOURCES \
-    $$FORMS \
-    hellogl.pro
-sources.path = $$[QT_INSTALL_EXAMPLES]/opengl/hellogl
-INSTALLS += target \
-    sources
 FORMS += medidialog.ui

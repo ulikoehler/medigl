@@ -2,6 +2,9 @@
 #define MEDIDIALOG_H
 
 #include <QtGui/QDialog>
+#include <QVector>
+#include <memory>
+using namespace std;
 
 namespace Ui {
     class MediDialog;
@@ -10,14 +13,18 @@ namespace Ui {
 class MediDialog : public QDialog {
     Q_OBJECT
 public:
-    MediDialog(QWidget *parent = 0);
+    MediDialog(QWidget *parent, vector<QImage* > images, uint width, uint height);
     ~MediDialog();
 
 protected:
     void changeEvent(QEvent *e);
 
+
 private:
     Ui::MediDialog *m_ui;
+
+private slots:
+    void on_openButton_clicked();
 };
 
 #endif // MEDIDIALOG_H

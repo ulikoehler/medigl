@@ -2,6 +2,11 @@
 #define GLWIDGET_H
 
 #include <QGLWidget>
+#include <QVector>
+#include <QGLShader>
+#include <memory>
+
+using namespace std;
 
 //! [0]
 class GLWidget : public QGLWidget
@@ -11,6 +16,14 @@ class GLWidget : public QGLWidget
 public:
     GLWidget(QWidget *parent = 0);
     ~GLWidget();
+
+    void updateImages(vector<QImage* > imagesParam, uint width, uint height)
+    {
+        this->images = imagesParam;
+        this->width = width;
+        this->height = height;
+        refillVBO();
+    }
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
@@ -39,21 +52,26 @@ protected:
 
 //! [3]
 private:
-    GLuint makeObject();
+    void refillVBO();
     void quad(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2,
               GLdouble x3, GLdouble y3, GLdouble x4, GLdouble y4);
     void extrude(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2);
     void normalizeAngle(int *angle);
 
-    GLuint object;
+    vector<QImage*> images;
+    uint width;
+    uint height;
+
     int xRot;
     int yRot;
     int zRot;
 
-    const int densityAttrib = 1;
+    QPoint lastPos;
 
-    QColor trolltechGreen;
-    QColor trolltechPurple;
+    QSharedPointer<QGLShaderProgram> shaderProgram;
+
+    bool dataChanged;
+    GLuint vboID;
 };
 //! [3]
 

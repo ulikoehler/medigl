@@ -4,48 +4,45 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <QtOpenGL>
+#include <iostream>
 
 #include "glwidget.h"
 #include "shaders.h"
 
-//! [0]
+struct C4UBV3F
+{
+    unsigned char color[4];
+    float vcoords[3];
+};
+
 GLWidget::GLWidget(QWidget *parent)
     : QGLWidget(parent)
 {
-    object = 0;
+    vboID = INT_MAX;
     xRot = 0;
     yRot = 0;
     zRot = 0;
-
-    trolltechGreen = QColor::fromCmykF(0.40, 0.0, 1.0, 0.0);
-    trolltechPurple = QColor::fromCmykF(0.39, 0.39, 0.0, 0.0);
 }
-//! [0]
 
-//! [1]
 GLWidget::~GLWidget()
 {
     makeCurrent();
-    glDeleteLists(object, 1);
+    if(vboID != INT_MAX)
+    {
+        glDeleteBuffers(1, &vboID);
+    }
 }
-//! [1]
 
-//! [2]
 QSize GLWidget::minimumSizeHint() const
 {
     return QSize(50, 50);
 }
-//! [2]
 
-//! [3]
 QSize GLWidget::sizeHint() const
-//! [3] //! [4]
 {
     return QSize(400, 400);
 }
-//! [4]
 
-//! [5]
 void GLWidget::setXRotation(int angle)
 {
     normalizeAngle(&angle);
@@ -55,7 +52,6 @@ void GLWidget::setXRotation(int angle)
         updateGL();
     }
 }
-//! [5]
 
 void GLWidget::setYRotation(int angle)
 {
@@ -77,18 +73,44 @@ void GLWidget::setZRotation(int angle)
     }
 }
 
-//! [6]
 void GLWidget::initializeGL()
 {
-    qglClearColor(trolltechPurple.dark());
-    object = makeObject();
+    glClear(GL_COLOR_BUFFER_BIT);
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_ALPHA_TEST);
     glEnable(GL_CULL_FACE);
-}
-//! [6]
 
-//! [7]
+
+    glEnable (GL_BLEND);
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glAlphaFunc(GL_GREATER, 0.0);
+
+    QSharedPointer<QGLShader> shader(new QGLShader(QGLShader::Vertex, this));
+    if(!shader->compileSourceCode(vertexColorShaderSource))
+    {
+        QMessageBox(QMessageBox::Critical, "Shader failure", "The GLSL shader failed to compile!\n" + shader->log()).exec();
+    }
+
+    shaderProgram = QSharedPointer<QGLShaderProgram>(new QGLShaderProgram(this));
+    if(!shaderProgram->addShader(shader.data()))
+    {
+        QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to add the GLSL shader to the main shader program!").exec();
+    }
+
+    if(!shaderProgram->link())
+    {
+        QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to link the main shader program!").exec();
+    }
+
+    if(!shaderProgram->bind())
+    {
+        QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to bind the main shader program!").exec();
+    }
+    shaderProgram->attributeLocation("density");
+}
+
 void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -97,11 +119,47 @@ void GLWidget::paintGL()
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
-    glCallList(object);
-}
-//! [7]
+    //glDrawArrays(GL_POINT, 0, images.size() * width * height);
 
-//! [8]
+    /*glBegin(GL_QUADS);
+    glVertex3f(-1,-1,1);
+    glVertex3f(-1,1,1);
+    glVertex3f(1,1,1);
+    glVertex3f(1,-1,1);
+    glEnd();*/
+
+    glPointSize(5.0);
+
+    //Move the images to the middle of the screen
+    glTranslatef(-0.5*(width/100.0),-0.5*(height/100.0),0);
+
+    //Scale down so everything fits on the screen
+    if(images.size() != 0) //Else: div by 0
+    {
+        //glScalef(1/width,1,1);//1/height,1/(images.size()));
+        glScalef(0.01,0.01,0.01);
+    }
+
+    glBegin(GL_POINTS);
+    for(uint z = 0; z < images.size(); z++)
+    {
+        QImage* img = images[z];
+        for(uint y = 0; y < height; y++)
+        {
+            for(uint x = 0; x < width; x++)
+            {
+                unsigned char gray = qGray(img->pixel(x,y));
+                //glVertex3f(x/100.0,y/100.0,z/100.0);
+                glVertex3i(x,y,z);
+                glColor3b(gray,gray,gray);
+            }
+        }
+        //delete img;
+    }
+    glEnd();
+
+}
+
 void GLWidget::resizeGL(int width, int height)
 {
     int side = qMin(width, height);
@@ -111,17 +169,15 @@ void GLWidget::resizeGL(int width, int height)
     glLoadIdentity();
     glOrtho(-0.5, +0.5, +0.5, -0.5, 4.0, 15.0);
     glMatrixMode(GL_MODELVIEW);
-}
-//! [8]
 
-//! [9]
+    refillVBO();
+}
+
 void GLWidget::mousePressEvent(QMouseEvent *event)
 {
     lastPos = event->pos();
 }
-//! [9]
 
-//! [10]
 void GLWidget::mouseMoveEvent(QMouseEvent *event)
 {
     int dx = event->x() - lastPos.x();
@@ -136,87 +192,49 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
     }
     lastPos = event->pos();
 }
-//! [10]
 
-GLuint GLWidget::makeObject()
+void GLWidget::refillVBO()
 {
-    GLuint list = glGenLists(1);
-    glNewList(list, GL_COMPILE);
+    /*if(vboID != INT_MAX)
+    {
+        glDeleteBuffers(1, &vboID);
+    }
+    glGenBuffers(1, &vboID);
 
-    glBegin(GL_QUADS);
+    //Writing the data to the client memory directly
+    //would be to inefficient (too many calls)
+    glBindBuffer(GL_ARRAY_BUFFER,vboID);
 
-    GLdouble x1 = +0.06;
-    GLdouble y1 = -0.14;
-    GLdouble x2 = +0.14;
-    GLdouble y2 = -0.06;
-    GLdouble x3 = +0.08;
-    GLdouble y3 = +0.00;
-    GLdouble x4 = +0.30;
-    GLdouble y4 = +0.22;
+    C4UBV3F* data = new C4UBV3F[images.size() * width * height];
 
-    quad(x1, y1, x2, y2, y2, x2, y1, x1);
-    quad(x3, y3, x4, y4, y4, x4, y3, x3);
-
-    extrude(x1, y1, x2, y2);
-    extrude(x2, y2, y2, x2);
-    extrude(y2, x2, y1, x1);
-    extrude(y1, x1, x1, y1);
-    extrude(x3, y3, x4, y4);
-    extrude(x4, y4, y4, x4);
-    extrude(y4, x4, y3, x3);
-
-    const double Pi = 3.14159265358979323846;
-    const int NumSectors = 200;
-
-    for (int i = 0; i < NumSectors; ++i) {
-        double angle1 = (i * 2 * Pi) / NumSectors;
-        GLdouble x5 = 0.30 * sin(angle1);
-        GLdouble y5 = 0.30 * cos(angle1);
-        GLdouble x6 = 0.20 * sin(angle1);
-        GLdouble y6 = 0.20 * cos(angle1);
-
-        double angle2 = ((i + 1) * 2 * Pi) / NumSectors;
-        GLdouble x7 = 0.20 * sin(angle2);
-        GLdouble y7 = 0.20 * cos(angle2);
-        GLdouble x8 = 0.30 * sin(angle2);
-        GLdouble y8 = 0.30 * cos(angle2);
-
-        quad(x5, y5, x6, y6, x7, y7, x8, y8);
-
-        extrude(x6, y6, x7, y7);
-        extrude(x8, y8, x5, y5);
+    for(uint z = 0; z < images.size(); z++)
+    {
+        QImage* img = images[z];
+        for(uint y = 0; y < height; y++)
+        {
+            for(uint x = 0; x < width; x++)
+            {
+                unsigned char gray = qGray(img->pixel(x,y));
+                //printf("x: %u y: %u z:%u\n",x,y,z);
+                //std::cout << endl;
+                data[x + width * y + z * (width * height)].color[0] = 255;//gray;
+                data[x + width * y + z * (width * height)].color[1] = 255;//gray;
+                data[x + width * y + z * (width * height)].color[2] = 255;//gray;
+                data[x + width * y + z * (width * height)].color[3] = 255; //Alpha
+                data[x + width * y + z * (width * height)].vcoords[0] = x;
+                data[x + width * y + z * (width * height)].vcoords[1] = y;
+                data[x + width * y + z * (width * height)].vcoords[2] = z;
+            }
+        }
+        //delete img;
     }
 
-    glEnd();
+    glUnmapBuffer(GL_ARRAY_BUFFER);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glInterleavedArrays(GL_C4UB_V3F, sizeof(C4UBV3F), 0);
+    glBufferData(GL_ARRAY_BUFFER, images.size() * width * height * sizeof(C4UBV3F), data, GL_STATIC_DRAW);*/
 
-    glEndList();
-    return list;
-}
-
-void GLWidget::quad(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2,
-                    GLdouble x3, GLdouble y3, GLdouble x4, GLdouble y4)
-{
-    qglColor(trolltechGreen);
-
-    glVertex3d(x1, y1, -0.05);
-    glVertex3d(x2, y2, -0.05);
-    glVertex3d(x3, y3, -0.05);
-    glVertex3d(x4, y4, -0.05);
-
-    glVertex3d(x4, y4, +0.05);
-    glVertex3d(x3, y3, +0.05);
-    glVertex3d(x2, y2, +0.05);
-    glVertex3d(x1, y1, +0.05);
-}
-
-void GLWidget::extrude(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
-{
-    qglColor(trolltechGreen.dark(250 + int(100 * x1)));
-
-    glVertex3d(x1, y1, +0.05);
-    glVertex3d(x2, y2, +0.05);
-    glVertex3d(x2, y2, -0.05);
-    glVertex3d(x1, y1, -0.05);
+    cout << "Successfully loaded" << endl;
 }
 
 void GLWidget::normalizeAngle(int *angle)
