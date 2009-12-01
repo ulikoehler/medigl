@@ -119,7 +119,6 @@ void GLWidget::paintGL()
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
-    //glDrawArrays(GL_POINT, 0, images.size() * width * height);
 
     /*glBegin(GL_QUADS);
     glVertex3f(-1,-1,1);
@@ -130,15 +129,15 @@ void GLWidget::paintGL()
 
     glPointSize(5.0);
 
-    //Move the images to the middle of the screen
-    glTranslatef(-0.5*(width/100.0),-0.5*(height/100.0),0);
-
     //Scale down so everything fits on the screen
     if(images.size() != 0) //Else: div by 0
     {
-        //glScalef(1/width,1,1);//1/height,1/(images.size()));
-        glScalef(0.01,0.01,0.01);
+        glScalef(1.0/width,1.0/height,1.0/(images.size()));
+        //glScalef(0.01,0.01,0.01);
     }
+
+    //Move the images to the middle of the screen
+    glTranslatef(-0.5*width,-0.5*height,0);
 
     glBegin(GL_POINTS);
     for(uint z = 0; z < images.size(); z++)
