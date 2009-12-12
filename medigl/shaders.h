@@ -7,7 +7,7 @@ const char* vertexColorShaderSource =
         "void main()"
         "{"
         "	vec3 color = mix(coolest, hottest, gl_Color[0]);"
-        "	gl_FrontColor = vec4(color, gl_Color[0] + 0.05);"
+        "	gl_FrontColor = vec4(color, gl_Color[0]);"
         "	gl_BackColor = gl_FrontColor;"
         "	gl_Position = ftransform();"
         "}"

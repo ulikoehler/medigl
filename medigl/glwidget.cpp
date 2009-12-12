@@ -19,9 +19,20 @@ GLWidget::GLWidget(QWidget *parent)
     : QGLWidget(parent)
 {
     vboID = INT_MAX;
+    //Initialize the transformation variables
+    transformationMode = Rotate;
+
     xRot = 0;
     yRot = 0;
     zRot = 0;
+
+    xTrans = 0;
+    yTrans = 0;
+    zTrans = 0;
+
+    xScale = 1;
+    yScale = 1;
+    zScale = 1;
 }
 
 GLWidget::~GLWidget()
@@ -35,12 +46,12 @@ GLWidget::~GLWidget()
 
 QSize GLWidget::minimumSizeHint() const
 {
-    return QSize(50, 50);
+    return QSize(200, 200);
 }
 
 QSize GLWidget::sizeHint() const
 {
-    return QSize(400, 400);
+    return QSize(1024, 1024);
 }
 
 void GLWidget::setXRotation(int angle)
@@ -79,13 +90,14 @@ void GLWidget::initializeGL()
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_ALPHA_TEST);
-    glEnable(GL_CULL_FACE);
+    glAlphaFunc(GL_GREATER, 0.0);
+    //glEnable(GL_CULL_FACE);
 
+    glPointSize(4.0);
 
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glAlphaFunc(GL_GREATER, 0.0);
 
     QSharedPointer<QGLShader> shader(new QGLShader(QGLShader::Vertex, this));
     if(!shader->compileSourceCode(vertexColorShaderSource))
@@ -124,10 +136,9 @@ void GLWidget::paintGL()
     glVertex3f(-1,-1,1);
     glVertex3f(-1,1,1);
     glVertex3f(1,1,1);
+
     glVertex3f(1,-1,1);
     glEnd();*/
-
-    glPointSize(5.0);
 
     //Scale down so everything fits on the screen
     if(images.size() != 0) //Else: div by 0
@@ -166,7 +177,8 @@ void GLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-0.5, +0.5, +0.5, -0.5, 4.0, 15.0);
+    //glOrtho(-0.5, +0.5, +0.5, -0.5, 4.0, 15.0);
+    glFrustum( -1.0, 1.0, -1.0, 1.0, 5.0, 15.0 );
     glMatrixMode(GL_MODELVIEW);
 
     refillVBO();
@@ -182,12 +194,31 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
     int dx = event->x() - lastPos.x();
     int dy = event->y() - lastPos.y();
 
-    if (event->buttons() & Qt::LeftButton) {
-        setXRotation(xRot + 8 * dy);
-        setYRotation(yRot + 8 * dx);
-    } else if (event->buttons() & Qt::RightButton) {
-        setXRotation(xRot + 8 * dy);
-        setZRotation(zRot + 8 * dx);
+    if(transformationMode == Rotate)
+    {
+        if (event->buttons() & Qt::LeftButton)
+        {
+            setXRotation(xRot + 8 * dy);
+            setYRotation(yRot + 8 * dx);
+        }
+        else if (event->buttons() & Qt::RightButton)
+        {
+            setXRotation(xRot + 8 * dy);
+            setZRotation(zRot + 8 * dx);
+        }
+    }
+    else if(transformationMode == Translate)
+    {
+        if (event->buttons() & Qt::LeftButton)
+        {
+            xTrans += dx;
+            yTrans += dy;
+        }
+        else if (event->buttons() & Qt::RightButton)
+        {
+            xTrans += dx;
+            zTrans += dy;
+        }
     }
     lastPos = event->pos();
 }

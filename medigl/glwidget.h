@@ -27,6 +27,9 @@ public:
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
 
+    enum TransformationMode
+    {Translate, Rotate, Scale};
+
 public slots:
     void setXRotation(int angle);
     void setYRotation(int angle);
@@ -51,9 +54,19 @@ private:
     uint width;
     uint height;
 
+    TransformationMode transformationMode;
+
     int xRot;
     int yRot;
     int zRot;
+
+    int xTrans;
+    int yTrans;
+    int zTrans;
+
+    int xScale;
+    int yScale;
+    int zScale;
 
     QPoint lastPos;
 
