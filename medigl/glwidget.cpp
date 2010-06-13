@@ -99,23 +99,27 @@ void GLWidget::initializeGL()
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
+    //Compile the shader
     QSharedPointer<QGLShader> shader(new QGLShader(QGLShader::Vertex, this));
     if(!shader->compileSourceCode(vertexColorShaderSource))
     {
         QMessageBox(QMessageBox::Critical, "Shader failure", "The GLSL shader failed to compile!\n" + shader->log()).exec();
     }
 
+    //Create a shader program from the shader
     shaderProgram = QSharedPointer<QGLShaderProgram>(new QGLShaderProgram(this));
     if(!shaderProgram->addShader(shader.data()))
     {
         QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to add the GLSL shader to the main shader program!").exec();
     }
 
+    //Link the shader program
     if(!shaderProgram->link())
     {
         QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to link the main shader program!").exec();
     }
 
+    //Active=bind the shader program to the current GL context
     if(!shaderProgram->bind())
     {
         QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to bind the main shader program!").exec();
