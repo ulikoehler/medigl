@@ -98,6 +98,9 @@ void GLWidget::initializeGL()
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    //
+    //GLSL shaders
+    //
 
     //Compile the shader
     QSharedPointer<QGLShader> shader(new QGLShader(QGLShader::Vertex, this));
