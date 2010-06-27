@@ -50,6 +50,8 @@ private:
     void refillVBO();
     void normalizeAngle(int *angle);
 
+    void render3DTex();
+
     vector<QImage*> images;
     uint width;
     uint height;

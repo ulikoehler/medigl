@@ -91,6 +91,7 @@ void GLWidget::initializeGL()
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_ALPHA_TEST);
     glAlphaFunc(GL_GREATER, 0.0);
+    glEnable(GL_TEXTURE_3D);
     //glEnable(GL_CULL_FACE);
 
     glPointSize(4.0);
@@ -127,6 +128,56 @@ void GLWidget::initializeGL()
     shaderProgram->attributeLocation("density");
 }
 
+//Macro to adress virtual 3D-Adresses in one-dimensional space.
+//The adressing is relative, so you have to add the adress of the beginning of a pre-reserved space with the correct size.
+//This is no function but a macro to increase speed and make it easy to auto-unroll loops.
+//If the compiler/language supports MAD operations (e.g. OpenCL), the code takes advantage of them
+//Parameters:
+// width: The width of the 3D space
+// height: The height of the 3D space
+// elem_width: The width of each element in the 3D space in bytes
+// x,y,z: The x, y and z coordinates of the element to be adressed
+#define REL_ADDR_3D(width, height, elem_width, x, y, z)	((elem_width * (x * width + y)) + (width * height * r * BYTES_PER_TEXEL))
+
+#define byte char //The same by definition (C standard)
+
+void GLWidget::render3DTex()
+{
+    unsigned int texname;
+    glGenTextures(1, &texname);
+    glBindTexture(GL_TEXTURE_3D, texname);
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_REPEAT);
+    glTexImage3D(GL_TEXTURE_3D, 0, GL_RGB8, WIDTH, HEIGHT, DEPTH, 0, GL_RGB, GL_UNSIGNED_BYTE, texels);
+
+    int depth = images.size();
+    int bytesPerTexel = 8; //RGBA, 8 bit
+
+    unsigned char *texels = (char *)malloc(width * height * depth * );
+    if(texels == null) {cerr >> "3D texture texel malloc failed";return;}
+
+    for(uint z = 0; z < depth; z++)
+    {
+        QImage* img = images[z];
+        for(uint y = 0; y < height; y++)
+        {
+            for(uint x = 0; x < width; x++)
+            {
+                unsigned char gray = qGray(img->pixel(x,y));
+                //glVertex3f(x/100.0,y/100.0,z/100.0);
+                glVertex3i(x,y,z);
+                glColor3b(gray,gray,gray);
+            }
+        }
+        //delete img;
+    }
+
+    glBindTexture(GL_TEXTURE_3D, texturename);
+}
+
 void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -135,6 +186,10 @@ void GLWidget::paintGL()
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
+
+    glTexImage3D();
+
+
 
     /*glBegin(GL_QUADS);
     glVertex3f(-1,-1,1);
