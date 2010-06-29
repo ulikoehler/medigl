@@ -50,7 +50,8 @@ public:
      */
     uint32_t getRgba(uint x, uint y);
     /**
-     * Gets the gray value for specific x and y pixel coordinates
+     * Gets the gray value for specific x and y pixel coordinates.
+     * The request is served from the gray cache if it has been enabled for this instance
      */
     char getGray(uint x, uint y);
     /**
@@ -64,11 +65,19 @@ public:
     /**
      * \return The width of this image
      */
-    uint getWidth();
+    uint getWidth()
+    {
+        return width;
+    }
+
     /**
      * \return The height of this image
      */
-    uint getHeight();
+    uint getHeight()
+    {
+        return height;
+    }
+
 protected:
     uint width, height;
     bool grayCacheEnabled;

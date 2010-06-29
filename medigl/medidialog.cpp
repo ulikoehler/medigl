@@ -42,7 +42,7 @@ void MediDialog::on_openButton_clicked()
     for(int i = 0; i < files.size(); i++)
     {
         //Check if the image is a DICOM image
-        if(files[i])
+        //if(files[i])
         //The image is a 'standard' image format (not DICOM), so simply open it as QImage
         QImage* img = new QImage(files[i]);
         //Check if all images have the same width and height
