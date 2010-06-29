@@ -157,9 +157,9 @@ void GLWidget::render3DTex()
     glTexImage3D(GL_TEXTURE_3D, 0, GL_RGB8, WIDTH, HEIGHT, DEPTH, 0, GL_RGB, GL_UNSIGNED_BYTE, texels);
 
     int depth = images.size();
-    int bytesPerTexel = 8; //RGBA, 8 bit
+    const int bytesPerTexel = 4; //RGBA, 8 bit
 
-    unsigned char *texels = (char *)malloc(width * height * depth * );
+    unsigned char* texels = (char *)malloc(width * height * depth * );
     if(texels == null) {cerr >> "3D texture texel malloc failed";return;}
 
     for(uint z = 0; z < depth; z++)
@@ -170,9 +170,10 @@ void GLWidget::render3DTex()
             for(uint x = 0; x < width; x++)
             {
                 unsigned char gray = qGray(img->pixel(x,y));
-                //glVertex3f(x/100.0,y/100.0,z/100.0);
-                glVertex3i(x,y,z);
-                glColor3b(gray,gray,gray);
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)]     = gray; //R
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)] + 1 = gray; //G
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)] + 2 = gray; //B
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)] + 3 = gray; //A
             }
         }
         //delete img;
@@ -190,19 +191,17 @@ void GLWidget::paintGL()
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
 
-    glTexImage3D();
+    render3DTex();
 
-
-
-    /*glBegin(GL_QUADS);
+    glBegin(GL_QUADS);
     glVertex3f(-1,-1,1);
     glVertex3f(-1,1,1);
     glVertex3f(1,1,1);
 
     glVertex3f(1,-1,1);
-    glEnd();*/
+    glEnd();
 
-    //Scale down so everything fits on the screen
+    /*//Scale down so everything fits on the screen
     if(images.size() != 0) //Else: div by 0
     {
         glScalef(1.0/width,1.0/height,1.0/(images.size()));
@@ -229,7 +228,7 @@ void GLWidget::paintGL()
         //delete img;
     }
     glEnd();
-
+    */
 }
 
 void GLWidget::resizeGL(int width, int height)
