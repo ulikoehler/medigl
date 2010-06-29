@@ -1,8 +1,5 @@
 #include "dicomimagefile.h"
 
-//DCMTK includes
-#include <dcmtk/dcmimage/diregist.h>
-
 DICOMImageFile::DICOMImageFile(string filename)
 {
     DicomImage* image = new DicomImage("test.dcm");
