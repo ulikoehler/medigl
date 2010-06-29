@@ -38,9 +38,12 @@ void MediDialog::on_openButton_clicked()
     QStringList files = dialog.selectedFiles();
     int width = -1;
     int height = -1;
-    vector<QImage* > images;
+    vector<QImage*> images;
     for(int i = 0; i < files.size(); i++)
     {
+        //Check if the image is a DICOM image
+        if(files[i])
+        //The image is a 'standard' image format (not DICOM), so simply open it as QImage
         QImage* img = new QImage(files[i]);
         //Check if all images have the same width and height
         if(width == -1 && height == -1)
