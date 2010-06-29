@@ -4,9 +4,11 @@ TEMPLATE = app
 HEADERS += glwidget.h \
     medidialog.h \
     shaders.h \
-    fastimage.h
+    fastimage.h \
+    dicomimagefile.h
 SOURCES += glwidget.cpp \
     main.cpp \
     medidialog.cpp \
-    fastimage.cpp
+    fastimage.cpp \
+    dicomimagefile.cpp
 FORMS += medidialog.ui

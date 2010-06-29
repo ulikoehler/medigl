@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QGLShader>
 #include <memory>
+#include "fastimage.h"
 
 using namespace std;
 
@@ -52,7 +53,7 @@ private:
 
     void render3DTex();
 
-    vector<QImage*> images;
+    vector<FastImage*> images;
     uint width;
     uint height;
 
