@@ -4,6 +4,7 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <QtOpenGL>
+#include <GL/glut.h>
 #include <iostream>
 
 using namespace std;
@@ -192,14 +193,7 @@ void GLWidget::paintGL()
 
     render3DTex();
 
-    glBegin(GL_QUADS);
-
-    glVertex3f(-1,-1,1);
-    glVertex3f(-1,1,1);
-    glVertex3f(1,1,1);
-
-    glVertex3f(1,-1,1);
-    glEnd();
+    glutSolidCube(1.0);
 
     /*//Scale down so everything fits on the screen
     if(images.size() != 0) //Else: div by 0

@@ -5,11 +5,13 @@
 #include <list>
 #include <memory>
 #include <iostream>
+#include <GL/glut.h>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
+    glutInit(&argc, argv);
     QApplication app(argc, argv);
     int width = -1;
     int height = -1;
