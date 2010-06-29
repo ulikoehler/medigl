@@ -6,6 +6,8 @@
 #include <QtOpenGL>
 #include <iostream>
 
+using namespace std;
+
 #include "glwidget.h"
 #include "shaders.h"
 
@@ -137,7 +139,7 @@ void GLWidget::initializeGL()
 // height: The height of the 3D space
 // elem_width: The width of each element in the 3D space in bytes
 // x,y,z: The x, y and z coordinates of the element to be adressed
-#define REL_ADDR_3D(width, height, elem_width, x, y, z)	((elem_width * (x * width + y)) + (width * height * r * BYTES_PER_TEXEL))
+#define REL_ADDR_3D(width, height, elem_width, x, y, z)	((elem_width * (x * width + y)) + (width * height * z * elem_width))
 
 #define byte char //The same by definition (C standard)
 
@@ -151,13 +153,12 @@ void GLWidget::render3DTex()
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_REPEAT);
-    glTexImage3D(GL_TEXTURE_3D, 0, GL_RGB8, WIDTH, HEIGHT, DEPTH, 0, GL_RGB, GL_UNSIGNED_BYTE, texels);
 
     int depth = images.size();
     const int bytesPerTexel = 4; //RGBA, 8 bit
 
-    unsigned char* texels = (char *)malloc(width * height * depth * );
-    if(texels == null) {cerr >> "3D texture texel malloc failed";return;}
+    unsigned char* texels = (unsigned char*)malloc(width * height * depth * bytesPerTexel);
+    if(texels == NULL) {cerr << "3D texture texel malloc failed";return;}
 
     for(uint z = 0; z < depth; z++)
     {
@@ -168,15 +169,16 @@ void GLWidget::render3DTex()
             {
                 unsigned char gray = qGray(img->pixel(x,y));
                 texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)]     = gray; //R
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)] + 1 = gray; //G
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)] + 2 = gray; //B
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)] + 3 = gray; //A
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 1] = gray; //G
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 2] = gray; //B
+                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 3] = gray; //A
             }
         }
         //delete img;
     }
 
-    glBindTexture(GL_TEXTURE_3D, texturename);
+    glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
+    glBindTexture(GL_TEXTURE_3D, texname);
 }
 
 void GLWidget::paintGL()
@@ -191,6 +193,7 @@ void GLWidget::paintGL()
     render3DTex();
 
     glBegin(GL_QUADS);
+
     glVertex3f(-1,-1,1);
     glVertex3f(-1,1,1);
     glVertex3f(1,1,1);
