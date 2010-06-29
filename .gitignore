@@ -1,0 +1,5 @@
+medigl-build-desktop
+devscripts/Female
+devscripts/Male
+devscripts/*.png
+*.dcm
