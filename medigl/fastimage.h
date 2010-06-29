@@ -38,14 +38,39 @@ public:
      * \param enableGrayCache Whether to enable a separate gray cache
      */
     FastImage(uint width, uint height, bool enableGrayCache = true);
+    /**
+     * Releases all memory occupied by this FastImage instance
+     */
     ~FastImage();
-    uint32_t getRgb(uint x, uint y);
+    /**
+     * Gets the RGBA value for a specific pixel in this FastImage instance.
+     *
+     * This function does NOT check if the x and y parameters are in the bounds
+     * of this FastImage instance for sake of performance
+     */
+    uint32_t getRgba(uint x, uint y);
+    /**
+     * Gets the gray value for specific x and y pixel coordinates
+     */
     char getGray(uint x, uint y);
-    void setPixel(uint x, uint y, int val);
+    /**
+     * Sets a pixel in this FastImage instance
+     * to a specific value and updates the gray cache if it is enabled
+     * \param x The x coordinate of the pixel to set
+     * \param y The x coordinate of the pixel to set
+     * \param val The RGBA value to set the pixel to
+     */
+    void setPixel(uint x, uint y, uint32_t val);
+    /**
+     * \return The width of this image
+     */
     uint getWidth();
+    /**
+     * \return The height of this image
+     */
     uint getHeight();
 protected:
-    uint width, height
+    uint width, height;
     bool grayCacheEnabled;
     uint32_t* colorData;
     char* grayData;

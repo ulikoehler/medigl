@@ -41,9 +41,14 @@ FastImage::FastImage(uint width, uint height)
     this->grayCacheEnabled = enableGrayCache;
     this->width = width;
     this->height = height;
+
 }
 
 FastImage::~FastImage()
 {
-
+    delete[] colorData;
+    if(grayData != 0)
+    {
+        delete[] grayData;
+    }
 }
