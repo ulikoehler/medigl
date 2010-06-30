@@ -1,0 +1,10 @@
+Makefile
+*.o
+*/moc_*
+*/ui_*
+medigl
+medigl-build-desktop
+devscripts/Female
+devscripts/Male
+devscripts/*.png
+*.dcm

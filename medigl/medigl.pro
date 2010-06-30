@@ -3,8 +3,12 @@ TARGET = medigl
 TEMPLATE = app
 HEADERS += glwidget.h \
     medidialog.h \
-    shaders.h
+    shaders.h \
+    fastimage.h \
+    dicomimagefile.h
 SOURCES += glwidget.cpp \
     main.cpp \
-    medidialog.cpp
+    medidialog.cpp \
+    fastimage.cpp \
+    dicomimagefile.cpp
 FORMS += medidialog.ui
