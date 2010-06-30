@@ -1,7 +1,7 @@
 Installation requirements
 -Installed Qt SDK; MediGL ist tested and developed using QtSDK 2010.04
 -C++ Compiler with TR1 support. GCC is recommended.
--OpenGL development headers including GLUT; OpenGL capable graphics card or software driver
+-OpenGL development headers (version 2.0 at least) including GLUT; OpenGL capable graphics card or software driver capable of OpenGL 2.0
 -Installed DCMTK library including development headers; version 3.5.4 is recommended but other versions may work as well
 -OpenCL driver if you want to use the OpenCL features
 

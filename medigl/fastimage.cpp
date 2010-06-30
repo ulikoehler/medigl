@@ -54,6 +54,12 @@ void FastImage::setPixel(uint x, uint y, uint32_t val)
     }
 }
 
+void FastImage::setGrayPixel(uint x, uint y, char val)
+{
+    //Use the Qt API to convert the gray value into RGB
+    setPixel(x, y, qGray(qRgb(val, val, val)));
+}
+
 char FastImage::getGray(uint x, uint y)
 {
     if(grayCacheEnabled)

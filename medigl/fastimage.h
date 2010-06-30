@@ -63,13 +63,19 @@ public:
      */
     void setPixel(uint x, uint y, uint32_t val);
     /**
+     * Sets a pixel to a specific gray value. R, G, B and A are set to this value
+     * \param x The x coordinate of the pixel to set
+     * \param y The x coordinate of the pixel to set
+     * \param val The RGBA value to set the pixel to
+     */
+    void setGrayPixel(uint x, uint y, char val);
+    /**
      * \return The width of this image
      */
     uint getWidth()
     {
         return width;
     }
-
     /**
      * \return The height of this image
      */
