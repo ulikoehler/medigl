@@ -8,3 +8,4 @@ devscripts/Female
 devscripts/Male
 devscripts/*.png
 *.dcm
+build

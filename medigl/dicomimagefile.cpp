@@ -2,18 +2,24 @@
 
 DICOMImageFile::DICOMImageFile(string filename)
 {
-    DicomImage* image = new DicomImage("test.dcm");
-    if (image != NULL)
+    image = shared_ptr<DicomImage>(new DicomImage(filename.c_str()));
+    if (image != 0)
     {
-      if (image->getStatus() == EIS_Normal)
-      {
-        Uint8 *pixelData = (Uint8 *)(image->getOutputData(8 /* bits per sample */));
-        if (pixelData != NULL)
+        if (image->getStatus() == EIS_Normal)
         {
-          /* do something useful with the pixel data */
+            width = image->getWidth();
+            height = image->getHeight();
+            image->getOutputPlane()
+            Uint8 *pixelData = (Uint8 *)(image->getOutputData(8));
+            if (pixelData != NULL)
+            {
+                /* do something useful with the pixel data */
+            }
         }
-      } else
-        cerr << "Error: cannot load DICOM image (" << DicomImage::getString(image->getStatus()) << ")" << endl;
+        else
+        {
+            cerr << "Error: Failed to load DICOM image (" << DicomImage::getString(image->getStatus()) << ")" << endl;
+        }
     }
     delete image;
 }
