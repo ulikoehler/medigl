@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-MediDialog::MediDialog(QWidget *parent, vector<QImage* > images, uint width, uint height) :
+MediDialog::MediDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height) :
     QDialog(parent),
     m_ui(new Ui::MediDialog)
 {
@@ -38,23 +38,27 @@ void MediDialog::on_openButton_clicked()
     QStringList files = dialog.selectedFiles();
     int width = -1;
     int height = -1;
-    vector<QImage*> images;
+    vector<FastImage*> images;
     for(int i = 0; i < files.size(); i++)
     {
         //Check if the image is a DICOM image
+        FastImage* img;
         if(files[i].endsWith(".dcm"))
         {
 
         }
         //The image is a 'standard' image format (not DICOM), so simply open it as QImage
-        QImage* img = new QImage(files[i]);
+        else
+        {
+            img = new FastImage(new QImage(files[i]));
+        }
         //Check if all images have the same width and height
         if(width == -1 && height == -1)
         {
-            width = img->width();
-            height = img->height();
+            width = img->getWidth();
+            height = img->getHeight();
         }
-        if(img->width() != width || img->height() != height)
+        if(img->getWidth() != width || img->getHeight() != height)
         {
             cout << "All images must have the same width and height!\n";
             exit(1);

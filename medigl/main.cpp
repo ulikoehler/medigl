@@ -6,33 +6,29 @@
 #include <memory>
 #include <iostream>
 #include <GL/glut.h>
-#include <dcmtk/dcmimage/diregist.h>
-#include <
-
+#include "fastimage.h"
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    //Initialize DCMTK modules
-    DJEncoderRegistration::registerCodecs(); // register JPEG codecs
     //Initialize GLUT
     glutInit(&argc, argv);
     //Initialize Qt
     QApplication app(argc, argv);
-    int width = -1;
-    int height = -1;
+    uint width = -1;
+    uint height = -1;
     //Open files supplied on the command line
-    vector<QImage* > images;
+    vector<FastImage* > images;
     for(int i = 0; i < (argc - 1); i++)
     {
-        QImage* img = new QImage(argv[i + 1]);
+        FastImage* img = new FastImage(new QImage(argv[i + 1]));
         //Check if all images have the same width and height
         if(width == -1 && height == -1)
         {
-            width = img->width();
-            height = img->height();
+            width = img->getWidth();
+            height = img->getHeight();
         }
-        if(img->width() != width || img->height() != height)
+        if(img->getWidth() != width || img->getHeight() != height)
         {
             cout << "All images must have the same width and height!\n";
             exit(1);

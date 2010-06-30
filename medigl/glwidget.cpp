@@ -166,12 +166,12 @@ void GLWidget::render3DTex()
 
     for(uint z = 0; z < depth; z++)
     {
-        QImage* img = images[z];
+        FastImage* img = images[z];
         for(uint y = 0; y < height; y++)
         {
             for(uint x = 0; x < width; x++)
             {
-                unsigned char gray = qGray(img->pixel(x,y));
+                unsigned char gray = img->getGray(x,y);
                 texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)]     = gray; //R
                 texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 1] = gray; //G
                 texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 2] = gray; //B

@@ -4,6 +4,7 @@
 #include <QtGui/QDialog>
 #include <QVector>
 #include <memory>
+#include "fastimage.h"
 using namespace std;
 
 namespace Ui {
@@ -13,7 +14,7 @@ namespace Ui {
 class MediDialog : public QDialog {
     Q_OBJECT
 public:
-    MediDialog(QWidget *parent, vector<QImage* > images, uint width, uint height);
+    MediDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height);
     ~MediDialog();
 
 protected:

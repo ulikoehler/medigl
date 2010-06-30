@@ -17,12 +17,12 @@ public:
     GLWidget(QWidget *parent = 0);
     ~GLWidget();
 
-    void updateImages(vector<QImage* > imagesParam, uint width, uint height)
+    void updateImages(vector<FastImage*> imagesParam, uint width, uint height)
     {
         this->images = imagesParam;
         this->width = width;
         this->height = height;
-        refillVBO();
+        //refillVBO();
     }
 
     QSize minimumSizeHint() const;
