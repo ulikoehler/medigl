@@ -123,6 +123,11 @@ private:
     void normalizeAngle(int *angle);
     void incrZoomFactor(int delta);
 
+    //
+    //
+    // Rendering functions
+    //
+    //
     void render3DTex();
 
     /**
@@ -131,6 +136,19 @@ private:
      */
     void renderPointCloud();
 
+    //
+    //
+    // Filling image generation functions
+    //
+    //
+    void generateFillersCPU(int num);
+
+    //
+    //
+    // Fields
+    //
+    //
+    vector<FastImage*> originalImages; //Without filling images
     vector<FastImage*> images;
     uint width;
     uint height;
