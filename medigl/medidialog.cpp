@@ -11,6 +11,7 @@ MediDialog::MediDialog(QWidget *parent, vector<FastImage*> images, uint width, u
 {
     m_ui->setupUi(this);
     m_ui->glWidget->updateImages(images, width, height);
+    m_ui->glWidget->setFocus();
 }
 
 MediDialog::~MediDialog()
@@ -72,9 +73,11 @@ void MediDialog::on_openButton_clicked()
         images.push_back(img);
     }
     m_ui->glWidget->updateImages(images, width, height);
+    m_ui->glWidget->setFocus();
 }
 
 void MediDialog::on_resetViewButton_clicked()
 {
     m_ui->glWidget->resetView();
+    m_ui->glWidget->setFocus();
 }

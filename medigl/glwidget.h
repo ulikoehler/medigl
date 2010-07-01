@@ -120,9 +120,9 @@ private:
     float yRot;
     float zRot;
 
-    int xTrans;
-    int yTrans;
-    int zTrans;
+    float xTrans;
+    float yTrans;
+    float zTrans;
 
     float zoomFactor;
 

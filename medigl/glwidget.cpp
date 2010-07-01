@@ -187,10 +187,12 @@ void GLWidget::paintGL()
     {
         return; //Nothing to do
     }
-    glTranslated(0.0, 0.0, -10.0);
-    glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
-    glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
-    glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
+    glTranslated(0.0, 0.0, -10.0); //Move the content away from the user to make him able to see everything
+    //Apply the rotation. Rotate around the center TODO
+
+    glRotatef(xRot, 1.0, 0.0, 0.0);
+    glRotatef(yRot, 0.0, 1.0, 0.0);
+    glRotatef(zRot, 0.0, 0.0, 1.0);
 
     //render3DTex();
 
@@ -208,7 +210,7 @@ void GLWidget::paintGL()
 
     //Move the images to the middle of the screen
     glTranslatef(-0.5*width,-0.5*height,0);
-    glTranslated(xTrans, yTrans, zTrans);
+    glTranslatef(xTrans, yTrans, zTrans);
 
     renderPointCloud();
 
@@ -261,22 +263,30 @@ void GLWidget::mouseMoveEvent(QMouseEvent* event)
     int dx = event->x() - lastPos.x();
     int dy = event->y() - lastPos.y();
 
+    const float rotationFactor = 0.5;
+
     //The mouse buttons (drag-n-drop) cause the image to rotate
     if (event->buttons() & Qt::LeftButton)
     {
-        setXRotation(xRot + 8 * dy);
-        setYRotation(yRot + 8 * dx);
+        setXRotation(xRot + rotationFactor * dy/zoomFactor);
+        setYRotation(yRot + rotationFactor * dx/zoomFactor);
     }
     else if (event->buttons() & Qt::RightButton)
     {
-        setXRotation(xRot + 8 * dy);
-        setZRotation(zRot + 8 * dx);
+        setXRotation(xRot + rotationFactor * dy/zoomFactor);
+        setZRotation(zRot + rotationFactor * dx/zoomFactor);
     }
     lastPos = event->pos();
 }
 
 void GLWidget::keyPressEvent(QKeyEvent *event)
 {
+    //To make the user able to translate when zoomed in,
+    //we have to generate the translation amount of a constant
+    //factor and the zoom factor
+    const int translationFactor = 10;
+    float translationAmount = translationFactor / zoomFactor;
+
     int key = event->key();
     switch(key)
     {
@@ -285,23 +295,22 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
          */
     case Qt::Key_Left:
         {
-            xTrans -= 100;
-            cout << "XT";
+            xTrans -= translationAmount;
             break;
         }
     case Qt::Key_Right:
         {
-            xTrans -= 1;
+            xTrans -= translationAmount;
             break;
         }
     case Qt::Key_Up:
         {
-            yTrans += 1;
+            yTrans += translationAmount;
             break;
         }
     case Qt::Key_Down:
         {
-            yTrans -= 1;
+            yTrans -= translationAmount;
             break;
         }
     default: {event->ignore();break;}
@@ -369,12 +378,5 @@ void GLWidget::refillVBO()
 
 void GLWidget::normalizeAngle(int *angle)
 {
-    while (*angle < 0)
-    {
-        *angle += 360 * 16;
-    }
-    while (*angle > 360 * 16)
-    {
-        *angle -= 360 * 16;
-    }
+    *angle = (*angle) % 360;
 }
