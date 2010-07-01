@@ -1,9 +1,4 @@
-#define GL_GLEXT_PROTOTYPES
-
-
-
-using namespace std;
-
+#define GL_GLEXT_PROTOTYPES //Required for shaders etc.
 #include "glwidget.h"
 #include "shaders.h"
 
@@ -228,10 +223,10 @@ void GLWidget::renderPointCloud()
         {
             for(uint x = 0; x < width; x++)
             {
-                unsigned char gray = img->getGray(x,y);
+                double gray = img->getGray32bit(x,y);
                 //glVertex3f(x/100.0,y/100.0,z/100.0);
                 glVertex3i(x,y,z);
-                glColor3b(gray,gray,gray);
+                glColor3d(gray,gray,gray);
             }
         }
         //delete img;

@@ -26,8 +26,8 @@ FastImage::FastImage(QImage* img, bool enableGrayCache)
         for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < width; y++)
-            {
-                grayData[REL_ADDR_2D(width, x, y)] = qGray(img->pixel(x, y));
+            { 
+                grayData[REL_ADDR_2D(width, x, y)] = (double)qGray(img->pixel(x, y)) / std::numeric_limits<unsigned char>::max();
             }
         }
     }
@@ -57,7 +57,7 @@ void FastImage::setPixel(uint x, uint y, uint32_t val)
     //Update the gray cache if needed
     if(grayCacheEnabled)
     {
-        grayData[REL_ADDR_2D(width, x, y)] = qGray(val) / 255.0; //1.0 is white
+        grayData[REL_ADDR_2D(width, x, y)] = qGray(val) / std::numeric_limits<uint32_t>::max(); //1.0 is white
     }
 }
 
@@ -85,6 +85,14 @@ char FastImage::getGray(uint x, uint y)
     if(grayCacheEnabled)
     {
         return grayData[REL_ADDR_2D(width, x, y)] * 255;
+    }
+}
+
+double FastImage::getGray32bit(uint x, uint y)
+{
+    if(grayCacheEnabled)
+    {
+        return grayData[REL_ADDR_2D(width, x, y)];
     }
 }
 

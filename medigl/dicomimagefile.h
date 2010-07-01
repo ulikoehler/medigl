@@ -52,6 +52,7 @@ public:
         return frameCount;
     }
     /**
+     * Releases all resources acquired by this DICOMImageFile instance
      */
     ~DICOMImageFile();
 protected:

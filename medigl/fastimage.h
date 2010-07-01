@@ -59,6 +59,11 @@ public:
      */
     char getGray(uint x, uint y);
     /**
+     * Gets the gray value (8 bit) for specific x and y pixel coordinates.
+     * The request is served from the gray cache if it has been enabled for this instance
+     */
+    double getGray32bit(uint x, uint y);
+    /**
      * Sets a pixel in this FastImage instance
      * to a specific value and updates the gray cache if it is enabled
      * \param x The x coordinate of the pixel to set
