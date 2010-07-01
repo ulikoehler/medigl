@@ -28,9 +28,7 @@ GLWidget::GLWidget(QWidget *parent)
     yTrans = 0;
     zTrans = 0;
 
-    xScale = 1;
-    yScale = 1;
-    zScale = 1;
+    zoomFactor = 1.0;
 }
 
 GLWidget::~GLWidget()
@@ -92,7 +90,9 @@ void GLWidget::initializeGL()
     glEnable(GL_TEXTURE_3D);
     //glEnable(GL_CULL_FACE);
 
-    glPointSize(4.0);
+    //Enable antialiasing
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+
 
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -203,8 +203,8 @@ void GLWidget::paintGL()
     //Scale down so everything fits on the screen
     if(images.size() != 0) //Else: div by 0
     {
-        glScalef(constantScaleFactor/width, constantScaleFactor/height, constantScaleFactor/(images.size()));
-        glScalef(xScale,yScale,zScale);
+        float scaleFactor = constantScaleFactor * zoomFactor;
+        glScalef(scaleFactor/width, scaleFactor/height, scaleFactor/(images.size()));
         //glScalef(0.01,0.01,0.01);
     }
 
@@ -212,6 +212,14 @@ void GLWidget::paintGL()
     glTranslatef(-0.5*width,-0.5*height,0);
     glTranslated(xTrans, yTrans, zTrans);
 
+    renderPointCloud();
+
+}
+
+void GLWidget::renderPointCloud()
+{
+    //Scale the points. The scale is dependent on the zoom factor
+    glPointSize(1.7 * zoomFactor);
     glBegin(GL_POINTS);
     for(uint z = 0; z < images.size(); z++)
     {
@@ -324,9 +332,12 @@ void GLWidget::wheelEvent(QWheelEvent* event)
 {
     int delta = event->delta();
     const float deltaFactor = 0.002;
-    xScale += deltaFactor * delta;
-    yScale += deltaFactor * delta;
-    zScale += deltaFactor * delta;
+    zoomFactor += deltaFactor * delta;
+    //If we would allow negative values, the image would be mirrored --> set a minimum zoom factor of 1.0
+    if(zoomFactor < 1.0)
+    {
+        zoomFactor = 1.0;
+    }
     updateGL();
 }
 

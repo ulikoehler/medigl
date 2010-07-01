@@ -62,6 +62,12 @@ private:
 
     void render3DTex();
 
+    /**
+     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done
+     *
+     */
+    void renderPointCloud();
+
     vector<FastImage*> images;
     uint width;
     uint height;
@@ -76,9 +82,7 @@ private:
     int yTrans;
     int zTrans;
 
-    float xScale;
-    float yScale;
-    float zScale;
+    float zoomFactor;
 
     QPoint lastPos;
 
