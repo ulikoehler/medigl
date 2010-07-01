@@ -43,8 +43,9 @@ FastImage* DICOMImageFile::getFastImage(uint frame)
     {
         for(int y = 0; y < height; y++)
         {
-            img->setPixel(x,y, buffer[REL_ADDR_2D(width, x,y)]);
+            img->setGrayPixel(x,y, buffer[REL_ADDR_2D(width, x,y)]);
         }
     }
+    img->spreadContrast();
     return img;
 }

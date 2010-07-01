@@ -16,7 +16,9 @@ using namespace std;
  * very fast. This feature is enabled by default but can be disabled.
  * Users are not encouraged to change the data using setPixel(...).
  *
- * FastImage only supports RGBA with 8 bits per color.
+ * FastImage internally stores the data using 64 bit floating point numbers
+ *
+ * FastImage is optimized to process grayscale images - some functions only work on grayscale images
  *
  * The purpose of this class is to have a fast, scalable abstraction layer between
  * MediGL input data and OpenGL in order to be able to support a variety of image formats.
@@ -52,7 +54,7 @@ public:
      */
     uint32_t getRgba(uint x, uint y);
     /**
-     * Gets the gray value for specific x and y pixel coordinates.
+     * Gets the gray value (8 bit) for specific x and y pixel coordinates.
      * The request is served from the gray cache if it has been enabled for this instance
      */
     char getGray(uint x, uint y);
@@ -65,12 +67,20 @@ public:
      */
     void setPixel(uint x, uint y, uint32_t val);
     /**
-     * Sets a pixel to a specific gray value. R, G, B and A are set to this value
+     * Sets a pixel to a specific gray value (8 bit). R, G, B and A are set to this value
      * \param x The x coordinate of the pixel to set
      * \param y The x coordinate of the pixel to set
      * \param val The RGBA value to set the pixel to
      */
     void setGrayPixel(uint x, uint y, char val);
+    /**
+     * Performs a constrast spreading on the gray data of this FastImage.
+     *
+     * The algorithm used has a linear complexity
+     *
+     * Note: The color data is not affected!
+     */
+    void spreadContrast();
     /**
      * \return The width of this image
      */
@@ -90,7 +100,7 @@ protected:
     uint width, height;
     bool grayCacheEnabled;
     uint32_t* colorData;
-    char* grayData;
+    double* grayData;
 };
 
 #endif // FASTIMAGE_H
