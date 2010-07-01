@@ -18,8 +18,6 @@ GLWidget::GLWidget(QWidget *parent)
 {
     vboID = INT_MAX;
     //Initialize the transformation variables
-    transformationMode = Rotate;
-
     xRot = 0;
     yRot = 0;
     zRot = 0;
@@ -263,32 +261,16 @@ void GLWidget::mouseMoveEvent(QMouseEvent* event)
     int dx = event->x() - lastPos.x();
     int dy = event->y() - lastPos.y();
 
-    //The mouse buttons (drag-n-drop) make the image rotate
-    if(transformationMode == Rotate)
+    //The mouse buttons (drag-n-drop) cause the image to rotate
+    if (event->buttons() & Qt::LeftButton)
     {
-        if (event->buttons() & Qt::LeftButton)
-        {
-            setXRotation(xRot + 8 * dy);
-            setYRotation(yRot + 8 * dx);
-        }
-        else if (event->buttons() & Qt::RightButton)
-        {
-            setXRotation(xRot + 8 * dy);
-            setZRotation(zRot + 8 * dx);
-        }
+        setXRotation(xRot + 8 * dy);
+        setYRotation(yRot + 8 * dx);
     }
-    else if(transformationMode == Translate)
+    else if (event->buttons() & Qt::RightButton)
     {
-        if (event->buttons() & Qt::LeftButton)
-        {
-            xTrans += dx;
-            yTrans += dy;
-        }
-        else if (event->buttons() & Qt::RightButton)
-        {
-            xTrans += dx;
-            zTrans += dy;
-        }
+        setXRotation(xRot + 8 * dy);
+        setZRotation(zRot + 8 * dx);
     }
     lastPos = event->pos();
 }

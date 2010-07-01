@@ -15,6 +15,11 @@
 
 using namespace std;
 
+/**
+ * MediGL OpenGL widget
+ * Controls and the OpenGL IO, displays the rendered data,
+ * reacts to user events and processes images
+ */
 class GLWidget : public QGLWidget
 {
     Q_OBJECT
@@ -23,15 +28,24 @@ public:
     GLWidget(QWidget *parent = 0);
     ~GLWidget();
 
+    /**
+     * Updates the image cache with new images (represented by a vector of FastImage pointers)
+     * with a given width and height.
+     *
+     * The images must be checked for equal width and height before - the GLWidget class does not
+     * check them for performance reasons.
+     */
     inline void updateImages(vector<FastImage*> imagesParam, uint width, uint height)
     {
         this->images = imagesParam;
         this->width = width;
         this->height = height;
-        //refillVBO();
         updateGL();
     }
 
+    /**
+     * Resets rotation, translation and zoom and re-renders the data.
+     */
     inline void resetView()
     {
         xRot = 0;
@@ -50,8 +64,6 @@ public:
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
 
-    enum TransformationMode
-    {Translate, Rotate, Scale};
 
 public slots:
     void setXRotation(int angle);
@@ -67,9 +79,26 @@ protected:
     void initializeGL();
     void paintGL();
     void resizeGL(int width, int height);
+    /**
+     * Reacts to a mouse press event.
+     * This is part of the rotation code which rotates the data when the user uses drag-and-drop
+     */
     void mousePressEvent(QMouseEvent *event);
+    /**
+     * Reacts to a mouse move event.
+     * This is part of the rotation code which rotates the data when the user uses drag-and-drop
+     */
     void mouseMoveEvent(QMouseEvent *event);
+    /**
+     * Reacts to a mouse wheel event.
+     * Mouse wheel events are translated into zoom factor changes.
+     */
     void wheelEvent(QWheelEvent *);
+public:
+    /**
+     * Reacts to a key event.
+     * Key events are translated into translation commands.
+     */
     void keyPressEvent(QKeyEvent *);
 private:
     void refillVBO();
@@ -78,16 +107,14 @@ private:
     void render3DTex();
 
     /**
-     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done
-     *
+     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
+     * This rendering function uses the PointCloud algorithm: Each pixel is rendered as GLPoint.
      */
     void renderPointCloud();
 
     vector<FastImage*> images;
     uint width;
     uint height;
-
-    TransformationMode transformationMode;
 
     float xRot;
     float yRot;

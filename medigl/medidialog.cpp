@@ -31,6 +31,7 @@ void MediDialog::changeEvent(QEvent *e)
 }
 void MediDialog::keyPressEvent(QKeyEvent *event)
 {
+    m_ui->glWidget->keyPressEvent(event);
     event->ignore();
 }
 
