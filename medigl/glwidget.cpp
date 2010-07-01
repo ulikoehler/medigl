@@ -22,6 +22,8 @@ GLWidget::GLWidget(QWidget *parent)
     zTrans = 0;
 
     zoomFactor = 1.0;
+
+    zExtent = 1.0;
 }
 
 GLWidget::~GLWidget()
@@ -196,12 +198,10 @@ void GLWidget::paintGL()
     const float constantScaleFactor = 2.0;
 
     //Scale down so everything fits on the screen
-    if(images.size() != 0) //Else: div by 0
-    {
-        float scaleFactor = constantScaleFactor * zoomFactor;
-        glScalef(scaleFactor/width, scaleFactor/height, scaleFactor/(images.size()));
-        //glScalef(0.01,0.01,0.01);
-    }
+    float scaleFactor = constantScaleFactor * zoomFactor;
+    glScalef(scaleFactor/width, scaleFactor/height, scaleFactor/(images.size()));
+    //Scale the z axis (z extent)
+    glScalef(1,1,zExtent);
 
     //Move the images to the middle of the screen
     glTranslatef(-0.5*width,-0.5*height,0);

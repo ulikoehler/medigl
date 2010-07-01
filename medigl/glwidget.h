@@ -61,6 +61,16 @@ public:
         updateGL();
     }
 
+    /**
+     * Sets the z (depth) extent of the rendered image cuboid
+     * 1.0 is the same as the maximum of with and height
+     */
+    inline void setZExtent(float newZExtent)
+    {
+        this->zExtent = newZExtent;
+        updateGL();
+    }
+
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
 
@@ -124,7 +134,8 @@ private:
     float yTrans;
     float zTrans;
 
-    float zoomFactor;
+    float zoomFactor; //For zooming with +/- or the mouse wheel
+    float zExtent;
 
     QPoint lastPos;
 

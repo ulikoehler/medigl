@@ -27,6 +27,7 @@ private:
     Ui::MediDialog *m_ui;
 
 private slots:
+    void on_zSpreadSpinBox_valueChanged(double );
     void on_resetViewButton_clicked();
     void on_openButton_clicked();
 };

@@ -46,6 +46,6 @@ FastImage* DICOMImageFile::getFastImage(uint frame)
             img->setGrayPixel(x,y, buffer[REL_ADDR_2D(width, x,y)]);
         }
     }
-    img->spreadContrast();
+    img->spreadContrast(); //Increase the contrast to make the data visible
     return img;
 }
