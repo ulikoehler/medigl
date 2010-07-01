@@ -158,7 +158,7 @@ void GLWidget::render3DTex()
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_REPEAT);
 
-    int depth = images.size();
+    uint depth = images.size();
     const int bytesPerTexel = 4; //RGBA, 8 bit
 
     unsigned char* texels = (unsigned char*)malloc(width * height * depth * bytesPerTexel);
@@ -194,14 +194,17 @@ void GLWidget::paintGL()
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
 
-    render3DTex();
+    //render3DTex();
 
-    glutSolidCube(1.0);
+    //glutSolidCube(1.0);
 
-    /*//Scale down so everything fits on the screen
+    const float constantScaleFactor = 2.0;
+
+    //Scale down so everything fits on the screen
     if(images.size() != 0) //Else: div by 0
     {
-        glScalef(1.0/width,1.0/height,1.0/(images.size()));
+        glScalef(constantScaleFactor/width, constantScaleFactor/height, constantScaleFactor/(images.size()));
+        glScalef(xScale,yScale,zScale);
         //glScalef(0.01,0.01,0.01);
     }
 
@@ -211,12 +214,12 @@ void GLWidget::paintGL()
     glBegin(GL_POINTS);
     for(uint z = 0; z < images.size(); z++)
     {
-        QImage* img = images[z];
+        FastImage* img = images[z];
         for(uint y = 0; y < height; y++)
         {
             for(uint x = 0; x < width; x++)
             {
-                unsigned char gray = qGray(img->pixel(x,y));
+                unsigned char gray = img->getGray(x,y);
                 //glVertex3f(x/100.0,y/100.0,z/100.0);
                 glVertex3i(x,y,z);
                 glColor3b(gray,gray,gray);
@@ -225,7 +228,6 @@ void GLWidget::paintGL()
         //delete img;
     }
     glEnd();
-    */
 }
 
 void GLWidget::resizeGL(int width, int height)
@@ -247,11 +249,12 @@ void GLWidget::mousePressEvent(QMouseEvent *event)
     lastPos = event->pos();
 }
 
-void GLWidget::mouseMoveEvent(QMouseEvent *event)
+void GLWidget::mouseMoveEvent(QMouseEvent* event)
 {
     int dx = event->x() - lastPos.x();
     int dy = event->y() - lastPos.y();
 
+    //The mouse buttons (drag-n-drop) make the image rotate
     if(transformationMode == Rotate)
     {
         if (event->buttons() & Qt::LeftButton)
@@ -279,6 +282,17 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
         }
     }
     lastPos = event->pos();
+}
+
+void GLWidget::wheelEvent(QWheelEvent* event)
+{
+    cout << "Event!";
+    int delta = event->delta();
+    const float deltaFactor = 0.003;
+    xScale += deltaFactor * delta;
+    yScale += deltaFactor * delta;
+    zScale += deltaFactor * delta;
+    repaint();
 }
 
 void GLWidget::refillVBO()
@@ -327,8 +341,5 @@ void GLWidget::refillVBO()
 
 void GLWidget::normalizeAngle(int *angle)
 {
-    while (*angle < 0)
-        *angle += 360 * 16;
-    while (*angle > 360 * 16)
-        *angle -= 360 * 16;
+    *angle = abs((*angle) % (360 * 16));
 }

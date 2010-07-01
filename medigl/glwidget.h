@@ -23,6 +23,7 @@ public:
         this->width = width;
         this->height = height;
         //refillVBO();
+        repaint();
     }
 
     QSize minimumSizeHint() const;
@@ -47,6 +48,7 @@ protected:
     void resizeGL(int width, int height);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void wheelEvent(QWheelEvent *);
 private:
     void refillVBO();
     void normalizeAngle(int *angle);
@@ -59,17 +61,17 @@ private:
 
     TransformationMode transformationMode;
 
-    int xRot;
-    int yRot;
-    int zRot;
+    float xRot;
+    float yRot;
+    float zRot;
 
     int xTrans;
     int yTrans;
     int zTrans;
 
-    int xScale;
-    int yScale;
-    int zScale;
+    float xScale;
+    float yScale;
+    float zScale;
 
     QPoint lastPos;
 
