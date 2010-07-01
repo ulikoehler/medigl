@@ -43,7 +43,7 @@ FastImage::FastImage(uint width, uint height, bool enableGrayCache)
     this->width = width;
     this->height = height;
     this->colorData = new uint32_t[width * height];
-    this->grayData = new  double[width * height];
+    this->grayData = new double[width * height];
 }
 
 void FastImage::setPixel(uint x, uint y, uint32_t val)
@@ -61,10 +61,23 @@ void FastImage::setPixel(uint x, uint y, uint32_t val)
     }
 }
 
-void FastImage::setGrayPixel(uint x, uint y, char val)
+void FastImage::setGrayPixel(uint x, uint y, unsigned char val)
 {
-    //Use the Qt API to convert the gray value into RGB
-    setPixel(x, y, qGray(qRgb(val, val, val)));
+    //Update the gray cache if enabled
+    if(grayCacheEnabled)
+    {
+        grayData[REL_ADDR_2D(width, x, y)] = (double)val / std::numeric_limits<unsigned char>::max(); //1.0 is white
+    }
+}
+
+void FastImage::setGrayPixel(uint x, uint y, uint32_t val)
+{
+    //Update the gray cache if enabled
+    if(grayCacheEnabled)
+    {
+        grayData[REL_ADDR_2D(width, x, y)] = (double)val / std::numeric_limits<uint32_t>::max(); //1.0 is white
+
+    }
 }
 
 char FastImage::getGray(uint x, uint y)
@@ -77,6 +90,7 @@ char FastImage::getGray(uint x, uint y)
 
 void FastImage::spreadContrast()
 {
+//#define SPREAD_DEBUG
     //Find the minimum and maximum values
     double minVal = std::numeric_limits<double>::max();
     double maxVal = std::numeric_limits<double>::min();
@@ -85,6 +99,8 @@ void FastImage::spreadContrast()
         minVal = min(minVal, grayData[i]);
         maxVal = max(maxVal, grayData[i]);
     }
+    cout << "Min:" << minVal << "\n";
+    cout << "Max:" << maxVal << "\n";
     //Spread all the values to the interval [min;max]
     double delta = maxVal - minVal;
     for(int i = 0; i < width*height; i++)

@@ -36,8 +36,8 @@ FastImage* DICOMImageFile::getFastImage(uint frame)
     }
     //Create a new FastImage instance...
     FastImage* img = new FastImage(width, height, true);
-    int outputSize = image->getOutputDataSize(8);
-    char* buffer = (char*) image->getOutputData(8, frame);
+    int outputSize = image->getOutputDataSize(32);
+    uint32_t* buffer = (uint32_t*) image->getOutputData(32, frame);
     //...and copy the data into it
     for(int x = 0; x < width; x++)
     {

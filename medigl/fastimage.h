@@ -67,12 +67,19 @@ public:
      */
     void setPixel(uint x, uint y, uint32_t val);
     /**
-     * Sets a pixel to a specific gray value (8 bit). R, G, B and A are set to this value
+     * Sets a pixel to a specific gray value. The color buffer is not affected.
      * \param x The x coordinate of the pixel to set
      * \param y The x coordinate of the pixel to set
-     * \param val The RGBA value to set the pixel to
+     * \param val The grayscale value to set the pixel to
      */
-    void setGrayPixel(uint x, uint y, char val);
+    void setGrayPixel(uint x, uint y, unsigned char val);
+    /**
+     * Sets a pixel to a specific gray value. The color buffer is not affected.
+     * \param x The x coordinate of the pixel to set
+     * \param y The x coordinate of the pixel to set
+     * \param val The 32-bit grayscale value to set the pixel to
+     */
+    void setGrayPixel(uint x, uint y, uint32_t val);
     /**
      * Performs a constrast spreading on the gray data of this FastImage.
      *
