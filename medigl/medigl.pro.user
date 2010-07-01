@@ -21,7 +21,9 @@
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStep.0" type="QVariantMap">
      <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">qmake</value>
      <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-     <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
+     <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList">
+      <value type="QString">LIBS+=-ldcmdata -lglut -lofstd -ldcmimgle -ldcmimage -ltiff</value>
+     </valuelist>
     </valuemap>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStep.1" type="QVariantMap">
      <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Make</value>

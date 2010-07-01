@@ -26,7 +26,6 @@ DICOMImageFile::DICOMImageFile(string filename)
             cerr << "Error: Failed to load DICOM image (" << DicomImage::getString(image->getStatus()) << ")" << endl;
         }
     }
-    delete image;
 }
 
 
@@ -36,7 +35,6 @@ shared_ptr<FastImage> DICOMImageFile::getFastImage(uint frame)
     if(frame > frameCount)
     {
         cerr << "Frame not in DICOM image: " << frame << endl;
-        return;
     }
     //Create a new FastImage instance...
     shared_ptr<FastImage> img(new FastImage(width, height, true));
