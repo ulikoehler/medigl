@@ -200,12 +200,14 @@ void GLWidget::paintGL()
     //Scale down so everything fits on the screen
     float scaleFactor = constantScaleFactor * zoomFactor;
     glScalef(scaleFactor/width, scaleFactor/height, scaleFactor/(images.size()));
-    //Scale the z axis (z extent)
-    glScalef(1,1,zExtent);
 
     //Move the images to the middle of the screen
     glTranslatef(-0.5*width,-0.5*height,0);
     glTranslatef(xTrans, yTrans, zTrans);
+
+    //Scale the z axis (z extent)
+    glScalef(1,1,zExtent);
+
 
     renderPointCloud();
 
@@ -279,14 +281,13 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
     //To make the user able to translate when zoomed in,
     //we have to generate the translation amount of a constant
     //factor and the zoom factor
-    const int translationFactor = 10;
-    float translationAmount = translationFactor / zoomFactor;
-
+    const int coefficient = 10;
+    float translationAmount = coefficient / zoomFactor;
     int key = event->key();
     switch(key)
     {
         /*
-         * Transformation events: Arrow keys
+         * Transformation events: Arrow keys + PgUp/PgDown
          */
     case Qt::Key_Left:
         {
@@ -308,15 +309,37 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
             yTrans -= translationAmount;
             break;
         }
+    case Qt::Key_PageDown:
+        {
+            zTrans -= translationAmount;
+            break;
+        }
+    case Qt::Key_PageUp:
+        {
+            zTrans += translationAmount;
+            break;
+        }
+        /*
+         * Zoom events: +/-
+         */
+    case Qt::Key_Plus:
+        {
+            incrZoomFactor(coefficient);
+            break;
+        }
+    case Qt::Key_Minus:
+        {
+            incrZoomFactor(coefficient);
+            break;
+        }
     default: {event->ignore();break;}
     }
     //Re-render. Event if another key has been pressed, this should not be too expensive
     updateGL();
 }
 
-void GLWidget::wheelEvent(QWheelEvent* event)
+void GLWidget::incrZoomFactor(int delta)
 {
-    int delta = event->delta();
     const float deltaFactor = 0.002;
     zoomFactor += deltaFactor * delta;
     //If we would allow negative values, the image would be mirrored --> set a minimum zoom factor of 1.0
@@ -325,6 +348,12 @@ void GLWidget::wheelEvent(QWheelEvent* event)
         zoomFactor = 1.0;
     }
     updateGL();
+}
+
+void GLWidget::wheelEvent(QWheelEvent* event)
+{
+    int delta = event->delta();
+    incrZoomFactor(delta);
 }
 
 void GLWidget::refillVBO()

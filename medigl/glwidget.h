@@ -108,11 +108,20 @@ public:
     /**
      * Reacts to a key event.
      * Key events are translated into translation commands.
+     *
+     * All translations are absolute and not dependent on the rotation.
+     * The translation amount is dependent on the zoom factor.
+     *
+     * Left/right arrow keys: x coordinates
+     * Up/down arrow keys: y coordinates
+     * PageUp/PageDown: z coordinates
+     * +/-: zoom
      */
     void keyPressEvent(QKeyEvent *);
 private:
     void refillVBO();
     void normalizeAngle(int *angle);
+    void incrZoomFactor(int delta);
 
     void render3DTex();
 
