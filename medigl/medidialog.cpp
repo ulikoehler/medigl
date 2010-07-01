@@ -1,8 +1,5 @@
 #include "medidialog.h"
 #include "ui_medidialog.h"
-#include <QFileDialog>
-#include <iostream>
-#include <QKeyEvent>
 using namespace std;
 
 MediDialog::MediDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height) :
@@ -52,7 +49,7 @@ void MediDialog::on_openButton_clicked()
         FastImage* img;
         if(files[i].endsWith(".dcm"))
         {
-
+            img = DICOMImageFile(files[i].toStdString()).getFastImage(0);
         }
         //The image is a 'standard' image format (not DICOM), so simply open it as QImage
         else

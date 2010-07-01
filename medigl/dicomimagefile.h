@@ -9,6 +9,7 @@ using namespace std;
 using namespace std::tr1;
 
 //DCMTK includes
+#define HAVE_CONFIG_H
 #include <dcmtk/dcmimgle/dcmimage.h>
 
 /**
@@ -28,7 +29,7 @@ public:
      * a specific file this DICOM image file
      * \param frame The number of the frame (beginning with 0) to use
      */
-    shared_ptr<FastImage> getFastImage(uint frame);
+    FastImage* getFastImage(uint frame);
     /**
      * \return The width of this image
      */
@@ -50,8 +51,11 @@ public:
     {
         return frameCount;
     }
+    /**
+     */
+    ~DICOMImageFile();
 protected:
-    shared_ptr<DicomImage> image;
+    DicomImage* image;
     uint width;
     uint height;
     uint frameCount;

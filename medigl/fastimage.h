@@ -3,6 +3,8 @@
 
 #include <QImage>
 #include <stdint.h>
+#include <iostream>
+using namespace std;
 
 /**
  * Image wrapper class internally using arrays for fast read access

@@ -1,7 +1,7 @@
 #include "fastimage.h"
 
 //Macro for adressing pixels int virtually 2d arrays
-#define REL_ADDR_2D(width, x, y) (x * width + y)
+#define REL_ADDR_2D(width, x, y) (y * width + x)
 
 FastImage::FastImage(QImage* img, bool enableGrayCache)
 {
@@ -42,10 +42,12 @@ FastImage::FastImage(uint width, uint height, bool enableGrayCache)
     this->width = width;
     this->height = height;
     this->colorData = new uint32_t[width * height];
+    this->grayData = new char[width * height];
 }
 
 void FastImage::setPixel(uint x, uint y, uint32_t val)
 {
+    //cout << "WxH=" << width * height << " x "<<x << "y" << y << "   addr " << REL_ADDR_2D(width, x, y) << endl;
     colorData[REL_ADDR_2D(width, x, y)] = val;
     //Update the gray cache if needed
     if(grayCacheEnabled)

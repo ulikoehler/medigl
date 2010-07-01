@@ -5,6 +5,7 @@
 #include <QVector>
 #include <memory>
 #include "fastimage.h"
+#include "dicomimagefile.h"
 using namespace std;
 
 namespace Ui {
