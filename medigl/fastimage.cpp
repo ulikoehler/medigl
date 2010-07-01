@@ -98,7 +98,6 @@ double FastImage::getGray32bit(uint x, uint y)
 
 void FastImage::spreadContrast()
 {
-//#define SPREAD_DEBUG
     //Find the minimum and maximum values
     double minVal = std::numeric_limits<double>::max();
     double maxVal = std::numeric_limits<double>::min();
@@ -107,8 +106,6 @@ void FastImage::spreadContrast()
         minVal = min(minVal, grayData[i]);
         maxVal = max(maxVal, grayData[i]);
     }
-    cout << "Min:" << minVal << "\n";
-    cout << "Max:" << maxVal << "\n";
     //Spread all the values to the interval [min;max]
     double delta = maxVal - minVal;
     for(int i = 0; i < width*height; i++)
