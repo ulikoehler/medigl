@@ -1,11 +1,6 @@
 #define GL_GLEXT_PROTOTYPES
 
-#include <QtGui>
-#include <GL/gl.h>
-#include <GL/glext.h>
-#include <QtOpenGL>
-#include <GL/glut.h>
-#include <iostream>
+
 
 using namespace std;
 
@@ -189,6 +184,11 @@ void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
+    //Check if the image vector is empty
+    if(images.empty())
+    {
+        return; //Nothing to do
+    }
     glTranslated(0.0, 0.0, -10.0);
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
@@ -210,6 +210,7 @@ void GLWidget::paintGL()
 
     //Move the images to the middle of the screen
     glTranslatef(-0.5*width,-0.5*height,0);
+    glTranslated(xTrans, yTrans, zTrans);
 
     glBegin(GL_POINTS);
     for(uint z = 0; z < images.size(); z++)
@@ -284,15 +285,49 @@ void GLWidget::mouseMoveEvent(QMouseEvent* event)
     lastPos = event->pos();
 }
 
+void GLWidget::keyPressEvent(QKeyEvent *event)
+{
+    int key = event->key();
+    switch(key)
+    {
+        /*
+         * Transformation events: Arrow keys
+         */
+    case Qt::Key_Left:
+        {
+            xTrans -= 100;
+            cout << "XT";
+            break;
+        }
+    case Qt::Key_Right:
+        {
+            xTrans -= 1;
+            break;
+        }
+    case Qt::Key_Up:
+        {
+            yTrans += 1;
+            break;
+        }
+    case Qt::Key_Down:
+        {
+            yTrans -= 1;
+            break;
+        }
+    default: {event->ignore();break;}
+    }
+    //Re-render. Event if another key has been pressed, this should not be too expensive
+    updateGL();
+}
+
 void GLWidget::wheelEvent(QWheelEvent* event)
 {
-    cout << "Event!";
     int delta = event->delta();
-    const float deltaFactor = 0.003;
+    const float deltaFactor = 0.002;
     xScale += deltaFactor * delta;
     yScale += deltaFactor * delta;
     zScale += deltaFactor * delta;
-    repaint();
+    updateGL();
 }
 
 void GLWidget::refillVBO()
@@ -341,5 +376,12 @@ void GLWidget::refillVBO()
 
 void GLWidget::normalizeAngle(int *angle)
 {
-    *angle = abs((*angle) % (360 * 16));
+    while (*angle < 0)
+    {
+        *angle += 360 * 16;
+    }
+    while (*angle > 360 * 16)
+    {
+        *angle -= 360 * 16;
+    }
 }

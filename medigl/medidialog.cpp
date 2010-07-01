@@ -2,6 +2,7 @@
 #include "ui_medidialog.h"
 #include <QFileDialog>
 #include <iostream>
+#include <QKeyEvent>
 using namespace std;
 
 MediDialog::MediDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height) :
@@ -27,6 +28,10 @@ void MediDialog::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+void MediDialog::keyPressEvent(QKeyEvent *event)
+{
+    event->ignore();
 }
 
 void MediDialog::on_openButton_clicked()

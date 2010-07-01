@@ -1,7 +1,7 @@
 #ifndef MEDIDIALOG_H
 #define MEDIDIALOG_H
 
-#include <QtGui/QDialog>
+#include <QtGui>
 #include <QVector>
 #include <memory>
 #include "fastimage.h"
@@ -19,6 +19,7 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+    void keyPressEvent(QKeyEvent *);
 
 
 private:

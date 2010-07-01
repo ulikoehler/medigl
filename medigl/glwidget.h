@@ -1,10 +1,16 @@
 #ifndef GLWIDGET_H
 #define GLWIDGET_H
 
+#include <QtGui>
 #include <QGLWidget>
 #include <QVector>
 #include <QGLShader>
 #include <memory>
+#include <GL/gl.h>
+#include <GL/glext.h>
+#include <QtOpenGL>
+#include <GL/glut.h>
+#include <iostream>
 #include "fastimage.h"
 
 using namespace std;
@@ -49,6 +55,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void wheelEvent(QWheelEvent *);
+    void keyPressEvent(QKeyEvent *);
 private:
     void refillVBO();
     void normalizeAngle(int *angle);
