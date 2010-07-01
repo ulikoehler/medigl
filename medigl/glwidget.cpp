@@ -86,13 +86,13 @@ void GLWidget::initializeGL()
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_ALPHA_TEST);
-    glAlphaFunc(GL_GREATER, 0.0);
+    glAlphaFunc(GL_GREATER, 0.0); //Don't render fully transparent vertices
     glEnable(GL_TEXTURE_3D);
     //glEnable(GL_CULL_FACE);
 
     //Enable antialiasing
-    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-
+    glEnable(GL_POINT_SMOOTH);
+    glHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);
 
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

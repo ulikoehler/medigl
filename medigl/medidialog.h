@@ -26,6 +26,7 @@ private:
     Ui::MediDialog *m_ui;
 
 private slots:
+    void on_resetViewButton_clicked();
     void on_openButton_clicked();
 };
 

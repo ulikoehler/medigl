@@ -23,13 +23,28 @@ public:
     GLWidget(QWidget *parent = 0);
     ~GLWidget();
 
-    void updateImages(vector<FastImage*> imagesParam, uint width, uint height)
+    inline void updateImages(vector<FastImage*> imagesParam, uint width, uint height)
     {
         this->images = imagesParam;
         this->width = width;
         this->height = height;
         //refillVBO();
-        repaint();
+        updateGL();
+    }
+
+    inline void resetView()
+    {
+        xRot = 0;
+        yRot = 0;
+        zRot = 0;
+
+        xTrans = 0;
+        yTrans = 0;
+        zTrans = 0;
+
+        zoomFactor = 1;
+
+        updateGL();
     }
 
     QSize minimumSizeHint() const;
