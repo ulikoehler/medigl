@@ -22,11 +22,10 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <zorder></zorder>
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
      <item>
       <widget class="QPushButton" name="openButton">
        <property name="text">
@@ -67,6 +66,13 @@
        </property>
        <property name="value">
         <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="focusGLButton">
+       <property name="text">
+        <string>Focus GL</string>
        </property>
       </widget>
      </item>

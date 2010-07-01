@@ -83,3 +83,8 @@ void MediDialog::on_zSpreadSpinBox_valueChanged(double val)
 {
     m_ui->glWidget->setZExtent(val);
 }
+
+void MediDialog::on_focusGLButton_clicked()
+{
+    m_ui->glWidget->setFocus();
+}
