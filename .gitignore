@@ -8,3 +8,4 @@ devscripts/Male
 devscripts/*.png
 *.dcm
 build
+medigl/doc

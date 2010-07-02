@@ -12,3 +12,4 @@ SOURCES += glwidget.cpp \
     fastimage.cpp \
     dicomimagefile.cpp
 FORMS += medidialog.ui
+LIBS+=-ldcmdata -lglut -lofstd -ldcmimgle -ldcmimage -ltiff
