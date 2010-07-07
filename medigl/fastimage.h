@@ -2,6 +2,7 @@
 #define FASTIMAGE_H
 
 #include <QImage>
+#include <QColor>
 #include <stdint.h>
 #include <iostream>
 using namespace std;
@@ -107,6 +108,10 @@ public:
     {
         return height;
     }
+    /**
+     * \return A QImage pointer generated from the data of this FastImage
+     */
+    QImage* getGrayQImage();
 
 protected:
     uint width, height;

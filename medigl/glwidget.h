@@ -136,6 +136,22 @@ private:
      */
     void renderPointCloud();
 
+    /**
+     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
+     * Uses lines in the Z (depth) dimensions to display the data.
+     *
+     * For this rendering method it's not neccessary to generate virtual padding images
+     */
+    void renderLines();
+
+    /**
+     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
+     * Uses 2D textures with alpha blending to display the data.
+     */
+    void render2DTextures();
+
+    GLuint* textures2d;
+
     //
     //
     // Filling image generation functions

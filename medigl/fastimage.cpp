@@ -37,6 +37,22 @@ FastImage::FastImage(QImage* img, bool enableGrayCache)
     }
 }
 
+QImage* FastImage::getGrayQImage()
+{
+    QImage* img = new QImage(width, height, QImage::Format_RGB888);
+
+    for(int x = 0; x < width; x++)
+    {
+        for(int y = 0; y < width; y++)
+        {
+            int gray = 255 * grayData[REL_ADDR_2D(width, x, y)];
+            int rgb = QColor(gray, gray, gray).rgb();
+            img->setPixel(x,y,rgb);
+        }
+    }
+    return img;
+}
+
 FastImage::FastImage(uint width, uint height, bool enableGrayCache)
 {
     this->grayCacheEnabled = enableGrayCache;
