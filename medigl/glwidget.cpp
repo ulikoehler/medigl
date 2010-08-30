@@ -395,50 +395,6 @@ void GLWidget::wheelEvent(QWheelEvent* event)
     incrZoomFactor(delta);
 }
 
-void GLWidget::refillVBO()
-{
-    /*if(vboID != INT_MAX)
-    {
-        glDeleteBuffers(1, &vboID);
-    }
-    glGenBuffers(1, &vboID);
-
-    //Writing the data to the client memory directly
-    //would be to inefficient (too many calls)
-    glBindBuffer(GL_ARRAY_BUFFER,vboID);
-
-    C4UBV3F* data = new C4UBV3F[images.size() * width * height];
-
-    for(uint z = 0; z < images.size(); z++)
-    {
-        QImage* img = images[z];
-        for(uint y = 0; y < height; y++)
-        {
-            for(uint x = 0; x < width; x++)
-            {
-                unsigned char gray = qGray(img->pixel(x,y));
-                //printf("x: %u y: %u z:%u\n",x,y,z);
-                //std::cout << endl;
-                data[x + width * y + z * (width * height)].color[0] = 255;//gray;
-                data[x + width * y + z * (width * height)].color[1] = 255;//gray;
-                data[x + width * y + z * (width * height)].color[2] = 255;//gray;
-                data[x + width * y + z * (width * height)].color[3] = 255; //Alpha
-                data[x + width * y + z * (width * height)].vcoords[0] = x;
-                data[x + width * y + z * (width * height)].vcoords[1] = y;
-                data[x + width * y + z * (width * height)].vcoords[2] = z;
-            }
-        }
-        //delete img;
-    }
-
-    glUnmapBuffer(GL_ARRAY_BUFFER);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glInterleavedArrays(GL_C4UB_V3F, sizeof(C4UBV3F), 0);
-    glBufferData(GL_ARRAY_BUFFER, images.size() * width * height * sizeof(C4UBV3F), data, GL_STATIC_DRAW);*/
-
-    cout << "Successfully loaded" << endl;
-}
-
 void GLWidget::normalizeAngle(int *angle)
 {
     *angle = (*angle) % 360;
