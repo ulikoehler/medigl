@@ -26,6 +26,14 @@ GLWidget::GLWidget(QWidget *parent)
     zExtent = 1.0;
 
     textures2d = 0;
+
+    renderingMethod = PointCloud;
+}
+
+void GLWidget::setRenderingMethod(RenderingMethod method)
+{
+    this->renderingMethod = method; //Set the member variable being read from the GL rendering function
+    updateGL(); //Update the screen
 }
 
 GLWidget::~GLWidget()
@@ -123,7 +131,6 @@ void GLWidget::initializeGL()
     {
         QMessageBox(QMessageBox::Critical, "Shader failure", "Failed to bind the main shader program!").exec();
     }
-    shaderProgram->attributeLocation("density");
 }
 
 //Macro to adress virtual 3D-Adresses in one-dimensional space.
@@ -211,9 +218,13 @@ void GLWidget::paintGL()
     glScalef(1,1,zExtent);
 
 
-    //renderPointCloud();
-    //renderLines();
-    render2DTextures();
+    switch(renderingMethod)
+    {
+        case PointCloud: {renderPointCloud();}
+        case Lines: {renderLines();}
+        case TextureBlending2D: {render2DTextures();}
+        case Texture3D: {render3DTex();}
+    }
 
 }
 
@@ -285,8 +296,6 @@ void GLWidget::resizeGL(int width, int height)
     //glOrtho(-0.5, +0.5, +0.5, -0.5, 4.0, 15.0);
     glFrustum( -1.0, 1.0, -1.0, 1.0, 5.0, 15.0 );
     glMatrixMode(GL_MODELVIEW);
-
-    refillVBO();
 }
 
 void GLWidget::mousePressEvent(QMouseEvent *event)

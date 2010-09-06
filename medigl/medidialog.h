@@ -27,6 +27,10 @@ private:
     Ui::MediDialog *m_ui;
 
 private slots:
+    void on_textureBlending2DRadioButton_toggled(bool checked);
+    void on_linesRadioButton_toggled(bool checked);
+    void on_tex3dRadioButton_toggled(bool checked);
+    void on_pointCloudRadioButton_toggled(bool checked);
     void on_focusGLButton_clicked();
     void on_zSpreadSpinBox_valueChanged(double );
     void on_resetViewButton_clicked();

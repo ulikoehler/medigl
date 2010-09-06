@@ -16,6 +16,12 @@
 using namespace std;
 
 /**
+ * Enumeration defining the valid rendering methods.
+ * See GLWidget.
+ */
+enum RenderingMethod {PointCloud, Lines, TextureBlending2D, Texture3D};
+
+/**
  * MediGL OpenGL widget
  * Controls and the OpenGL IO, displays the rendered data,
  * reacts to user events and processes images
@@ -118,6 +124,11 @@ public:
      * +/-: zoom
      */
     void keyPressEvent(QKeyEvent *);
+    /**
+     * Sets the rendering method for this GLWidget and updates the screen
+     * (= re-renders the current view using the new method
+     */
+    void setRenderingMethod(RenderingMethod method);
 private:
     void refillVBO();
     void normalizeAngle(int *angle);
@@ -164,6 +175,8 @@ private:
     // Fields
     //
     //
+    RenderingMethod renderingMethod;
+
     vector<FastImage*> originalImages; //Without filling images
     vector<FastImage*> images;
     uint width;

@@ -88,3 +88,35 @@ void MediDialog::on_focusGLButton_clicked()
 {
     m_ui->glWidget->setFocus();
 }
+
+void MediDialog::on_pointCloudRadioButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        m_ui->glWidget->setRenderingMethod(PointCloud); //Automatically updates the screen
+    }
+}
+
+void MediDialog::on_tex3dRadioButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        m_ui->glWidget->setRenderingMethod(Texture3D); //Automatically updates the screen
+    }
+}
+
+void MediDialog::on_linesRadioButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        m_ui->glWidget->setRenderingMethod(Lines); //Automatically updates the screen
+    }
+}
+
+void MediDialog::on_textureBlending2DRadioButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        m_ui->glWidget->setRenderingMethod(TextureBlending2D); //Automatically updates the screen
+    }
+}
