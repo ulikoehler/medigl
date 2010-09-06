@@ -17,7 +17,7 @@ using namespace std;
 
 /**
  * Enumeration defining the valid rendering methods.
- * See GLWidget.
+ * See GLWidget.setRenderingMethod
  */
 enum RenderingMethod {PointCloud, Lines, TextureBlending2D, Texture3D};
 
@@ -25,6 +25,10 @@ enum RenderingMethod {PointCloud, Lines, TextureBlending2D, Texture3D};
  * MediGL OpenGL widget
  * Controls and the OpenGL IO, displays the rendered data,
  * reacts to user events and processes images
+ *
+ * This class uses a function pointer to select the rendering function.
+ * This decision (which results in very complex syntax at some points) was made
+ * because using the RenderingEnum method directly was extremely slow even if using a switch.
  */
 class GLWidget : public QGLWidget
 {
@@ -175,7 +179,11 @@ private:
     // Fields
     //
     //
-    RenderingMethod renderingMethod;
+
+    /**
+     * Function pointer to the rendering function (no return value, no arguments)
+     */
+    void (GLWidget::*renderingMethod)(void);
 
     vector<FastImage*> originalImages; //Without filling images
     vector<FastImage*> images;

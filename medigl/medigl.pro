@@ -1,4 +1,5 @@
 QT += opengl
+QMAKE_CXXFLAGS = -O3 -march=native
 TARGET = medigl
 TEMPLATE = app
 HEADERS += glwidget.h \

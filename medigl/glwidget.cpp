@@ -27,12 +27,19 @@ GLWidget::GLWidget(QWidget *parent)
 
     textures2d = 0;
 
-    renderingMethod = PointCloud;
+    renderingMethod = &GLWidget::renderPointCloud;
 }
 
 void GLWidget::setRenderingMethod(RenderingMethod method)
 {
-    this->renderingMethod = method; //Set the member variable being read from the GL rendering function
+    //This is the old code using the enum directly. Unfortunatelty it is extremely slow...
+    switch(method)
+    {
+        case PointCloud: {this->renderingMethod = &GLWidget::renderPointCloud;}
+        case Lines: {this->renderingMethod = &GLWidget::renderLines;cout << "lines";}
+        case TextureBlending2D: {this->renderingMethod = &GLWidget::render2DTextures;}
+        case Texture3D: {this->renderingMethod = &GLWidget::render3DTex;}
+    }
     updateGL(); //Update the screen
 }
 
@@ -200,10 +207,6 @@ void GLWidget::paintGL()
     glRotatef(yRot, 0.0, 1.0, 0.0);
     glRotatef(zRot, 0.0, 0.0, 1.0);
 
-    //render3DTex();
-
-    //glutSolidCube(1.0);
-
     const float constantScaleFactor = 2.0;
 
     //Scale down so everything fits on the screen
@@ -217,14 +220,18 @@ void GLWidget::paintGL()
     //Scale the z axis (z extent)
     glScalef(1,1,zExtent);
 
-
-    switch(renderingMethod)
+    //This is the old code using the enum directly. Unfortunatelty it is extremely slow...
+    /*switch(renderingMethod)
     {
         case PointCloud: {renderPointCloud();}
         case Lines: {renderLines();}
         case TextureBlending2D: {render2DTextures();}
         case Texture3D: {render3DTex();}
-    }
+    }*/
+
+    //Crazy sytax to call the rendering function.
+    //Also see http://www.goingware.com/tips/member-pointers.html
+    ((*this).*renderingMethod)();
 
 }
 
@@ -252,6 +259,7 @@ void GLWidget::renderPointCloud()
 
 void GLWidget::renderLines()
 {
+    cout << "RLines";
     //Scale the points. The scale is dependent on the zoom factor
     for(uint y = 0; y < height; y++)
     {

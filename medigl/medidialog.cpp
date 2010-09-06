@@ -94,6 +94,7 @@ void MediDialog::on_pointCloudRadioButton_toggled(bool checked)
     if(checked)
     {
         m_ui->glWidget->setRenderingMethod(PointCloud); //Automatically updates the screen
+        cout << "Setting point cloud rendering method" << endl;
     }
 }
 
@@ -102,6 +103,7 @@ void MediDialog::on_tex3dRadioButton_toggled(bool checked)
     if(checked)
     {
         m_ui->glWidget->setRenderingMethod(Texture3D); //Automatically updates the screen
+        cout << "Setting texture 3D rendering rendering method" << endl;
     }
 }
 
@@ -110,6 +112,7 @@ void MediDialog::on_linesRadioButton_toggled(bool checked)
     if(checked)
     {
         m_ui->glWidget->setRenderingMethod(Lines); //Automatically updates the screen
+        cout << "Setting lines rendering method" << endl;
     }
 }
 
@@ -118,5 +121,6 @@ void MediDialog::on_textureBlending2DRadioButton_toggled(bool checked)
     if(checked)
     {
         m_ui->glWidget->setRenderingMethod(TextureBlending2D); //Automatically updates the screen
+        cout << "Setting texture 2D blending rendering method" << endl;
     }
 }
