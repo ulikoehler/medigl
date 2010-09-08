@@ -112,6 +112,21 @@ public:
      * \return A QImage pointer generated from the data of this FastImage
      */
     QImage* getGrayQImage();
+    /**
+     * Interpolates a single gray image between two source images (left and right) by using
+     * linear interpolation (on CPU). Exchanging the left and right image doesn't have
+     * any effect.
+     * Note that the color information from the source images is not used.
+     * The new pixels are linearly interpolated from the gray values.
+     * This means this method is theoretically 4 times faster than RGBA interpolation because
+     * only one mean has to be calculated. For RGBA the R,G,B and A values have to be extracted and
+     * interpolated separately. This problem could be avoided by using SIMD instruction sets but we
+     * could even use them in the gray interpolation to interpolate several pixels at once.
+     * \param left The left image
+     * \param right The right image
+     * \return A pointer to the image interpolated from the left and right image.
+     */
+    static FastImage* interpolateSingleGrayImage(FastImage* left, FastImage* right);
 
 protected:
     uint width, height;

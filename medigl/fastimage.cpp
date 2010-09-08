@@ -112,6 +112,26 @@ double FastImage::getGray32bit(uint x, uint y)
     }
 }
 
+FastImage* FastImage::interpolateSingleGrayImage(FastImage *left, FastImage *right)
+{
+    if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
+    {
+        cerr << "interpolateSingleImage(): The extents of the left and right images don't match" << endl;
+        return NULL; //This will most probably cause the application to crash but it's acceptable because it's proof of concept
+    }
+    uint width = left->getWidth();
+    uint height = left->getHeight();
+    FastImage* interpolatedImage = new FastImage(width, height);
+    for(uint x = 0; x < width; x++)
+    {
+        for(uint y = 0; y < height; y++)
+        {
+            interpolatedImage->setGrayPixel(x,y,(unsigned char)((left->getGray(x,y) + right->getGray(x,y)) / 2)); //Integer division
+        }
+    }
+    return interpolatedImage;
+}
+
 void FastImage::spreadContrast()
 {
     //Find the minimum and maximum values
