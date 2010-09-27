@@ -28,8 +28,12 @@ public:
      * Constructs a new FastImage instance with the contents of
      * a specific file this DICOM image file
      * \param frame The number of the frame (beginning with 0) to use
+     * \param contrastExtension Whether to spread the values in the resulting grayscale image to the full available range. Not recommendened when using a Hounsfield window
+     * \param enableWindow Whether to use a Hounsfield window
+     * \param windowCenter The center of the Hounsfield window, if enabled
+     * \param windowWidth The width of the Hounsfield window, if enabled
      */
-    FastImage* getFastImage(uint frame);
+    FastImage* getFastImage(uint frame, bool contrastExtension, bool enableWindow = false, double windowCenter = 0.0, double windowWidth = 0.0);
     /**
      * \return The width of this image
      */

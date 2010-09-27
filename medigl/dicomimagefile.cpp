@@ -27,7 +27,7 @@ DICOMImageFile::~DICOMImageFile()
 }
 
 
-FastImage* DICOMImageFile::getFastImage(uint frame)
+FastImage* DICOMImageFile::getFastImage(uint frame, bool contrastExtension, bool enableWindow, double windowCenter, double windowWidth)
 {
     //Check whether the frame number is inside the bounds
     if(frame > frameCount)
@@ -36,7 +36,12 @@ FastImage* DICOMImageFile::getFastImage(uint frame)
     }
     //Create a new FastImage instance...
     FastImage* img = new FastImage(width, height, true);
-    int outputSize = image->getOutputDataSize(32);
+    //Set the Hounsfield window if the corresponding option is set
+    if(enableWindow)
+    {
+        image->setWindow(windowCenter, windowWidth);
+    }
+    //int outputSize = image->getOutputDataSize(32);
     uint32_t* buffer = (uint32_t*) image->getOutputData(32, frame);
     //...and copy the data into it
     for(int x = 0; x < width; x++)
@@ -46,6 +51,9 @@ FastImage* DICOMImageFile::getFastImage(uint frame)
             img->setGrayPixel(x,y, buffer[REL_ADDR_2D(width, x,y)]);
         }
     }
-    img->spreadContrast(); //Increase the contrast to make the data visible
+    if(contrastExtension)
+    {
+        img->spreadContrast(); //Increase the contrast to make the data visible
+    }
     return img;
 }
