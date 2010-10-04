@@ -138,7 +138,7 @@ list<FastImage*> interpolateMultipleGrayImages(FastImage* left, FastImage* right
     if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
     {
         cerr << "interpolateMultipleGrayImages(): The extents of the left and right images don't match" << endl;
-        return NULL; //This will most probably cause the application to crash but it's acceptable because this application's purpose is proof of concept
+         return images; //Return the empty list
     }
     for(int s = 0; s < size; s++)
     {

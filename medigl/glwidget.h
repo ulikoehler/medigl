@@ -13,6 +13,18 @@
 #include <iostream>
 #include "fastimage.h"
 
+//If no rendering method is defined, define a default
+#ifndef RENDER_3DTEXTURE
+#ifndef RENDER_POINTS
+#ifndef RENDER_LINES
+#ifndef RENDER_2DTEXTURE
+#define RENDER_3DTEXTURE
+#endif
+#endif
+#endif
+#endif
+
+
 using namespace std;
 
 /**
@@ -25,6 +37,8 @@ enum RenderingMethod {PointCloud, Lines, TextureBlending2D, Texture3D};
  * MediGL OpenGL widget
  * Controls and the OpenGL IO, displays the rendered data,
  * reacts to user events and processes images
+ *
+ * Note that the
  *
  * This class uses a function pointer to select the rendering function.
  * This decision (which results in very complex syntax at some points) was made
@@ -138,6 +152,8 @@ private:
     void normalizeAngle(int *angle);
     void incrZoomFactor(int delta);
 
+    void build3dTexture();
+
     //
     //
     // Rendering functions
@@ -189,6 +205,10 @@ private:
     vector<FastImage*> images;
     uint width;
     uint height;
+
+#ifdef RENDER_3DTEXTURE
+    uint texptr3d; //GL internal pointer, no pointer to the 3d texture in the local memory
+#endif
 
     float xRot;
     float yRot;
