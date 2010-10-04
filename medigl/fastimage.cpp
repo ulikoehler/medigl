@@ -116,8 +116,8 @@ FastImage* FastImage::interpolateSingleGrayImage(FastImage *left, FastImage *rig
 {
     if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
     {
-        cerr << "interpolateSingleImage(): The extents of the left and right images don't match" << endl;
-        return NULL; //This will most probably cause the application to crash but it's acceptable because it's proof of concept
+        cerr << "interpolateSingleGrayImage(): The extents of the left and right images don't match" << endl;
+        return NULL; //This will most probably cause the application to crash but it's acceptable because this application's purpose is proof of concept
     }
     uint width = left->getWidth();
     uint height = left->getHeight();
@@ -130,6 +130,31 @@ FastImage* FastImage::interpolateSingleGrayImage(FastImage *left, FastImage *rig
         }
     }
     return interpolatedImage;
+}
+
+list<FastImage*> interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size)
+{
+    list<FastImage> images;
+    if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
+    {
+        cerr << "interpolateMultipleGrayImages(): The extents of the left and right images don't match" << endl;
+        return NULL; //This will most probably cause the application to crash but it's acceptable because this application's purpose is proof of concept
+    }
+    for(int s = 0; s < size; s++)
+    {
+        uint width = left->getWidth();
+        uint height = left->getHeight();
+        FastImage interpolatedImage(width, height);
+        for(uint x = 0; x < width; x++)
+        {
+            for(uint y = 0; y < height; y++)
+            {
+                interpolatedImage->setGrayPixel(x,y,(unsigned char)(s * (left->getGray(x,y) + right->getGray(x,y)) / size)); //Integer division
+            }
+        }
+        images.push_back(interpolatedImage);
+    }
+    return images;
 }
 
 void FastImage::spreadContrast()

@@ -40,7 +40,7 @@ void GLWidget::setRenderingMethod(RenderingMethod method)
         case TextureBlending2D: {this->renderingMethod = &GLWidget::render2DTextures;}
         case Texture3D: {this->renderingMethod = &GLWidget::render3DTex;}
     }
-    updateGL(); //Update the screen
+    repaint();
 }
 
 GLWidget::~GLWidget()

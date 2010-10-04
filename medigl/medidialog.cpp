@@ -69,6 +69,18 @@ void MediDialog::on_openButton_clicked()
         }
         images.push_back(img);
     }
+    //Interpolate images if neccessary
+    if(m_ui->interpolateImagesSpinBox->value() > 0)
+    {
+        if(m_ui->interpolateImagesSpinBox->value() == 1) //Interpolate 1 image
+        {
+
+        }
+        else //Interpolate more than 1 images
+        {
+
+        }
+    }
     m_ui->glWidget->updateImages(images, width, height);
     m_ui->glWidget->setFocus();
 }

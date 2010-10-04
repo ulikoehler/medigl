@@ -90,7 +90,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox"/>
+      <widget class="QSpinBox" name="interpolateImagesSpinBox"/>
      </item>
      <item>
       <spacer name="verticalSpacer">
