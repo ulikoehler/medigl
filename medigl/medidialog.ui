@@ -25,7 +25,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
      <item>
       <widget class="QPushButton" name="openButton">
        <property name="text">
@@ -77,7 +77,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="imageInterpolationLabel">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -91,6 +91,82 @@
      </item>
      <item>
       <widget class="QSpinBox" name="interpolateImagesSpinBox"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="hounsfieldWindowLabel">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Hounsfield Window:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="enableWindowCheckBox">
+       <property name="text">
+        <string>Enable</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="windowCenterLabel">
+       <property name="text">
+        <string>Center:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="windowCenterSpinBox">
+       <property name="minimum">
+        <double>-100000.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>10000.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>100.000000000000000</double>
+       </property>
+       <property name="value">
+        <double>300.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="windowWidthLabel">
+       <property name="text">
+        <string>Width:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="windowWidthSpinBox">
+       <property name="minimum">
+        <double>-100000.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>100000.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>100.000000000000000</double>
+       </property>
+       <property name="value">
+        <double>2000.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="contrastExtensionCheckbox">
+       <property name="text">
+        <string>Contrast extension</string>
+       </property>
+      </widget>
      </item>
      <item>
       <spacer name="verticalSpacer">

@@ -49,7 +49,11 @@ void MediDialog::on_openButton_clicked()
         FastImage* img;
         if(files[i].endsWith(".dcm"))
         {
-            img = DICOMImageFile(files[i].toStdString()).getFastImage(0);
+            img = DICOMImageFile(files[i].toStdString()).getFastImage(0, //Only use the first image
+                                                                      m_ui->contrastExtensionCheckbox->isChecked(),
+                                                                      m_ui->enableWindowCheckBox->isChecked(),
+                                                                      m_ui->windowCenterSpinBox->value(),
+                                                                      m_ui->windowWidthSpinBox->value());
         }
         //The image is a 'standard' image format (not DICOM), so simply open it as QImage
         else
