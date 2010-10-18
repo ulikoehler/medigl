@@ -227,8 +227,7 @@ private:
     float zExtent;
 
     //FPS counter variables
-    ulong fpsTimebase; //The millisecond timestamp when fpsFrameCount was zero (unit: clock ticks as returned by clock())
-    uint fpsFrameCount; //The number of frames rendered since we last printed the FPS
+    uint fpsFrameCount; //The number of frames rendered since we last printed the FPS. Used to execute the FPS code each 50th frame
 
     QPoint lastPos;
 

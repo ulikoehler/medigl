@@ -199,16 +199,7 @@ void GLWidget::render3DTex()
 void GLWidget::paintGL()
 {
     //Execute the FPS code
-    if(fpsFrameCount == 0)
-    {
-        fpsTimebase = clock();
-    }
-    else if(fpsFrameCount == 50) //Print the current FPS count each 1000 FPS
-    {
-        cout << "FPS: " <<  CLOCKS_PER_SEC / (double)(clock() - fpsTimebase) << endl;
-        fpsFrameCount = -1; //fpsFrameCount is zero in the next paintGL() call because of the increment
-    }
-    fpsFrameCount++;
+    clock_t beginClock = clock();
     //Clear the screen and re-render it
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
@@ -258,6 +249,15 @@ void GLWidget::paintGL()
 #ifdef RENDER_2DTEXTURE
     render2DTextures();
 #endif
+
+    //If the FPS code shall be executed, measure how long this function call took and print the reciprocal
+    if(fpsFrameCount == 50)
+    {
+        clock_t endClock = clock();
+        cout << "FPS: " << (double)(CLOCKS_PER_SEC / (double)(endClock - beginClock)) << endl;
+        fpsFrameCount = 0;
+    }
+    fpsFrameCount++;
 
 }
 

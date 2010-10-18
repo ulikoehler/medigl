@@ -140,8 +140,9 @@ list<FastImage*> FastImage::interpolateMultipleGrayImages(FastImage* left, FastI
         cerr << "interpolateMultipleGrayImages(): The extents of the left and right images don't match" << endl;
         return images; //Return an empty list -> nothing is shown on the screen
     }
-    for(int s = 0; s < size; s++)
+    for(int s = 0; s < size; s++) //For each image to be interpolated
     {
+        //Note that the first image to be interpolated is the image the is the closest one to the image called left
         uint width = left->getWidth();
         uint height = left->getHeight();
         FastImage* interpolatedImage = new FastImage(width, height);
@@ -149,7 +150,7 @@ list<FastImage*> FastImage::interpolateMultipleGrayImages(FastImage* left, FastI
         {
             for(uint y = 0; y < height; y++)
             {
-                interpolatedImage->setGrayPixel(x,y,(unsigned char)(s * (left->getGray(x,y) + right->getGray(x,y)) / size)); //Integer division
+                interpolatedImage->setGrayPixel(x,y,(unsigned char)(left->getGray(x,y) + s * (right->getGray(x,y) - left->getGray(x,y)) / (double)size)); //Integer division
             }
         }
         images.push_back(interpolatedImage);
