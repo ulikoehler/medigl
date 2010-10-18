@@ -150,7 +150,7 @@ list<FastImage*> FastImage::interpolateMultipleGrayImages(FastImage* left, FastI
         {
             for(uint y = 0; y < height; y++)
             {
-                interpolatedImage->setGrayPixel(x,y,(unsigned char)(left->getGray(x,y) + s * (right->getGray(x,y) - left->getGray(x,y)) / (double)size)); //Integer division
+                interpolatedImage->setGrayPixel(x,y,(unsigned char)(left->getGray(x,y) + s * ((double)(right->getGray(x,y) - left->getGray(x,y)) / (double)size)));
             }
         }
         images.push_back(interpolatedImage);
