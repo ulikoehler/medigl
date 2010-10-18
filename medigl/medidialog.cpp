@@ -78,9 +78,22 @@ void MediDialog::on_openButton_clicked()
     {
         if(m_ui->interpolateImagesSpinBox->value() == 1) //Interpolate 1 image
         {
-
+            vector<FastImage*>::iterator it =  images.begin();
+            vector<FastImage*>::iterator end =  images.end();
+            while(true)
+            {
+                //Get the image and its successor
+                FastImage* leftImage = *it;
+                it++;
+                if(it == end) {
+                    break;
+                }
+                FastImage* rightImage = *it;
+                //STL vector::insert inserts the image at the position BEFORE the iterator given as argument
+                images.insert(it, FastImage::interpolateSingleGrayImage(leftImage, rightImage));
+            }
         }
-        else //Interpolate more than 1 images
+        else //Interpolate more than 1 image
         {
 
         }

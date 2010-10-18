@@ -134,17 +134,17 @@ FastImage* FastImage::interpolateSingleGrayImage(FastImage *left, FastImage *rig
 
 list<FastImage*> interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size)
 {
-    list<FastImage> images;
+    list<FastImage*> images;
     if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
     {
         cerr << "interpolateMultipleGrayImages(): The extents of the left and right images don't match" << endl;
-        return NULL; //This will most probably cause the application to crash but it's acceptable because this application's purpose is proof of concept
+        return images; //Return an empty list -> nothing is shown on the screen
     }
     for(int s = 0; s < size; s++)
     {
         uint width = left->getWidth();
         uint height = left->getHeight();
-        FastImage interpolatedImage(width, height);
+        FastImage* interpolatedImage = new FastImage(width, height);
         for(uint x = 0; x < width; x++)
         {
             for(uint y = 0; y < height; y++)
