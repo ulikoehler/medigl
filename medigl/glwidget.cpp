@@ -98,9 +98,12 @@ void GLWidget::initializeGL()
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_ALPHA_TEST);
-    glAlphaFunc(GL_GREATER, 0.0); //Don't render fully transparent vertices
-    glEnable(GL_TEXTURE_3D);
+    glAlphaFunc(GL_GREATER, 0.0); //Don't render fully transparent vertices; BIG speed improvement
     //glEnable(GL_CULL_FACE);
+
+#ifdef RENDER_3DTEXTURE
+    build3dTexture();
+#endif
 
     //Enable antialiasing
     glEnable(GL_POINT_SMOOTH);
@@ -153,11 +156,11 @@ void GLWidget::initializeGL()
 
 #define byte char //The same by definition (C standard)
 
-void GLWidget::render3DTex()
+void GLWidget::build3dTexture()
 {
-    unsigned int texname;
-    glGenTextures(1, &texname);
-    glBindTexture(GL_TEXTURE_3D, texname);
+    glEnable(GL_TEXTURE_3D);
+    glGenTextures(1, &texptr3d);
+    glBindTexture(GL_TEXTURE_3D, texptr3d);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -167,6 +170,8 @@ void GLWidget::render3DTex()
     uint depth = images.size();
     const int bytesPerTexel = 4; //RGBA, 8 bit
 
+    //Allocate the memory for the texture.
+    //Note that this code doesn't check if there is enough graphics memory for it!
     unsigned char* texels = (unsigned char*)malloc(width * height * depth * bytesPerTexel);
     if(texels == NULL) {cerr << "3D texture texel malloc failed";return;}
 
@@ -188,7 +193,14 @@ void GLWidget::render3DTex()
     }
 
     glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
-    glBindTexture(GL_TEXTURE_3D, texname);
+    glBindTexture(GL_TEXTURE_3D, texptr3d);
+}
+
+void GLWidget::render3DTex()
+{
+    glEnable(GL_TEXTURE_3D);
+    glBindTexture(GL_TEXTURE_3D, texptr3d);
+    glutSolidCube(3.0);
 }
 
 void GLWidget::paintGL()
@@ -229,9 +241,18 @@ void GLWidget::paintGL()
         case Texture3D: {render3DTex();}
     }*/
 
-    //Crazy sytax to call the rendering function.
-    //Also see http://www.goingware.com/tips/member-pointers.html
-    ((*this).*renderingMethod)();
+#ifdef RENDER_3DTEXTURE
+    render3DTex();
+#endif
+#ifdef RENDER_POINTS
+    renderPointCloud();
+#endif
+#ifdef RENDER_LINES
+    renderLines();
+#endif
+#ifdef RENDER_2DTEXTURE
+    render2DTextures();
+#endif
 
 }
 
