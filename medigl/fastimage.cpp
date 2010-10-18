@@ -132,7 +132,7 @@ FastImage* FastImage::interpolateSingleGrayImage(FastImage *left, FastImage *rig
     return interpolatedImage;
 }
 
-list<FastImage*> interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size)
+list<FastImage*> FastImage::interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size)
 {
     list<FastImage*> images;
     if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())

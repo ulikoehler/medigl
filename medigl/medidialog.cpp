@@ -35,10 +35,16 @@ void MediDialog::keyPressEvent(QKeyEvent *event)
 
 void MediDialog::on_openButton_clicked()
 {
+    //Let the user choose if he wants to
     QFileDialog dialog;
     dialog.setFileMode(QFileDialog::ExistingFiles);
     dialog.setModal(true);
-    dialog.exec();
+    if(!dialog.exec()) {
+        //The user didn't click "Open" but cancelled the operation
+        cout << "DEBUG: Cancelling image loading" << endl;
+        return;
+    }
+    //If the next lines are executed, the user clicked open.
     QStringList files = dialog.selectedFiles();
     int width = -1;
     int height = -1;
@@ -49,13 +55,13 @@ void MediDialog::on_openButton_clicked()
         FastImage* img;
         if(files[i].endsWith(".dcm"))
         {
-            img = DICOMImageFile(files[i].toStdString()).getFastImage(0, //Only use the first image
+            img = DICOMImageFile(files[i].toStdString()).getFastImage(0, //Only use the first image when the DICOM files is a stack
                                                                       m_ui->contrastExtensionCheckbox->isChecked(),
                                                                       m_ui->enableWindowCheckBox->isChecked(),
                                                                       m_ui->windowCenterSpinBox->value(),
                                                                       m_ui->windowWidthSpinBox->value());
         }
-        //The image is a 'standard' image format (not DICOM), so simply open it as QImage
+        //The image is non-DICOM, so simply open it as QImage. QImage can open everything most image file formats.
         else
         {
             img = new FastImage(new QImage(files[i]));
@@ -73,29 +79,43 @@ void MediDialog::on_openButton_clicked()
         }
         images.push_back(img);
     }
-    //Interpolate images if neccessary
-    if(m_ui->interpolateImagesSpinBox->value() > 0)
+    //CPU-Interpolate images if neccessary
+    uint numInterpolationImages = m_ui->interpolateImagesSpinBox->value();
+    cout << "DEBUG: Interpolating " << numInterpolationImages << " images between each pair" << endl;
+    if(numInterpolationImages == 1) //Interpolate 1 image
     {
-        if(m_ui->interpolateImagesSpinBox->value() == 1) //Interpolate 1 image
+        vector<FastImage*>::iterator it =  images.begin();
+        vector<FastImage*>::iterator end =  images.end();
+        while(true)
         {
-            vector<FastImage*>::iterator it =  images.begin();
-            vector<FastImage*>::iterator end =  images.end();
-            while(true)
-            {
-                //Get the image and its successor
-                FastImage* leftImage = *it;
-                it++;
-                if(it == end) {
-                    break;
-                }
-                FastImage* rightImage = *it;
-                //STL vector::insert inserts the image at the position BEFORE the iterator given as argument
-                images.insert(it, FastImage::interpolateSingleGrayImage(leftImage, rightImage));
+            //Get the image and its successor
+            FastImage* leftImage = *it;
+            it++;
+            if(it == end) {
+                break;
             }
+            FastImage* rightImage = *it;
+            //STL vector::insert inserts the image at the position BEFORE the iterator given as argument
+            images.insert(it, FastImage::interpolateSingleGrayImage(leftImage, rightImage));
         }
-        else //Interpolate more than 1 image
+    }
+    else if(numInterpolationImages > 1) //Interpolate more than 1 image
+    {
+        vector<FastImage*>::iterator it =  images.begin();
+        vector<FastImage*>::iterator end =  images.end();
+        while(true)
         {
-
+            //Get the image and its successor
+            FastImage* leftImage = *it;
+            it++;
+            if(it == end) {
+                break;
+            }
+            FastImage* rightImage = *it;
+            //STL vector::insert inserts the image at the position BEFORE the iterator given as argument
+            //Here we insert the complete list
+            list<FastImage*> interpolatedImages = FastImage::interpolateMultipleGrayImages(leftImage, rightImage, numInterpolationImages);
+            images.insert(it, interpolatedImages.begin(), interpolatedImages.end());
         }
     }
     m_ui->glWidget->updateImages(images, width, height);
@@ -116,40 +136,4 @@ void MediDialog::on_zSpreadSpinBox_valueChanged(double val)
 void MediDialog::on_focusGLButton_clicked()
 {
     m_ui->glWidget->setFocus();
-}
-
-void MediDialog::on_pointCloudRadioButton_toggled(bool checked)
-{
-    if(checked)
-    {
-        m_ui->glWidget->setRenderingMethod(PointCloud); //Automatically updates the screen
-        cout << "Setting point cloud rendering method" << endl;
-    }
-}
-
-void MediDialog::on_tex3dRadioButton_toggled(bool checked)
-{
-    if(checked)
-    {
-        m_ui->glWidget->setRenderingMethod(Texture3D); //Automatically updates the screen
-        cout << "Setting texture 3D rendering rendering method" << endl;
-    }
-}
-
-void MediDialog::on_linesRadioButton_toggled(bool checked)
-{
-    if(checked)
-    {
-        m_ui->glWidget->setRenderingMethod(Lines); //Automatically updates the screen
-        cout << "Setting lines rendering method" << endl;
-    }
-}
-
-void MediDialog::on_textureBlending2DRadioButton_toggled(bool checked)
-{
-    if(checked)
-    {
-        m_ui->glWidget->setRenderingMethod(TextureBlending2D); //Automatically updates the screen
-        cout << "Setting texture 2D blending rendering method" << endl;
-    }
 }

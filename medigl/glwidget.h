@@ -11,6 +11,7 @@
 #include <QtOpenGL>
 #include <GL/glut.h>
 #include <iostream>
+#include <ctime>
 #include "fastimage.h"
 
 //If no rendering method is defined, define a default
@@ -18,7 +19,7 @@
 #ifndef RENDER_POINTS
 #ifndef RENDER_LINES
 #ifndef RENDER_2DTEXTURE
-#define RENDER_3DTEXTURE
+#define RENDER_POINTS
 #endif
 #endif
 #endif
@@ -152,14 +153,18 @@ private:
     void normalizeAngle(int *angle);
     void incrZoomFactor(int delta);
 
+#ifdef RENDER_3DTEXTURE
     void build3dTexture();
+#endif
 
     //
     //
     // Rendering functions
     //
     //
+#ifdef RENDER_3DTEXTURE
     void render3DTex();
+#endif
 
     /**
      * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
@@ -220,6 +225,10 @@ private:
 
     float zoomFactor; //For zooming with +/- or the mouse wheel
     float zExtent;
+
+    //FPS counter variables
+    ulong fpsTimebase; //The millisecond timestamp when fpsFrameCount was zero (unit: clock ticks as returned by clock())
+    uint fpsFrameCount; //The number of frames rendered since we last printed the FPS
 
     QPoint lastPos;
 

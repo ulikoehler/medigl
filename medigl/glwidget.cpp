@@ -27,20 +27,9 @@ GLWidget::GLWidget(QWidget *parent)
 
     textures2d = 0;
 
-    renderingMethod = &GLWidget::renderPointCloud;
-}
+    fpsFrameCount = 0;
 
-void GLWidget::setRenderingMethod(RenderingMethod method)
-{
-    //This is the old code using the enum directly. Unfortunatelty it is extremely slow...
-    switch(method)
-    {
-        case PointCloud: {this->renderingMethod = &GLWidget::renderPointCloud;}
-        case Lines: {this->renderingMethod = &GLWidget::renderLines;cout << "lines";}
-        case TextureBlending2D: {this->renderingMethod = &GLWidget::render2DTextures;}
-        case Texture3D: {this->renderingMethod = &GLWidget::render3DTex;}
-    }
-    repaint();
+    renderingMethod = &GLWidget::renderPointCloud;
 }
 
 GLWidget::~GLWidget()
@@ -156,6 +145,7 @@ void GLWidget::initializeGL()
 
 #define byte char //The same by definition (C standard)
 
+#ifdef RENDER_3DTEXTURE
 void GLWidget::build3dTexture()
 {
     glEnable(GL_TEXTURE_3D);
@@ -195,16 +185,31 @@ void GLWidget::build3dTexture()
     glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
     glBindTexture(GL_TEXTURE_3D, texptr3d);
 }
+#endif
 
+#ifdef RENDER_3DTEXTURE
 void GLWidget::render3DTex()
 {
     glEnable(GL_TEXTURE_3D);
     glBindTexture(GL_TEXTURE_3D, texptr3d);
     glutSolidCube(3.0);
 }
+#endif
 
 void GLWidget::paintGL()
 {
+    //Execute the FPS code
+    if(fpsFrameCount == 0)
+    {
+        fpsTimebase = clock();
+    }
+    else if(fpsFrameCount == 50) //Print the current FPS count each 1000 FPS
+    {
+        cout << "FPS: " <<  CLOCKS_PER_SEC / (double)(clock() - fpsTimebase) << endl;
+        fpsFrameCount = -1; //fpsFrameCount is zero in the next paintGL() call because of the increment
+    }
+    fpsFrameCount++;
+    //Clear the screen and re-render it
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     //Check if the image vector is empty

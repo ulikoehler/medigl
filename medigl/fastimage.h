@@ -142,7 +142,7 @@ public:
      * \param size The number of images to interpolate
      * \return An STL list of the images interpolated between left and right image.
      */
-    static list<FastImage> interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size);
+    static list<FastImage*> interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size);
 
 protected:
     uint width, height;
