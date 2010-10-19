@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+  <compounddef id="class_medi_dialog" kind="class" prot="public">
+    <compoundname>MediDialog</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_medi_dialog_1ae7ceec429baf06be4143fa324a3193cd" prot="private" static="no" mutable="no">
+        <type>Ui::MediDialog *</type>
+        <definition>Ui::MediDialog* MediDialog::m_ui</definition>
+        <argsstring></argsstring>
+        <name>m_ui</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="27" bodyfile="/home/uli/dev/medigl/medigl/medidialog.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_medi_dialog_1a5ba83757052acf6f897dd4b3c9d70af3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MediDialog::MediDialog</definition>
+        <argsstring>(QWidget *parent, vector&lt; FastImage * &gt; images, uint width, uint height)</argsstring>
+        <name>MediDialog</name>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>vector&lt; <ref refid="class_fast_image" kindref="compound">FastImage</ref> * &gt;</type>
+          <declname>images</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="18" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="5" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_medi_dialog_1a45a7c54470528f85e8ce867fead3123f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MediDialog::~MediDialog</definition>
+        <argsstring>()</argsstring>
+        <name>~MediDialog</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="19" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_medi_dialog_1af0d94bbf8a5248bc23c4ee2567b25f58" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MediDialog::changeEvent</definition>
+        <argsstring>(QEvent *e)</argsstring>
+        <name>changeEvent</name>
+        <param>
+          <type>QEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="22" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="19" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_medi_dialog_1ae9fe5642ed0e589ec885fca1f350661d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MediDialog::keyPressEvent</definition>
+        <argsstring>(QKeyEvent *)</argsstring>
+        <name>keyPressEvent</name>
+        <param>
+          <type>QKeyEvent *</type>
+          <defname>event</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="23" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="30" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="class_medi_dialog_1a69edd8a12624773b60d4ad78d79ce219" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MediDialog::on_focusGLButton_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_focusGLButton_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="30" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_medi_dialog_1a359b08df92edafcf46c501103ce230b0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MediDialog::on_zSpreadSpinBox_valueChanged</definition>
+        <argsstring>(double)</argsstring>
+        <name>on_zSpreadSpinBox_valueChanged</name>
+        <param>
+          <type>double</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="31" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_medi_dialog_1ac02f4ca481db2bbc07af8222c1d85d39" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MediDialog::on_resetViewButton_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_resetViewButton_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="32" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="76" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_medi_dialog_1ac38501b355e2154ff7602b7f999f4c06" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MediDialog::on_openButton_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_openButton_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="33" bodyfile="/home/uli/dev/medigl/medigl/medidialog.cpp" bodystart="36" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="15" bodyfile="/home/uli/dev/medigl/medigl/medidialog.h" bodystart="15" bodyend="34"/>
+    <listofallmembers>
+      <member refid="class_medi_dialog_1af0d94bbf8a5248bc23c4ee2567b25f58" prot="protected" virt="non-virtual"><scope>MediDialog</scope><name>changeEvent</name></member>
+      <member refid="class_medi_dialog_1ae9fe5642ed0e589ec885fca1f350661d" prot="protected" virt="non-virtual"><scope>MediDialog</scope><name>keyPressEvent</name></member>
+      <member refid="class_medi_dialog_1ae7ceec429baf06be4143fa324a3193cd" prot="private" virt="non-virtual"><scope>MediDialog</scope><name>m_ui</name></member>
+      <member refid="class_medi_dialog_1a5ba83757052acf6f897dd4b3c9d70af3" prot="public" virt="non-virtual"><scope>MediDialog</scope><name>MediDialog</name></member>
+      <member refid="class_medi_dialog_1a69edd8a12624773b60d4ad78d79ce219" prot="private" virt="non-virtual"><scope>MediDialog</scope><name>on_focusGLButton_clicked</name></member>
+      <member refid="class_medi_dialog_1ac38501b355e2154ff7602b7f999f4c06" prot="private" virt="non-virtual"><scope>MediDialog</scope><name>on_openButton_clicked</name></member>
+      <member refid="class_medi_dialog_1ac02f4ca481db2bbc07af8222c1d85d39" prot="private" virt="non-virtual"><scope>MediDialog</scope><name>on_resetViewButton_clicked</name></member>
+      <member refid="class_medi_dialog_1a359b08df92edafcf46c501103ce230b0" prot="private" virt="non-virtual"><scope>MediDialog</scope><name>on_zSpreadSpinBox_valueChanged</name></member>
+      <member refid="class_medi_dialog_1a45a7c54470528f85e8ce867fead3123f" prot="public" virt="non-virtual"><scope>MediDialog</scope><name>~MediDialog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

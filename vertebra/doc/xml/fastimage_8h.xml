@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+  <compounddef id="fastimage_8h" kind="file">
+    <compoundname>fastimage.h</compoundname>
+    <includes local="no">QImage</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">iostream</includes>
+    <includedby refid="dicomimagefile_8h" local="yes">dicomimagefile.h</includedby>
+    <includedby refid="fastimage_8cpp" local="yes">fastimage.cpp</includedby>
+    <includedby refid="glwidget_8cpp" local="yes">glwidget.cpp</includedby>
+    <includedby refid="glwidget_8h" local="yes">glwidget.h</includedby>
+    <includedby refid="main_8cpp" local="yes">main.cpp</includedby>
+    <includedby refid="medidialog_8h" local="yes">medidialog.h</includedby>
+    <incdepgraph>
+      <node id="27">
+        <label>stdint.h</label>
+      </node>
+      <node id="26">
+        <label>QImage</label>
+      </node>
+      <node id="25">
+        <label>fastimage.h</label>
+        <link refid="fastimage.h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30">
+        <label>dicomimagefile.h</label>
+        <link refid="dicomimagefile_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>glwidget.h</label>
+        <link refid="glwidget_8h_source"/>
+      </node>
+      <node id="31">
+        <label>medidialog.h</label>
+        <link refid="medidialog_8h_source"/>
+      </node>
+      <node id="29">
+        <label>fastimage.h</label>
+        <link refid="fastimage.h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_fast_image" prot="public">FastImage</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FASTIMAGE_H</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>FASTIMAGE_H</highlight></codeline>
+<codeline lineno="3"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QImage&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="class_fast_image" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_fast_image" kindref="compound">FastImage</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_fast_image_1a1ee91a3ac8ddcdfed90e9906bb3f0681" kindref="member">FastImage</ref>(QImage*<sp/>img,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableGrayCache<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_fast_image_1a1ee91a3ac8ddcdfed90e9906bb3f0681" kindref="member">FastImage</ref>(uint<sp/>width,<sp/>uint<sp/>height,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableGrayCache<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_fast_image_1ae2937f18d549ffc788abaa1a5bf6f492" kindref="member">~FastImage</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="class_fast_image_1a09e6df8ae76ddffb813048157f887ee6" kindref="member">getRgba</ref>(uint<sp/>x,<sp/>uint<sp/>y);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="class_fast_image_1a7da37f6c5c99feea80c6a699c7b51bd8" kindref="member">getGray</ref>(uint<sp/>x,<sp/>uint<sp/>y);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_fast_image_1a6975ad540e89b98fda1b7a3bd3f812ea" kindref="member">getGray32bit</ref>(uint<sp/>x,<sp/>uint<sp/>y);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fast_image_1a647ac3b76f0198da77cd2e7afa46e1c4" kindref="member">setPixel</ref>(uint<sp/>x,<sp/>uint<sp/>y,<sp/>uint32_t<sp/>val);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fast_image_1a1e0ef4ac5b61cc6d96c9cd9c4bada344" kindref="member">setGrayPixel</ref>(uint<sp/>x,<sp/>uint<sp/>y,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fast_image_1a1e0ef4ac5b61cc6d96c9cd9c4bada344" kindref="member">setGrayPixel</ref>(uint<sp/>x,<sp/>uint<sp/>y,<sp/>uint32_t<sp/>val);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fast_image_1adcf6d77e79c1f75f2420c6db0d96951d" kindref="member">spreadContrast</ref>();</highlight></codeline>
+<codeline lineno="99" refid="class_fast_image_1a94290d65ff847f0a7e56ac8050133313" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint<sp/><ref refid="class_fast_image_1a94290d65ff847f0a7e56ac8050133313" kindref="member">getWidth</ref>()</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>width;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106" refid="class_fast_image_1a1b90d63510575306ce345e393574d85c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint<sp/><ref refid="class_fast_image_1a1b90d63510575306ce345e393574d85c" kindref="member">getHeight</ref>()</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>height;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>uint<sp/>width,<sp/>height;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>grayCacheEnabled;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t*<sp/>colorData;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>grayData;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>FASTIMAGE_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/uli/dev/medigl/medigl/fastimage.h"/>
+  </compounddef>
+</doxygen>

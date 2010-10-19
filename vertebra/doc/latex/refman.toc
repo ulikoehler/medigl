@@ -1,0 +1,41 @@
+\contentsline {chapter}{\numberline {1}Class Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Class List}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Class Documentation}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}C4UBV3F Struct Reference}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}DICOMImageFile Class Reference}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Detailed Description}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Constructor \& Destructor Documentation}{4}{subsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.2.1}DICOMImageFile}{4}{subsubsection.2.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2.2}$\sim $DICOMImageFile}{4}{subsubsection.2.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Member Function Documentation}{4}{subsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.3.1}getFastImage}{4}{subsubsection.2.2.3.1}
+\contentsline {subsubsection}{\numberline {2.2.3.2}getFrameCount}{5}{subsubsection.2.2.3.2}
+\contentsline {subsubsection}{\numberline {2.2.3.3}getHeight}{5}{subsubsection.2.2.3.3}
+\contentsline {subsubsection}{\numberline {2.2.3.4}getWidth}{5}{subsubsection.2.2.3.4}
+\contentsline {section}{\numberline {2.3}FastImage Class Reference}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Detailed Description}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Constructor \& Destructor Documentation}{6}{subsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2.1}FastImage}{6}{subsubsection.2.3.2.1}
+\contentsline {subsubsection}{\numberline {2.3.2.2}FastImage}{7}{subsubsection.2.3.2.2}
+\contentsline {subsubsection}{\numberline {2.3.2.3}$\sim $FastImage}{7}{subsubsection.2.3.2.3}
+\contentsline {subsection}{\numberline {2.3.3}Member Function Documentation}{7}{subsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.3.1}getGray}{7}{subsubsection.2.3.3.1}
+\contentsline {subsubsection}{\numberline {2.3.3.2}getGray32bit}{7}{subsubsection.2.3.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3.3}getHeight}{7}{subsubsection.2.3.3.3}
+\contentsline {subsubsection}{\numberline {2.3.3.4}getRgba}{7}{subsubsection.2.3.3.4}
+\contentsline {subsubsection}{\numberline {2.3.3.5}getWidth}{7}{subsubsection.2.3.3.5}
+\contentsline {subsubsection}{\numberline {2.3.3.6}setGrayPixel}{8}{subsubsection.2.3.3.6}
+\contentsline {subsubsection}{\numberline {2.3.3.7}setGrayPixel}{8}{subsubsection.2.3.3.7}
+\contentsline {subsubsection}{\numberline {2.3.3.8}setPixel}{8}{subsubsection.2.3.3.8}
+\contentsline {subsubsection}{\numberline {2.3.3.9}spreadContrast}{8}{subsubsection.2.3.3.9}
+\contentsline {section}{\numberline {2.4}GLWidget Class Reference}{9}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Detailed Description}{9}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Member Function Documentation}{9}{subsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.2.1}keyPressEvent}{9}{subsubsection.2.4.2.1}
+\contentsline {subsubsection}{\numberline {2.4.2.2}mouseMoveEvent}{10}{subsubsection.2.4.2.2}
+\contentsline {subsubsection}{\numberline {2.4.2.3}mousePressEvent}{10}{subsubsection.2.4.2.3}
+\contentsline {subsubsection}{\numberline {2.4.2.4}resetView}{10}{subsubsection.2.4.2.4}
+\contentsline {subsubsection}{\numberline {2.4.2.5}setZExtent}{10}{subsubsection.2.4.2.5}
+\contentsline {subsubsection}{\numberline {2.4.2.6}updateImages}{10}{subsubsection.2.4.2.6}
+\contentsline {subsubsection}{\numberline {2.4.2.7}wheelEvent}{10}{subsubsection.2.4.2.7}
+\contentsline {section}{\numberline {2.5}MediDialog Class Reference}{11}{section.2.5}

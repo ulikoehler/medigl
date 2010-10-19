@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.6.3">
+  <compound refid="struct_c4_u_b_v3_f" kind="struct"><name>C4UBV3F</name>
+    <member refid="struct_c4_u_b_v3_f_1af6a7e78a2f2e724b7755d03d5644b0dc" kind="variable"><name>color</name></member>
+    <member refid="struct_c4_u_b_v3_f_1ae82b7ce1479a879d5bac242d64bc6c3d" kind="variable"><name>vcoords</name></member>
+  </compound>
+  <compound refid="class_d_i_c_o_m_image_file" kind="class"><name>DICOMImageFile</name>
+    <member refid="class_d_i_c_o_m_image_file_1ac8700ef1684e13d0d0fe01e603294293" kind="variable"><name>image</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1af62a20b7e1e3a7a33ddc848b429b64f8" kind="variable"><name>width</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1ae751485a997fefa6136cfe40255a38c6" kind="variable"><name>height</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1a445cb53cda79233bb1815a96bb3fa97b" kind="variable"><name>frameCount</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1ae4778b6e6ed2c36f47fe3e785b55bb2e" kind="function"><name>DICOMImageFile</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1a05f3f6fc5046ade1848a4d3c6561f6ad" kind="function"><name>getFastImage</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1a4eb4186345395c61c7964e588a08e057" kind="function"><name>getWidth</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1abebf0dfb003c75c06c3955e65dd5b9a6" kind="function"><name>getHeight</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1aec56b3e9d86b2af4206e38406714941f" kind="function"><name>getFrameCount</name></member>
+    <member refid="class_d_i_c_o_m_image_file_1af210a193559ee3287aa1f9c4bf13d3ab" kind="function"><name>~DICOMImageFile</name></member>
+  </compound>
+  <compound refid="class_fast_image" kind="class"><name>FastImage</name>
+    <member refid="class_fast_image_1ae8bc71fe6069de24a12214fc3828ca6d" kind="variable"><name>width</name></member>
+    <member refid="class_fast_image_1aca3f4d119be3052564a7b95645e416ae" kind="variable"><name>height</name></member>
+    <member refid="class_fast_image_1aced6ae3b9e826ed23b1e35e0556b9e0e" kind="variable"><name>grayCacheEnabled</name></member>
+    <member refid="class_fast_image_1a1694943fbf3cd250f629c70c07d89e6e" kind="variable"><name>colorData</name></member>
+    <member refid="class_fast_image_1ab0eae6bc0937543738d336a9b4f1a68c" kind="variable"><name>grayData</name></member>
+    <member refid="class_fast_image_1a1ee91a3ac8ddcdfed90e9906bb3f0681" kind="function"><name>FastImage</name></member>
+    <member refid="class_fast_image_1ab9530428f52635d4f87d9b1cc33e10cd" kind="function"><name>FastImage</name></member>
+    <member refid="class_fast_image_1ae2937f18d549ffc788abaa1a5bf6f492" kind="function"><name>~FastImage</name></member>
+    <member refid="class_fast_image_1a09e6df8ae76ddffb813048157f887ee6" kind="function"><name>getRgba</name></member>
+    <member refid="class_fast_image_1a7da37f6c5c99feea80c6a699c7b51bd8" kind="function"><name>getGray</name></member>
+    <member refid="class_fast_image_1a6975ad540e89b98fda1b7a3bd3f812ea" kind="function"><name>getGray32bit</name></member>
+    <member refid="class_fast_image_1a647ac3b76f0198da77cd2e7afa46e1c4" kind="function"><name>setPixel</name></member>
+    <member refid="class_fast_image_1a1e0ef4ac5b61cc6d96c9cd9c4bada344" kind="function"><name>setGrayPixel</name></member>
+    <member refid="class_fast_image_1a018ae53445320129fa129b80e805842c" kind="function"><name>setGrayPixel</name></member>
+    <member refid="class_fast_image_1adcf6d77e79c1f75f2420c6db0d96951d" kind="function"><name>spreadContrast</name></member>
+    <member refid="class_fast_image_1a94290d65ff847f0a7e56ac8050133313" kind="function"><name>getWidth</name></member>
+    <member refid="class_fast_image_1a1b90d63510575306ce345e393574d85c" kind="function"><name>getHeight</name></member>
+  </compound>
+  <compound refid="class_g_l_widget" kind="class"><name>GLWidget</name>
+    <member refid="class_g_l_widget_1a01e1e563160757df00a219f3f5b0d109" kind="variable"><name>originalImages</name></member>
+    <member refid="class_g_l_widget_1a7bbca64e643f4fb8fef581ae7fac1383" kind="variable"><name>images</name></member>
+    <member refid="class_g_l_widget_1a81331a466275ff125b28a6a4a02a0917" kind="variable"><name>width</name></member>
+    <member refid="class_g_l_widget_1ac1c60e7425956b62ce9cba7cc13cab73" kind="variable"><name>height</name></member>
+    <member refid="class_g_l_widget_1a6d208652cde39ce5156d2374aa8ec2ef" kind="variable"><name>xRot</name></member>
+    <member refid="class_g_l_widget_1adb8d0e571963776f4d3d3fe222abb637" kind="variable"><name>yRot</name></member>
+    <member refid="class_g_l_widget_1afc8ab4c3365f7cef9a147503b5656266" kind="variable"><name>zRot</name></member>
+    <member refid="class_g_l_widget_1ae0285a93d33f66a65efdccca45ec420c" kind="variable"><name>xTrans</name></member>
+    <member refid="class_g_l_widget_1a24dd3e0a385edcb7daf49646bcb3f14e" kind="variable"><name>yTrans</name></member>
+    <member refid="class_g_l_widget_1a02ff64f2b9280eb86dce9aa561a5d4b9" kind="variable"><name>zTrans</name></member>
+    <member refid="class_g_l_widget_1a1483d141b38366b8d596d18d52c14b54" kind="variable"><name>zoomFactor</name></member>
+    <member refid="class_g_l_widget_1a541d62dc2338b54523c45235425e7003" kind="variable"><name>zExtent</name></member>
+    <member refid="class_g_l_widget_1a9fb7fece62b92f7a0bb4167ea1e05c28" kind="variable"><name>lastPos</name></member>
+    <member refid="class_g_l_widget_1a33750edf93b4fab8274dba01f358957f" kind="variable"><name>shaderProgram</name></member>
+    <member refid="class_g_l_widget_1a187f8566aa6551c07f9fef978ac7bd85" kind="variable"><name>dataChanged</name></member>
+    <member refid="class_g_l_widget_1afcc905953821b1f806e7c75f9842af79" kind="variable"><name>vboID</name></member>
+    <member refid="class_g_l_widget_1ab79c391c86de1ffb76f6950b49d82c0c" kind="function"><name>GLWidget</name></member>
+    <member refid="class_g_l_widget_1a535192a4262b4501e5493303834f45d3" kind="function"><name>~GLWidget</name></member>
+    <member refid="class_g_l_widget_1a9601076e0757c5fe221e28d3e9983b75" kind="function"><name>updateImages</name></member>
+    <member refid="class_g_l_widget_1ae0cb1922c7f58b363fe4577a8a2c5d1e" kind="function"><name>resetView</name></member>
+    <member refid="class_g_l_widget_1a68406450ab1961b48ebc786cb61b4d48" kind="function"><name>setZExtent</name></member>
+    <member refid="class_g_l_widget_1ade3142625c1bfda0576e419b176cf8b1" kind="function"><name>minimumSizeHint</name></member>
+    <member refid="class_g_l_widget_1a57698bc426052845b43a135a13540154" kind="function"><name>sizeHint</name></member>
+    <member refid="class_g_l_widget_1a35e6da60485a6b10fe24ac386b708071" kind="function"><name>keyPressEvent</name></member>
+    <member refid="class_g_l_widget_1a7083404e9ab8feffb2c486f7c15308ce" kind="slot"><name>setXRotation</name></member>
+    <member refid="class_g_l_widget_1a29012eba3cb4201f78807066f2c9dcd4" kind="slot"><name>setYRotation</name></member>
+    <member refid="class_g_l_widget_1a6f6b4fbbcc566d999db7e53aadeba889" kind="slot"><name>setZRotation</name></member>
+    <member refid="class_g_l_widget_1a3a557b9cd96f7b89661ceaa567c91640" kind="signal"><name>xRotationChanged</name></member>
+    <member refid="class_g_l_widget_1ad47d672d0124b995e82551a95b59badb" kind="signal"><name>yRotationChanged</name></member>
+    <member refid="class_g_l_widget_1ab2035753b19b46105020d6045ac75a79" kind="signal"><name>zRotationChanged</name></member>
+    <member refid="class_g_l_widget_1a7fab13e8cc9fc0730ca54c08b2c923a7" kind="function"><name>initializeGL</name></member>
+    <member refid="class_g_l_widget_1a640b5570cb2b37724fd5b58a77339c5e" kind="function"><name>paintGL</name></member>
+    <member refid="class_g_l_widget_1ac0d2a8ecf60907a81c0d73475d851025" kind="function"><name>resizeGL</name></member>
+    <member refid="class_g_l_widget_1ab144cc8064c1bbf6d0ef0646ca0bd06c" kind="function"><name>mousePressEvent</name></member>
+    <member refid="class_g_l_widget_1a9043bac13d6f0a5307ea5c7f9b3caa50" kind="function"><name>mouseMoveEvent</name></member>
+    <member refid="class_g_l_widget_1ab11fb26fd97e5bf66989f072760b1617" kind="function"><name>wheelEvent</name></member>
+    <member refid="class_g_l_widget_1ac0bf15e8893cf0d67821e619bbd82f24" kind="function"><name>refillVBO</name></member>
+    <member refid="class_g_l_widget_1a1e1d21d000d24735432063986079ea1f" kind="function"><name>normalizeAngle</name></member>
+    <member refid="class_g_l_widget_1a6d3976371d2c67b777243b13f0dbddfd" kind="function"><name>incrZoomFactor</name></member>
+    <member refid="class_g_l_widget_1ad0d4daff6d5d8b2a954005ff22130c56" kind="function"><name>render3DTex</name></member>
+    <member refid="class_g_l_widget_1a926aaf6aae026584669a9bb0b49ee8d7" kind="function"><name>renderPointCloud</name></member>
+    <member refid="class_g_l_widget_1aa081a8f5718a2aee84c9d151b3601e4a" kind="function"><name>generateFillersCPU</name></member>
+  </compound>
+  <compound refid="class_medi_dialog" kind="class"><name>MediDialog</name>
+    <member refid="class_medi_dialog_1ae7ceec429baf06be4143fa324a3193cd" kind="variable"><name>m_ui</name></member>
+    <member refid="class_medi_dialog_1a5ba83757052acf6f897dd4b3c9d70af3" kind="function"><name>MediDialog</name></member>
+    <member refid="class_medi_dialog_1a45a7c54470528f85e8ce867fead3123f" kind="function"><name>~MediDialog</name></member>
+    <member refid="class_medi_dialog_1af0d94bbf8a5248bc23c4ee2567b25f58" kind="function"><name>changeEvent</name></member>
+    <member refid="class_medi_dialog_1ae9fe5642ed0e589ec885fca1f350661d" kind="function"><name>keyPressEvent</name></member>
+    <member refid="class_medi_dialog_1a69edd8a12624773b60d4ad78d79ce219" kind="slot"><name>on_focusGLButton_clicked</name></member>
+    <member refid="class_medi_dialog_1a359b08df92edafcf46c501103ce230b0" kind="slot"><name>on_zSpreadSpinBox_valueChanged</name></member>
+    <member refid="class_medi_dialog_1ac02f4ca481db2bbc07af8222c1d85d39" kind="slot"><name>on_resetViewButton_clicked</name></member>
+    <member refid="class_medi_dialog_1ac38501b355e2154ff7602b7f999f4c06" kind="slot"><name>on_openButton_clicked</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="namespacestd_1_1tr1" kind="namespace"><name>std::tr1</name>
+  </compound>
+  <compound refid="namespacetocarray" kind="namespace"><name>tocarray</name>
+  </compound>
+  <compound refid="namespace_ui" kind="namespace"><name>Ui</name>
+  </compound>
+  <compound refid="dicomimagefile_8cpp" kind="file"><name>dicomimagefile.cpp</name>
+    <member refid="dicomimagefile_8cpp_1a2d25366727d76230ad09108725ad88b1" kind="define"><name>REL_ADDR_2D</name></member>
+  </compound>
+  <compound refid="dicomimagefile_8h" kind="file"><name>dicomimagefile.h</name>
+    <member refid="dicomimagefile_8h_1ae8322fb214ef7a74414e3d7f0465e6d9" kind="define"><name>HAVE_CONFIG_H</name></member>
+  </compound>
+  <compound refid="fastimage_8cpp" kind="file"><name>fastimage.cpp</name>
+    <member refid="fastimage_8cpp_1a2d25366727d76230ad09108725ad88b1" kind="define"><name>REL_ADDR_2D</name></member>
+  </compound>
+  <compound refid="fastimage_8h" kind="file"><name>fastimage.h</name>
+  </compound>
+  <compound refid="glwidget_8cpp" kind="file"><name>glwidget.cpp</name>
+    <member refid="glwidget_8cpp_1a120fb070bddb21f0bd899f50252c4cb5" kind="define"><name>GL_GLEXT_PROTOTYPES</name></member>
+    <member refid="glwidget_8cpp_1a8d46256017691bc179e727b9b1e3c3c0" kind="define"><name>REL_ADDR_3D</name></member>
+    <member refid="glwidget_8cpp_1a71809484a26cd96c6abe839a0a8a289d" kind="define"><name>byte</name></member>
+  </compound>
+  <compound refid="glwidget_8h" kind="file"><name>glwidget.h</name>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="medidialog_8cpp" kind="file"><name>medidialog.cpp</name>
+  </compound>
+  <compound refid="medidialog_8h" kind="file"><name>medidialog.h</name>
+  </compound>
+  <compound refid="shaders_8h" kind="file"><name>shaders.h</name>
+    <member refid="shaders_8h_1af8d5b7613615653553a6cd9e6c5bb90b" kind="variable"><name>vertexColorShaderSource</name></member>
+  </compound>
+  <compound refid="tocarray_8py" kind="file"><name>tocarray.py</name>
+  </compound>
+</doxygenindex>

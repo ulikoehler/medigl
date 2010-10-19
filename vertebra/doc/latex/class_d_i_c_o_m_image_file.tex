@@ -1,0 +1,114 @@
+\hypertarget{class_d_i_c_o_m_image_file}{
+\section{DICOMImageFile Class Reference}
+\label{class_d_i_c_o_m_image_file}\index{DICOMImageFile@{DICOMImageFile}}
+}
+
+
+{\ttfamily \#include $<$dicomimagefile.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_d_i_c_o_m_image_file_ae4778b6e6ed2c36f47fe3e785b55bb2e}{DICOMImageFile} (string filename)
+\item 
+\hyperlink{class_fast_image}{FastImage} $\ast$ \hyperlink{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad}{getFastImage} (uint frame)
+\item 
+uint \hyperlink{class_d_i_c_o_m_image_file_a4eb4186345395c61c7964e588a08e057}{getWidth} ()
+\item 
+uint \hyperlink{class_d_i_c_o_m_image_file_abebf0dfb003c75c06c3955e65dd5b9a6}{getHeight} ()
+\item 
+uint \hyperlink{class_d_i_c_o_m_image_file_aec56b3e9d86b2af4206e38406714941f}{getFrameCount} ()
+\item 
+\hyperlink{class_d_i_c_o_m_image_file_af210a193559ee3287aa1f9c4bf13d3ab}{$\sim$DICOMImageFile} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_d_i_c_o_m_image_file_ac8700ef1684e13d0d0fe01e603294293}{
+DicomImage $\ast$ {\bfseries image}}
+\label{class_d_i_c_o_m_image_file_ac8700ef1684e13d0d0fe01e603294293}
+
+\item 
+\hypertarget{class_d_i_c_o_m_image_file_af62a20b7e1e3a7a33ddc848b429b64f8}{
+uint {\bfseries width}}
+\label{class_d_i_c_o_m_image_file_af62a20b7e1e3a7a33ddc848b429b64f8}
+
+\item 
+\hypertarget{class_d_i_c_o_m_image_file_ae751485a997fefa6136cfe40255a38c6}{
+uint {\bfseries height}}
+\label{class_d_i_c_o_m_image_file_ae751485a997fefa6136cfe40255a38c6}
+
+\item 
+\hypertarget{class_d_i_c_o_m_image_file_a445cb53cda79233bb1815a96bb3fa97b}{
+uint {\bfseries frameCount}}
+\label{class_d_i_c_o_m_image_file_a445cb53cda79233bb1815a96bb3fa97b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper class for easy use of the DICOM file format (DICOM images only) Uses the DCMTK library to process DICOM files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_d_i_c_o_m_image_file_ae4778b6e6ed2c36f47fe3e785b55bb2e}{
+\index{DICOMImageFile@{DICOMImageFile}!DICOMImageFile@{DICOMImageFile}}
+\index{DICOMImageFile@{DICOMImageFile}!DICOMImageFile@{DICOMImageFile}}
+\subsubsection[{DICOMImageFile}]{\setlength{\rightskip}{0pt plus 5cm}DICOMImageFile::DICOMImageFile (string {\em filename})}}
+\label{class_d_i_c_o_m_image_file_ae4778b6e6ed2c36f47fe3e785b55bb2e}
+Constructs a new \hyperlink{class_d_i_c_o_m_image_file}{DICOMImageFile} instance by a given filename Occuring errors are logged to cerr. \hypertarget{class_d_i_c_o_m_image_file_af210a193559ee3287aa1f9c4bf13d3ab}{
+\index{DICOMImageFile@{DICOMImageFile}!$\sim$DICOMImageFile@{$\sim$DICOMImageFile}}
+\index{$\sim$DICOMImageFile@{$\sim$DICOMImageFile}!DICOMImageFile@{DICOMImageFile}}
+\subsubsection[{$\sim$DICOMImageFile}]{\setlength{\rightskip}{0pt plus 5cm}DICOMImageFile::$\sim$DICOMImageFile ()}}
+\label{class_d_i_c_o_m_image_file_af210a193559ee3287aa1f9c4bf13d3ab}
+Releases all resources acquired by this \hyperlink{class_d_i_c_o_m_image_file}{DICOMImageFile} instance 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad}{
+\index{DICOMImageFile@{DICOMImageFile}!getFastImage@{getFastImage}}
+\index{getFastImage@{getFastImage}!DICOMImageFile@{DICOMImageFile}}
+\subsubsection[{getFastImage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FastImage} $\ast$ DICOMImageFile::getFastImage (uint {\em frame})}}
+\label{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad}
+Constructs a new \hyperlink{class_fast_image}{FastImage} instance with the contents of a specific file this DICOM image file 
+\begin{DoxyParams}{Parameters}
+\item[{\em frame}]The number of the frame (beginning with 0) to use \end{DoxyParams}
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_d_i_c_o_m_image_file_aec56b3e9d86b2af4206e38406714941f}{
+\index{DICOMImageFile@{DICOMImageFile}!getFrameCount@{getFrameCount}}
+\index{getFrameCount@{getFrameCount}!DICOMImageFile@{DICOMImageFile}}
+\subsubsection[{getFrameCount}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getFrameCount ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_d_i_c_o_m_image_file_aec56b3e9d86b2af4206e38406714941f}
+\begin{DoxyReturn}{Returns}
+The frame count of this image 
+\end{DoxyReturn}
+\hypertarget{class_d_i_c_o_m_image_file_abebf0dfb003c75c06c3955e65dd5b9a6}{
+\index{DICOMImageFile@{DICOMImageFile}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!DICOMImageFile@{DICOMImageFile}}
+\subsubsection[{getHeight}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getHeight ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_d_i_c_o_m_image_file_abebf0dfb003c75c06c3955e65dd5b9a6}
+\begin{DoxyReturn}{Returns}
+The height of this image 
+\end{DoxyReturn}
+\hypertarget{class_d_i_c_o_m_image_file_a4eb4186345395c61c7964e588a08e057}{
+\index{DICOMImageFile@{DICOMImageFile}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!DICOMImageFile@{DICOMImageFile}}
+\subsubsection[{getWidth}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getWidth ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_d_i_c_o_m_image_file_a4eb4186345395c61c7964e588a08e057}
+\begin{DoxyReturn}{Returns}
+The width of this image 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+dicomimagefile.h\item 
+dicomimagefile.cpp\end{DoxyCompactItemize}

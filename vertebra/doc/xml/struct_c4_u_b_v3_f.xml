@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+  <compounddef id="struct_c4_u_b_v3_f" kind="struct" prot="public">
+    <compoundname>C4UBV3F</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_c4_u_b_v3_f_1af6a7e78a2f2e724b7755d03d5644b0dc" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char C4UBV3F::color[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/glwidget.cpp" line="5" bodyfile="/home/uli/dev/medigl/medigl/glwidget.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_c4_u_b_v3_f_1ae82b7ce1479a879d5bac242d64bc6c3d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float C4UBV3F::vcoords[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>vcoords</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/medigl/glwidget.cpp" line="6" bodyfile="/home/uli/dev/medigl/medigl/glwidget.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/uli/dev/medigl/medigl/glwidget.cpp" line="6" bodyfile="/home/uli/dev/medigl/medigl/glwidget.cpp" bodystart="5" bodyend="9"/>
+    <listofallmembers>
+      <member refid="struct_c4_u_b_v3_f_1af6a7e78a2f2e724b7755d03d5644b0dc" prot="public" virt="non-virtual"><scope>C4UBV3F</scope><name>color</name></member>
+      <member refid="struct_c4_u_b_v3_f_1ae82b7ce1479a879d5bac242d64bc6c3d" prot="public" virt="non-virtual"><scope>C4UBV3F</scope><name>vcoords</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,6 +1,6 @@
 QT += opengl
 QMAKE_CXXFLAGS = -O3 -march=native
-TARGET = medigl
+TARGET = vertebra
 TEMPLATE = app
 HEADERS += glwidget.h \
     medidialog.h \
