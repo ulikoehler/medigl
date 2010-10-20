@@ -1,5 +1,5 @@
-#ifndef VertebraDialog_H
-#define VertebraDialog_H
+#ifndef VERTEBRADIALOG_H
+#define VERTEBRADIALOG_H
 
 #include <QtGui>
 #include <QVector>
@@ -33,4 +33,4 @@ private slots:
     void on_openButton_clicked();
 };
 
-#endif // VertebraDialog_H
+#endif // VERTEBRADIALOG_H
