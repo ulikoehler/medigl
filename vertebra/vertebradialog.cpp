@@ -1,22 +1,21 @@
-#include "medidialog.h"
-#include "ui_medidialog.h"
+#include "vertebradialog.h"
+#include "ui_vertebradialog.h"
 using namespace std;
 
-MediDialog::MediDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height) :
-    QDialog(parent),
-    m_ui(new Ui::MediDialog)
+VertebraDialog::VertebraDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height) :
+    QDialog(parent), m_ui(new Ui::VertebraDialog)
 {
     m_ui->setupUi(this);
     m_ui->glWidget->updateImages(images, width, height);
     m_ui->glWidget->setFocus();
 }
 
-MediDialog::~MediDialog()
+VertebraDialog::~VertebraDialog()
 {
     delete m_ui;
 }
 
-void MediDialog::changeEvent(QEvent *e)
+void VertebraDialog::changeEvent(QEvent *e)
 {
     QDialog::changeEvent(e);
     switch (e->type()) {
@@ -27,13 +26,13 @@ void MediDialog::changeEvent(QEvent *e)
         break;
     }
 }
-void MediDialog::keyPressEvent(QKeyEvent *event)
+void VertebraDialog::keyPressEvent(QKeyEvent *event)
 {
     m_ui->glWidget->keyPressEvent(event);
     event->ignore();
 }
 
-void MediDialog::on_openButton_clicked()
+void VertebraDialog::on_openButton_clicked()
 {
     //Let the user choose if he wants to
     QFileDialog dialog;
@@ -122,18 +121,18 @@ void MediDialog::on_openButton_clicked()
     m_ui->glWidget->setFocus();
 }
 
-void MediDialog::on_resetViewButton_clicked()
+void VertebraDialog::on_resetViewButton_clicked()
 {
     m_ui->glWidget->resetView();
     m_ui->glWidget->setFocus();
 }
 
-void MediDialog::on_zSpreadSpinBox_valueChanged(double val)
+void VertebraDialog::on_zSpreadSpinBox_valueChanged(double val)
 {
     m_ui->glWidget->setZExtent(val);
 }
 
-void MediDialog::on_focusGLButton_clicked()
+void VertebraDialog::on_focusGLButton_clicked()
 {
     m_ui->glWidget->setFocus();
 }

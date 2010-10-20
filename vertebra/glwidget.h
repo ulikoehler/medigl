@@ -35,7 +35,7 @@ using namespace std;
 enum RenderingMethod {PointCloud, Lines, TextureBlending2D, Texture3D};
 
 /**
- * MediGL OpenGL widget
+ * VERTEBRA OpenGL widget
  * Controls and the OpenGL IO, displays the rendered data,
  * reacts to user events and processes images
  *

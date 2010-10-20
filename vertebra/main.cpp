@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QImage>
 #include <QVector>
-#include "medidialog.h"
+#include "vertebradialog.h"
 #include <list>
 #include <memory>
 #include <iostream>
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         images.push_back(img);
     }
 
-    MediDialog window(0, images, width, height);
+    VertebraDialog window(0, images, width, height);
 
     window.show();
     return app.exec(); //Image memory is free'd automatically after exit

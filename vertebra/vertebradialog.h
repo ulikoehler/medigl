@@ -1,5 +1,5 @@
-#ifndef MEDIDIALOG_H
-#define MEDIDIALOG_H
+#ifndef VertebraDialog_H
+#define VertebraDialog_H
 
 #include <QtGui>
 #include <QVector>
@@ -9,14 +9,14 @@
 using namespace std;
 
 namespace Ui {
-    class MediDialog;
+    class VertebraDialog;
 }
 
-class MediDialog : public QDialog {
+class VertebraDialog : public QDialog {
     Q_OBJECT
 public:
-    MediDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height);
-    ~MediDialog();
+    VertebraDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height);
+    ~VertebraDialog();
 
 protected:
     void changeEvent(QEvent *e);
@@ -24,7 +24,7 @@ protected:
 
 
 private:
-    Ui::MediDialog *m_ui;
+    Ui::VertebraDialog *m_ui;
 
 private slots:
     void on_focusGLButton_clicked();
@@ -33,4 +33,4 @@ private slots:
     void on_openButton_clicked();
 };
 
-#endif // MEDIDIALOG_H
+#endif // VertebraDialog_H

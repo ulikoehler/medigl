@@ -22,7 +22,7 @@ using namespace std;
  * FastImage is optimized to process grayscale images - some functions only work on grayscale images
  *
  * The purpose of this class is to have a fast, scalable abstraction layer between
- * MediGL input data and OpenGL in order to be able to support a variety of image formats.
+ * VERTEBRA input data and OpenGL in order to be able to support a variety of image formats.
  */
 class FastImage
 {
