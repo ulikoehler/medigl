@@ -3,14 +3,14 @@ QMAKE_CXXFLAGS = -O3 -march=native
 TARGET = vertebra
 TEMPLATE = app
 HEADERS += glwidget.h \
-    medidialog.h \
+    vertebradialog.h \
     shaders.h \
     fastimage.h \
     dicomimagefile.h
 SOURCES += glwidget.cpp \
     main.cpp \
-    medidialog.cpp \
+    vertebradialog.cpp \
     fastimage.cpp \
     dicomimagefile.cpp
-FORMS += medidialog.ui
+FORMS += vertebradialog.ui
 LIBS+=-ldcmdata -lglut -lofstd -ldcmimgle -ldcmimage -ltiff
