@@ -1,6 +1,6 @@
 Installation requirements
 -Installed Qt SDK; VERTEBRA ist tested and developed using QtSDK 2010.05
--C++ Compiler with TR1 support. GCC is recommended.
+-C++ Compiler with TR1 support. GCC is recommended - only compilers with compatible CLI options work at all.
 -OpenGL development headers (version 2.0 at least) including GLUT; OpenGL capable graphics card or software driver capable of OpenGL 2.0 (a software driver may be very slow).
 -Installed DCMTK library including development headers; version 3.5.4 is recommended but other versions may work as well
 How to compile MediGL:
@@ -9,3 +9,5 @@ $ qmake -r
 $ make all
 In order to start VERTEBRA, type:
 $ ./vertebra
+
+Note that 'make' compiles VERTEBRA for the current platform only (-march=native)

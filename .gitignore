@@ -9,3 +9,4 @@ devscripts/*.png
 *.dcm
 build
 vertebra/doc
+vertebra/vertebra
