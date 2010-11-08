@@ -27,7 +27,7 @@ DICOMImageFile::~DICOMImageFile()
 }
 
 
-FastImage* DICOMImageFile::getFastImage(uint frame, bool contrastExtension, bool enableWindow, double windowCenter, double windowWidth)
+FastImage* DICOMImageFile::getFastImage(uint frame, bool enableWindow, double windowCenter, double windowWidth)
 {
     //Check whether the frame number is inside the bounds
     if(frame > frameCount)
@@ -50,10 +50,6 @@ FastImage* DICOMImageFile::getFastImage(uint frame, bool contrastExtension, bool
         {
             img->setGrayPixel(x,y, buffer[REL_ADDR_2D(width, x,y)]);
         }
-    }
-    if(contrastExtension)
-    {
-        img->spreadContrast(); //Increase the contrast to make the data visible
     }
     return img;
 }

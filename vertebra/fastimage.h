@@ -87,14 +87,6 @@ public:
      */
     void setGrayPixel(uint x, uint y, uint32_t val);
     /**
-     * Performs a constrast spreading on the gray data of this FastImage.
-     *
-     * The algorithm used has a linear complexity
-     *
-     * Note: The color data is not affected!
-     */
-    void spreadContrast();
-    /**
      * \return The width of this image
      */
     uint getWidth()
