@@ -115,7 +115,7 @@ p, li { white-space: pre-wrap; }
         <double>100.000000000000000</double>
        </property>
        <property name="value">
-        <double>300.000000000000000</double>
+        <double>50.000000000000000</double>
        </property>
       </widget>
      </item>
@@ -138,7 +138,7 @@ p, li { white-space: pre-wrap; }
         <double>100.000000000000000</double>
        </property>
        <property name="value">
-        <double>2000.000000000000000</double>
+        <double>300.000000000000000</double>
        </property>
       </widget>
      </item>

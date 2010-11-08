@@ -1,3 +1,21 @@
+/* VERTEBRA - Volumetric Examiner for Radiological/Tomographical Experimental Basic Realtime Analysis
+   Copyright (C) 2010 Uli Koehler
+
+   VERTEBRA is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3, or (at your option)
+   any later version.
+
+   VERTEBRA is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with VERTEBRA; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301 USA */
+
 #define GL_GLEXT_PROTOTYPES //Required for shaders etc.
 #include "glwidget.h"
 #include "shaders.h"
@@ -11,7 +29,6 @@ struct C4UBV3F
 GLWidget::GLWidget(QWidget *parent)
     : QGLWidget(parent)
 {
-    vboID = INT_MAX;
     //Initialize the transformation variables
     xRot = 0;
     yRot = 0;
@@ -25,20 +42,12 @@ GLWidget::GLWidget(QWidget *parent)
 
     zExtent = 1.0;
 
-    textures2d = 0;
-
     fpsFrameCount = 0;
-
-    renderingMethod = &GLWidget::renderPointCloud;
 }
 
 GLWidget::~GLWidget()
 {
     makeCurrent();
-    if(vboID != INT_MAX)
-    {
-        glDeleteBuffers(1, &vboID);
-    }
 }
 
 QSize GLWidget::minimumSizeHint() const
@@ -153,25 +162,23 @@ void GLWidget::paintGL()
     {
         return; //Nothing to do
     }
-    glTranslated(0.0, 0.0, -10.0); //Move the content away from the user to make him able to see everything
-    //Apply the rotation. Rotate around the center TODO
+    glTranslatef(0.0, 0.0, -10.0); //Move the content "away" from the user to make him able to see everything
 
+    //Apply the rotation. Rotate around the center
     glRotatef(xRot, 1.0, 0.0, 0.0);
     glRotatef(yRot, 0.0, 1.0, 0.0);
     glRotatef(zRot, 0.0, 0.0, 1.0);
 
-    const float constantScaleFactor = 2.0;
+    const float constantScaleFactor = 1.0;
 
-    //Scale down so everything fits on the screen
+    //Scale down so everything fits on the screen (also involves zExtent)
     float scaleFactor = constantScaleFactor * zoomFactor;
-    glScalef(scaleFactor/width, scaleFactor/height, scaleFactor/(images.size()));
+    glScalef(scaleFactor/width, scaleFactor/height, (scaleFactor*zExtent)/(images.size()));
 
     //Move the images to the middle of the screen
     glTranslatef(-0.5*width,-0.5*height,0);
+    //Apply the translation
     glTranslatef(xTrans, yTrans, zTrans);
-
-    //Scale the z axis (z extent)
-    glScalef(1,1,zExtent);
 
     //This is the old code using the enum directly. Unfortunatelty it is extremely slow...
     /*switch(renderingMethod)
@@ -199,6 +206,7 @@ void GLWidget::renderPointCloud()
 {
     //Scale the points. The scale is dependent on the zoom factor
     glPointSize(1.7 * zoomFactor);
+    //Paint the points
     glBegin(GL_POINTS);
     for(uint z = 0; z < images.size(); z++)
     {
