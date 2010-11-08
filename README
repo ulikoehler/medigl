@@ -1,0 +1,17 @@
+This repository contains several folders:
+-devscripts: Contains scripts to download the Virtual Human Project (VHP)
+			Male and Female CT datasets and process them:
+     -download-vhp-dicom.sh: Bash shell script to download the TGZ files containing the DICOM data:
+     -to-png.sh: Converts the VHP DICOM files 
+-utils: Contains a script to convert shader files to C arrays.
+-vertebra: Contains the source code of the VERTEBRA application. See vertebra/INSTALL for details
+
+The devscripts and utils folders only are utilites supplied with VERTEBRA but neither a part
+of VERTEBRA nor a part of the author's paper "3D-Tumorvisualisations" (in German).
+
+DISCLAIMER
+
+The author refuses to take any resposibility for damage created by any piece of
+Software in this repository. Use software in this repository on your own risk!
+
+For further details - the license and a legally valid disclaimer see the LICENSE file
