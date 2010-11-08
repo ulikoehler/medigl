@@ -3,11 +3,16 @@ Installation requirements
 -C++ Compiler with TR1 support. GCC is recommended - only compilers with compatible CLI options work at all.
 -OpenGL development headers (version 2.0 at least) including GLUT; OpenGL capable graphics card or software driver capable of OpenGL 2.0 (a software driver may be very slow).
 -Installed DCMTK library including development headers; version 3.5.4 is recommended but other versions may work as well
-How to compile MediGL:
+
+How to compile VERTEBRA:
 Type the following commands in a terminal or your OS's equivalent
 $ qmake -r
 $ make all
+
 In order to start VERTEBRA, type:
 $ ./vertebra
+
+To generate the doxygen documentation, type:
+$ doxygen
 
 Note that 'make' compiles VERTEBRA for the current platform only (-march=native)
