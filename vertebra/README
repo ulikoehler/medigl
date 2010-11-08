@@ -16,7 +16,9 @@ At the right of the GL widget you can find the control widgets:
 -Open DICOM/images: Pops up a file selection dialog - here you can open DICOM or even normal image files to create a visualization from: The visualization is created immediately after clicking the "Open" button in this dialog
 -Reset view: Resets the transformation ("movement"), rotation and scalation ("zoom") in the GL widget.
 -Z extent. This variable controls the distance of one image layer from the next one. A productive application could read this distance from the DICOM files but this method allows more flexibility for demonstration purposes.
--Hounsfield window: Set this BEFORE opening images! Applies a Hounsfield window to DICOM input files (no effect on standard image input files). The window is applied only once
+-Hounsfield window: Set this BEFORE opening images! Applies a Hounsfield window to DICOM input files (no effect on standard image input files). The window is applied only once. The behaviour for non-CT data is undefined.
+
+It's HIGHLY RECOMMENDED to apply a Hounsfield window to CT datasets - otherwise you won't see too much!
 
 HOW TO NAVIGATE IN VERTEBRA
 

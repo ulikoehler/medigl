@@ -208,17 +208,40 @@ void GLWidget::renderPointCloud()
     glPointSize(1.7 * zoomFactor);
     //Paint the points
     glBegin(GL_POINTS);
-    for(uint z = 0; z < images.size(); z++)
+    //We have to distinguish if the images are viewed from the frontside or backside
+    bool back = (xRot < -90 || xRot > 90) || (yRot < -90 || yRot > 90);
+    if(back) //Viewing the backside
     {
-        FastImage* img = images[z];
-        for(uint y = 0; y < height; y++)
+        cout << "back" << endl;
+        for(uint z = images.size() - 1; z > 0; z--)
         {
-            for(uint x = 0; x < width; x++)
+            FastImage* img = images[z];
+            for(uint y = 0; y < height; y++)
             {
-                double gray = img->getGray32bit(x,y);
-                //glVertex3f(x/100.0,y/100.0,z/100.0);
-                glVertex3i(x,y,z);
-                glColor3d(gray,gray,gray);
+                for(uint x = 0; x < width; x++)
+                {
+                    double gray = img->getGray32bit(x,y);
+                    glVertex3i(x,y,z);
+                    glColor3d(gray,gray,gray);
+                    glNormal3s(0,0,-1);
+                }
+            }
+        }
+
+    }
+    else //Viewing the frontside
+    {
+        for(uint z = 0; z < images.size(); z++)
+        {
+            FastImage* img = images[z];
+            for(uint y = 0; y < height; y++)
+            {
+                for(uint x = 0; x < width; x++)
+                {
+                    double gray = img->getGray32bit(x,y);
+                    glVertex3i(x,y,z);
+                    glColor3d(gray,gray,gray);
+                }
             }
         }
     }
