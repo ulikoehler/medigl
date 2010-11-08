@@ -2,12 +2,11 @@
 #include "ui_vertebradialog.h"
 using namespace std;
 
-VertebraDialog::VertebraDialog(QWidget *parent, vector<FastImage*> images, uint width, uint height) :
+VertebraDialog::VertebraDialog(QWidget *parent) :
     QDialog(parent), m_ui(new Ui::VertebraDialog)
 {
     m_ui->setupUi(this);
-    m_ui->glWidget->updateImages(images, width, height);
-    m_ui->glWidget->setFocus();
+    m_ui->glWidget->setFocus(); //To allow keystrokes
 }
 
 VertebraDialog::~VertebraDialog()
@@ -78,45 +77,6 @@ void VertebraDialog::on_openButton_clicked()
         }
         images.push_back(img);
     }
-    //CPU-Interpolate images if neccessary
-    uint numInterpolationImages = m_ui->interpolateImagesSpinBox->value();
-    cout << "DEBUG: Interpolating " << numInterpolationImages << " images between each pair" << endl;
-    if(numInterpolationImages == 1) //Interpolate 1 image
-    {
-        vector<FastImage*>::iterator it =  images.begin();
-        vector<FastImage*>::iterator end =  images.end();
-        while(true)
-        {
-            //Get the image and its successor
-            FastImage* leftImage = *it;
-            it++;
-            if(it == end) {
-                break;
-            }
-            FastImage* rightImage = *it;
-            //STL vector::insert inserts the image at the position BEFORE the iterator given as argument
-            images.insert(it, FastImage::interpolateSingleGrayImage(leftImage, rightImage));
-        }
-    }
-    else if(numInterpolationImages > 1) //Interpolate more than 1 image
-    {
-        vector<FastImage*>::iterator it =  images.begin();
-        vector<FastImage*>::iterator end =  images.end();
-        while(true)
-        {
-            //Get the image and its successor
-            FastImage* leftImage = *it;
-            it++;
-            if(it == end) {
-                break;
-            }
-            FastImage* rightImage = *it;
-            //STL vector::insert inserts the image at the position BEFORE the iterator given as argument
-            //Here we insert the complete list
-            list<FastImage*> interpolatedImages = FastImage::interpolateMultipleGrayImages(leftImage, rightImage, numInterpolationImages);
-            images.insert(it, interpolatedImages.begin(), interpolatedImages.end());
-        }
-    }
     m_ui->glWidget->updateImages(images, width, height);
     m_ui->glWidget->setFocus();
 }
@@ -130,9 +90,4 @@ void VertebraDialog::on_resetViewButton_clicked()
 void VertebraDialog::on_zSpreadSpinBox_valueChanged(double val)
 {
     m_ui->glWidget->setZExtent(val);
-}
-
-void VertebraDialog::on_focusGLButton_clicked()
-{
-    m_ui->glWidget->setFocus();
 }

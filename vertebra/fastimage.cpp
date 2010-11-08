@@ -112,52 +112,6 @@ double FastImage::getGray32bit(uint x, uint y)
     }
 }
 
-FastImage* FastImage::interpolateSingleGrayImage(FastImage *left, FastImage *right)
-{
-    if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
-    {
-        cerr << "interpolateSingleGrayImage(): The extents of the left and right images don't match" << endl;
-        return NULL; //This will most probably cause the application to crash but it's acceptable because this application's purpose is proof of concept
-    }
-    uint width = left->getWidth();
-    uint height = left->getHeight();
-    FastImage* interpolatedImage = new FastImage(width, height);
-    for(uint x = 0; x < width; x++)
-    {
-        for(uint y = 0; y < height; y++)
-        {
-            interpolatedImage->setGrayPixel(x,y,(unsigned char)((left->getGray(x,y) + right->getGray(x,y)) / 2)); //Integer division
-        }
-    }
-    return interpolatedImage;
-}
-
-list<FastImage*> FastImage::interpolateMultipleGrayImages(FastImage* left, FastImage* right, uint size)
-{
-    list<FastImage*> images;
-    if(left->getWidth() != right->getWidth() || left->getHeight() != right->getHeight())
-    {
-        cerr << "interpolateMultipleGrayImages(): The extents of the left and right images don't match" << endl;
-        return images; //Return an empty list -> nothing is shown on the screen
-    }
-    for(int s = 0; s < size; s++) //For each image to be interpolated
-    {
-        //Note that the first image to be interpolated is the image the is the closest one to the image called left
-        uint width = left->getWidth();
-        uint height = left->getHeight();
-        FastImage* interpolatedImage = new FastImage(width, height);
-        for(uint x = 0; x < width; x++)
-        {
-            for(uint y = 0; y < height; y++)
-            {
-                interpolatedImage->setGrayPixel(x,y,(unsigned char)(left->getGray(x,y) + s * ((double)(right->getGray(x,y) - left->getGray(x,y)) / (double)size)));
-            }
-        }
-        images.push_back(interpolatedImage);
-    }
-    return images;
-}
-
 void FastImage::spreadContrast()
 {
     //Find the minimum and maximum values
