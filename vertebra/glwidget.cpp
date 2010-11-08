@@ -217,43 +217,6 @@ void GLWidget::renderPointCloud()
     glEnd();
 }
 
-void GLWidget::renderLines()
-{
-    cout << "RLines";
-    //Scale the points. The scale is dependent on the zoom factor
-    for(uint y = 0; y < height; y++)
-    {
-        for(uint x = 0; x < width; x++)
-        {
-            glBegin(GL_LINE_STRIP);
-            for(uint z = 0; z < images.size(); z++)
-            {
-                double gray = images[z]->getGray32bit(x,y);
-                glVertex3i(x,y,z);
-                glColor3d(gray,gray,gray);
-            }
-            glEnd();
-        }
-    }
-}
-
-void GLWidget::render2DTextures()
-{
-    //Scale the points. The scale is dependent on the zoom factor
-    for(uint z = 0; z < images.size(); z++)
-    {
-        FastImage* img = images[z];
-        bindTexture(*(img->getGrayQImage()));
-
-        glBegin(GL_TRIANGLE_STRIP);
-                 glTexCoord2f(0,1); glVertex2f(-1,1); //lo
-                 glTexCoord2f(0,0); glVertex2f(-1,-1); //lu
-                 glTexCoord2f(1,1); glVertex2f(1,1);  //ru
-                 glTexCoord2f(1,0); glVertex2f(1,-1); //ro
-        glEnd();
-    }
-}
-
 void GLWidget::resizeGL(int width, int height)
 {
     int side = qMin(width, height);

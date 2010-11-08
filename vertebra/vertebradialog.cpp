@@ -39,7 +39,6 @@ void VertebraDialog::on_openButton_clicked()
     dialog.setModal(true);
     if(!dialog.exec()) {
         //The user didn't click "Open" but cancelled the operation
-        cout << "DEBUG: Cancelling image loading" << endl;
         return;
     }
     //If the next lines are executed, the user clicked open.
@@ -71,7 +70,7 @@ void VertebraDialog::on_openButton_clicked()
         }
         if(img->getWidth() != width || img->getHeight() != height)
         {
-            cout << "All images must have the same width and height!\n";
+            cerr << "All images must have the same width and height!\n";
             exit(1);
         }
         images.push_back(img);

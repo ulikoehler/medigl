@@ -138,38 +138,16 @@ public:
      */
     void setRenderingMethod(RenderingMethod method);
 private:
-    void refillVBO();
     void normalizeAngle(int *angle);
     void incrZoomFactor(int delta);
 
     /**
      * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
-     * This rendering function uses the PointCloud algorithm: Each pixel is rendered as GLPoint.
+     * This rendering function uses the PointCloud algorithm: Each individual pixel is rendered as GLPoint.
+     * The point size rendered depends on the zoom factor and the constant factor 1.7 which has be determined experimentally
      */
     void renderPointCloud();
 
-    /**
-     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
-     * Uses lines in the Z (depth) dimensions to display the data.
-     *
-     * For this rendering method it's not neccessary to generate virtual padding images
-     */
-    void renderLines();
-
-    /**
-     * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
-     * Uses 2D textures with alpha blending to display the data.
-     */
-    void render2DTextures();
-
-    GLuint* textures2d;
-
-    //
-    //
-    // Filling image generation functions
-    //
-    //
-    void generateFillersCPU(int num);
 
     //
     //
@@ -178,11 +156,9 @@ private:
     //
 
     /**
-     * Function pointer to the rendering function (no return value, no arguments)
+     * A STL vector of all images to be rendered. To increase the speed, the images are converted to FastImage instances
+     * when loaded. All images are checked to have the same width and height.
      */
-    void (GLWidget::*renderingMethod)(void);
-
-    vector<FastImage*> originalImages; //Without filling images
     vector<FastImage*> images;
     uint width;
     uint height;
@@ -201,12 +177,15 @@ private:
     //FPS counter variables
     uint fpsFrameCount; //The number of frames rendered since we last printed the FPS. Used to execute the FPS code each 50th frame
 
+    /**
+     * Used to save the last mouse position when dragging.
+     */
     QPoint lastPos;
 
+    /**
+     * A pointer to the GLSL shader program classifying the objects in the input dataset.
+     */
     QSharedPointer<QGLShaderProgram> shaderProgram;
-
-    bool dataChanged;
-    GLuint vboID;
 };
 
 #endif

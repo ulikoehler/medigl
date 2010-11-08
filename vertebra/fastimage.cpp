@@ -64,11 +64,6 @@ FastImage::FastImage(uint width, uint height, bool enableGrayCache)
 
 void FastImage::setPixel(uint x, uint y, uint32_t val)
 {
-    //#define VERBOSE_DEBUG
-#ifdef VERBOSE_DEBUG
-    cout << "WxH=" << width * height << " x "<<x << "y" << y << "   addr " << REL_ADDR_2D(width, x, y) << endl;
-    cout << qRed(val) << "  " << qGreen(val) << "  " << qBlue(val) << "\n";
-#endif
     colorData[REL_ADDR_2D(width, x, y)] = val;
     //Update the gray cache if needed
     if(grayCacheEnabled)
