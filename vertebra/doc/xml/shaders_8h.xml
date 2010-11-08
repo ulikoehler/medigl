@@ -1,30 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
   <compounddef id="shaders_8h" kind="file">
     <compoundname>shaders.h</compoundname>
+    <includedby refid="glwidget_8cpp" local="yes">glwidget.cpp</includedby>
       <sectiondef kind="var">
       <memberdef kind="variable" id="shaders_8h_1af8d5b7613615653553a6cd9e6c5bb90b" prot="public" static="no" mutable="no">
         <type>const char *</type>
         <definition>const char* vertexColorShaderSource</definition>
         <argsstring></argsstring>
         <name>vertexColorShaderSource</name>
-        <initializer>
-        &quot;const vec3 coolest = vec3(0.0, 1.0, 1.0);&quot;
-        &quot;const vec3 hottest = vec3(1.0, 0.0, 0.0);&quot;
-        &quot;void main()&quot;
-        &quot;{&quot;
-        &quot;	vec3 color = mix(coolest, hottest, gl_Color[0]);&quot;
-        &quot;	gl_FrontColor = vec4(color, gl_Color[0]);&quot;
-        &quot;	gl_BackColor = gl_FrontColor;&quot;
-        &quot;	gl_Position = ftransform();&quot;
-        &quot;}&quot;</initializer>
+        <initializer>&quot;}&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/shaders.h" line="14" bodyfile="/home/uli/dev/medigl/medigl/shaders.h" bodystart="4" bodyend="-1"/>
+        <location file="/home/uli/dev/medigl/vertebra/shaders.h" line="18" bodyfile="/home/uli/dev/medigl/vertebra/shaders.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -35,20 +27,24 @@
 <codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SHADERS_H</highlight></codeline>
 <codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SHADERS_H</highlight></codeline>
 <codeline lineno="3"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>vertexColorShaderSource<sp/>=</highlight></codeline>
-<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;const<sp/>vec3<sp/>coolest<sp/>=<sp/>vec3(0.0,<sp/>1.0,<sp/>1.0);&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;const<sp/>vec3<sp/>hottest<sp/>=<sp/>vec3(1.0,<sp/>0.0,<sp/>0.0);&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;void<sp/>main()&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec3<sp/>color<sp/>=<sp/>mix(coolest,<sp/>hottest,<sp/>gl_Color[0]);&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl_FrontColor<sp/>=<sp/>vec4(color,<sp/>gl_Color[0]);&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl_BackColor<sp/>=<sp/>gl_FrontColor;&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl_Position<sp/>=<sp/>ftransform();&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>SHADERS_H</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>contains<sp/>the<sp/>source<sp/>code<sp/>of<sp/>the<sp/>GLSL<sp/>shaders</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>vertexColorShaderSource<sp/>=</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;const<sp/>vec3<sp/>coolest<sp/>=<sp/>vec3(0.0,<sp/>1.0,<sp/>1.0);&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;const<sp/>vec3<sp/>hottest<sp/>=<sp/>vec3(1.0,<sp/>0.0,<sp/>0.0);&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;void<sp/>main()&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec3<sp/>color<sp/>=<sp/>mix(coolest,<sp/>hottest,<sp/>gl_Color[0]);&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl_FrontColor<sp/>=<sp/>vec4(color,<sp/>gl_Color[0]);&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl_BackColor<sp/>=<sp/>gl_FrontColor;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl_Position<sp/>=<sp/>ftransform();&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>SHADERS_H</highlight></codeline>
     </programlisting>
-    <location file="/home/uli/dev/medigl/medigl/shaders.h"/>
+    <location file="/home/uli/dev/medigl/vertebra/shaders.h"/>
   </compounddef>
 </doxygen>

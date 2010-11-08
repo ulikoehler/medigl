@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
   <compounddef id="class_fast_image" kind="class" prot="public">
     <compoundname>FastImage</compoundname>
     <includes refid="fastimage_8h" local="no">fastimage.h</includes>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="112" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="112" bodyend="-1"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="117" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_fast_image_1aca3f4d119be3052564a7b95645e416ae" prot="protected" static="no" mutable="no">
         <type>uint</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="112" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="112" bodyend="-1"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="117" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_fast_image_1aced6ae3b9e826ed23b1e35e0556b9e0e" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="113" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="113" bodyend="-1"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="118" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_fast_image_1a1694943fbf3cd250f629c70c07d89e6e" prot="protected" static="no" mutable="no">
         <type>uint32_t *</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="114" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="114" bodyend="-1"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="119" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_fast_image_1ab0eae6bc0937543738d336a9b4f1a68c" prot="protected" static="no" mutable="no">
         <type>double *</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="115" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="115" bodyend="-1"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="120" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -106,7 +106,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="35" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="7" bodyend="38"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="36" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="7" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1ab9530428f52635d4f87d9b1cc33e10cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -154,7 +154,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="44" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="40" bodyend="47"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="45" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="56" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1ae2937f18d549ffc788abaa1a5bf6f492" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -167,7 +167,7 @@
 <para>Releases all memory occupied by this <ref refid="class_fast_image" kindref="compound">FastImage</ref> instance </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="48" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="117" bodyend="124"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="49" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="133" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a09e6df8ae76ddffb813048157f887ee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -188,7 +188,7 @@
 <para>Gets the RGBA value for a specific pixel in this <ref refid="class_fast_image" kindref="compound">FastImage</ref> instance.</para><para>This function does NOT check if the x and y parameters are in the bounds of this <ref refid="class_fast_image" kindref="compound">FastImage</ref> instance for sake of performance </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="55"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a7da37f6c5c99feea80c6a699c7b51bd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -209,7 +209,7 @@
 <para>Gets the gray value (8 bit) for specific x and y pixel coordinates. The request is served from the gray cache if it has been enabled for this instance </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="60" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="83" bodyend="89"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="61" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="99" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a6975ad540e89b98fda1b7a3bd3f812ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -230,7 +230,7 @@
 <para>Gets the gray value (8 bit) for specific x and y pixel coordinates. The request is served from the gray cache if it has been enabled for this instance </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="65" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="91" bodyend="97"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="66" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="107" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a647ac3b76f0198da77cd2e7afa46e1c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -277,7 +277,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="73" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="49" bodyend="62"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="74" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="65" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a1e0ef4ac5b61cc6d96c9cd9c4bada344" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -324,8 +324,8 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="80" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="64" bodyend="71"/>
-        <referencedby refid="class_d_i_c_o_m_image_file_1a05f3f6fc5046ade1848a4d3c6561f6ad" compoundref="dicomimagefile_8cpp" startline="30" endline="51">DICOMImageFile::getFastImage</referencedby>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="81" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="80" bodyend="87"/>
+        <referencedby refid="class_d_i_c_o_m_image_file_1aac6cfe1b8babedd17543fd3a8971f86b" compoundref="dicomimagefile_8cpp" startline="30" endline="59">DICOMImageFile::getFastImage</referencedby>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a018ae53445320129fa129b80e805842c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -372,7 +372,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="87" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="73" bodyend="81"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="88" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="89" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1adcf6d77e79c1f75f2420c6db0d96951d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -385,8 +385,8 @@
 <para>Performs a constrast spreading on the gray data of this <ref refid="class_fast_image" kindref="compound">FastImage</ref>.</para><para>The algorithm used has a linear complexity</para><para>Note: The color data is not affected! </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="95" bodyfile="/home/uli/dev/medigl/medigl/fastimage.cpp" bodystart="99" bodyend="115"/>
-        <referencedby refid="class_d_i_c_o_m_image_file_1a05f3f6fc5046ade1848a4d3c6561f6ad" compoundref="dicomimagefile_8cpp" startline="30" endline="51">DICOMImageFile::getFastImage</referencedby>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="96" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="115" bodyend="131"/>
+        <referencedby refid="class_d_i_c_o_m_image_file_1aac6cfe1b8babedd17543fd3a8971f86b" compoundref="dicomimagefile_8cpp" startline="30" endline="59">DICOMImageFile::getFastImage</referencedby>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a94290d65ff847f0a7e56ac8050133313" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint</type>
@@ -400,7 +400,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="100" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="99" bodyend="102"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="101" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="100" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_fast_image_1a1b90d63510575306ce345e393574d85c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint</type>
@@ -414,20 +414,35 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="107" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="106" bodyend="109"/>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="108" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_fast_image_1afda157efb702f601288d5e6c2e37a299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage *</type>
+        <definition>QImage * FastImage::getGrayQImage</definition>
+        <argsstring>()</argsstring>
+        <name>getGrayQImage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A QImage pointer generated from the data of this <ref refid="class_fast_image" kindref="compound">FastImage</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="114" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.cpp" bodystart="40" bodyend="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Image wrapper class internally using arrays for fast read access Optimized for read access Compiling with -fno-strict-aliasing should make this class faster</para><para>One instance of this class represents exactly one image. <ref refid="class_fast_image" kindref="compound">FastImage</ref> can build a gray cache to be able to serve <ref refid="class_fast_image_1a7da37f6c5c99feea80c6a699c7b51bd8" kindref="member">getGray()</ref> requests very fast. This feature is enabled by default but can be disabled. Users are not encouraged to change the data using setPixel(...).</para><para><ref refid="class_fast_image" kindref="compound">FastImage</ref> internally stores the data using 64 bit floating point numbers</para><para><ref refid="class_fast_image" kindref="compound">FastImage</ref> is optimized to process grayscale images - some functions only work on grayscale images</para><para>The purpose of this class is to have a fast, scalable abstraction layer between MediGL input data and OpenGL in order to be able to support a variety of image formats. </para>    </detaileddescription>
-    <location file="/home/uli/dev/medigl/medigl/fastimage.h" line="27" bodyfile="/home/uli/dev/medigl/medigl/fastimage.h" bodystart="26" bodyend="116"/>
+<para>Image wrapper class internally using arrays for fast read access Optimized for read access Compiling with -fno-strict-aliasing should make this class faster</para><para>One instance of this class represents exactly one image. <ref refid="class_fast_image" kindref="compound">FastImage</ref> can build a gray cache to be able to serve <ref refid="class_fast_image_1a7da37f6c5c99feea80c6a699c7b51bd8" kindref="member">getGray()</ref> requests very fast. This feature is enabled by default but can be disabled. Users are not encouraged to change the data using setPixel(...).</para><para><ref refid="class_fast_image" kindref="compound">FastImage</ref> internally stores the data using 64 bit floating point numbers</para><para><ref refid="class_fast_image" kindref="compound">FastImage</ref> is optimized to process grayscale images - some functions only work on grayscale images</para><para>The purpose of this class is to have a fast, scalable abstraction layer between VERTEBRA input data and OpenGL in order to be able to support a variety of image formats. </para>    </detaileddescription>
+    <location file="/home/uli/dev/medigl/vertebra/fastimage.h" line="28" bodyfile="/home/uli/dev/medigl/vertebra/fastimage.h" bodystart="27" bodyend="121"/>
     <listofallmembers>
       <member refid="class_fast_image_1a1694943fbf3cd250f629c70c07d89e6e" prot="protected" virt="non-virtual"><scope>FastImage</scope><name>colorData</name></member>
       <member refid="class_fast_image_1a1ee91a3ac8ddcdfed90e9906bb3f0681" prot="public" virt="non-virtual"><scope>FastImage</scope><name>FastImage</name></member>
       <member refid="class_fast_image_1ab9530428f52635d4f87d9b1cc33e10cd" prot="public" virt="non-virtual"><scope>FastImage</scope><name>FastImage</name></member>
       <member refid="class_fast_image_1a7da37f6c5c99feea80c6a699c7b51bd8" prot="public" virt="non-virtual"><scope>FastImage</scope><name>getGray</name></member>
       <member refid="class_fast_image_1a6975ad540e89b98fda1b7a3bd3f812ea" prot="public" virt="non-virtual"><scope>FastImage</scope><name>getGray32bit</name></member>
+      <member refid="class_fast_image_1afda157efb702f601288d5e6c2e37a299" prot="public" virt="non-virtual"><scope>FastImage</scope><name>getGrayQImage</name></member>
       <member refid="class_fast_image_1a1b90d63510575306ce345e393574d85c" prot="public" virt="non-virtual"><scope>FastImage</scope><name>getHeight</name></member>
       <member refid="class_fast_image_1a09e6df8ae76ddffb813048157f887ee6" prot="public" virt="non-virtual"><scope>FastImage</scope><name>getRgba</name></member>
       <member refid="class_fast_image_1a94290d65ff847f0a7e56ac8050133313" prot="public" virt="non-virtual"><scope>FastImage</scope><name>getWidth</name></member>

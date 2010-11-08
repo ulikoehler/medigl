@@ -67,6 +67,8 @@ QSize {\bfseries sizeHint} () const }
 
 \item 
 void \hyperlink{class_g_l_widget_a35e6da60485a6b10fe24ac386b708071}{keyPressEvent} (QKeyEvent $\ast$)
+\item 
+void \hyperlink{class_g_l_widget_a91b951781d524f59eccae0296fa259d0}{setRenderingMethod} (RenderingMethod method)
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -95,13 +97,21 @@ void \hyperlink{class_g_l_widget_ab11fb26fd97e5bf66989f072760b1617}{wheelEvent} 
 
 
 \subsection{Detailed Description}
-MediGL OpenGL widget Controls and the OpenGL IO, displays the rendered data, reacts to user events and processes images 
+VERTEBRA OpenGL widget Controls and the OpenGL IO, displays the rendered data, reacts to user events and processes images
+
+Note that the
+
+This class uses a function pointer to select the rendering function. This decision (which results in very complex syntax at some points) was made because using the RenderingEnum method directly was extremely slow even if using a switch. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_g_l_widget_a35e6da60485a6b10fe24ac386b708071}{
 \index{GLWidget@{GLWidget}!keyPressEvent@{keyPressEvent}}
 \index{keyPressEvent@{keyPressEvent}!GLWidget@{GLWidget}}
-\subsubsection[{keyPressEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::keyPressEvent (QKeyEvent $\ast$ {\em event})}}
+\subsubsection[{keyPressEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::keyPressEvent (
+\begin{DoxyParamCaption}
+\item[{QKeyEvent $\ast$}]{ event}
+\end{DoxyParamCaption}
+)}}
 \label{class_g_l_widget_a35e6da60485a6b10fe24ac386b708071}
 Reacts to a key event. Key events are translated into translation commands.
 
@@ -110,38 +120,74 @@ All translations are absolute and not dependent on the rotation. The translation
 Left/right arrow keys: x coordinates Up/down arrow keys: y coordinates PageUp/PageDown: z coordinates +/-\/: zoom \hypertarget{class_g_l_widget_a9043bac13d6f0a5307ea5c7f9b3caa50}{
 \index{GLWidget@{GLWidget}!mouseMoveEvent@{mouseMoveEvent}}
 \index{mouseMoveEvent@{mouseMoveEvent}!GLWidget@{GLWidget}}
-\subsubsection[{mouseMoveEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::mouseMoveEvent (QMouseEvent $\ast$ {\em event})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\subsubsection[{mouseMoveEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::mouseMoveEvent (
+\begin{DoxyParamCaption}
+\item[{QMouseEvent $\ast$}]{ event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
 \label{class_g_l_widget_a9043bac13d6f0a5307ea5c7f9b3caa50}
 Reacts to a mouse move event. This is part of the rotation code which rotates the data when the user uses drag-\/and-\/drop \hypertarget{class_g_l_widget_ab144cc8064c1bbf6d0ef0646ca0bd06c}{
 \index{GLWidget@{GLWidget}!mousePressEvent@{mousePressEvent}}
 \index{mousePressEvent@{mousePressEvent}!GLWidget@{GLWidget}}
-\subsubsection[{mousePressEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::mousePressEvent (QMouseEvent $\ast$ {\em event})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\subsubsection[{mousePressEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::mousePressEvent (
+\begin{DoxyParamCaption}
+\item[{QMouseEvent $\ast$}]{ event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
 \label{class_g_l_widget_ab144cc8064c1bbf6d0ef0646ca0bd06c}
 Reacts to a mouse press event. This is part of the rotation code which rotates the data when the user uses drag-\/and-\/drop \hypertarget{class_g_l_widget_ae0cb1922c7f58b363fe4577a8a2c5d1e}{
 \index{GLWidget@{GLWidget}!resetView@{resetView}}
 \index{resetView@{resetView}!GLWidget@{GLWidget}}
-\subsubsection[{resetView}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::resetView ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{resetView}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::resetView (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_g_l_widget_ae0cb1922c7f58b363fe4577a8a2c5d1e}
-Resets rotation, translation and zoom and re-\/renders the data. \hypertarget{class_g_l_widget_a68406450ab1961b48ebc786cb61b4d48}{
+Resets rotation, translation and zoom and re-\/renders the data. \hypertarget{class_g_l_widget_a91b951781d524f59eccae0296fa259d0}{
+\index{GLWidget@{GLWidget}!setRenderingMethod@{setRenderingMethod}}
+\index{setRenderingMethod@{setRenderingMethod}!GLWidget@{GLWidget}}
+\subsubsection[{setRenderingMethod}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::setRenderingMethod (
+\begin{DoxyParamCaption}
+\item[{RenderingMethod}]{ method}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_l_widget_a91b951781d524f59eccae0296fa259d0}
+Sets the rendering method for this \hyperlink{class_g_l_widget}{GLWidget} and updates the screen (= re-\/renders the current view using the new method \hypertarget{class_g_l_widget_a68406450ab1961b48ebc786cb61b4d48}{
 \index{GLWidget@{GLWidget}!setZExtent@{setZExtent}}
 \index{setZExtent@{setZExtent}!GLWidget@{GLWidget}}
-\subsubsection[{setZExtent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::setZExtent (float {\em newZExtent})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{setZExtent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::setZExtent (
+\begin{DoxyParamCaption}
+\item[{float}]{ newZExtent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_g_l_widget_a68406450ab1961b48ebc786cb61b4d48}
 Sets the z (depth) extent of the rendered image cuboid 1.0 is the same as the maximum of with and height \hypertarget{class_g_l_widget_a9601076e0757c5fe221e28d3e9983b75}{
 \index{GLWidget@{GLWidget}!updateImages@{updateImages}}
 \index{updateImages@{updateImages}!GLWidget@{GLWidget}}
-\subsubsection[{updateImages}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::updateImages (vector$<$ {\bf FastImage} $\ast$ $>$ {\em imagesParam}, \/  uint {\em width}, \/  uint {\em height})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{updateImages}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::updateImages (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf FastImage} $\ast$ $>$}]{ imagesParam, }
+\item[{uint}]{ width, }
+\item[{uint}]{ height}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_g_l_widget_a9601076e0757c5fe221e28d3e9983b75}
 Updates the image cache with new images (represented by a vector of \hyperlink{class_fast_image}{FastImage} pointers) with a given width and height.
 
 The images must be checked for equal width and height before -\/ the \hyperlink{class_g_l_widget}{GLWidget} class does not check them for performance reasons. \hypertarget{class_g_l_widget_ab11fb26fd97e5bf66989f072760b1617}{
 \index{GLWidget@{GLWidget}!wheelEvent@{wheelEvent}}
 \index{wheelEvent@{wheelEvent}!GLWidget@{GLWidget}}
-\subsubsection[{wheelEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::wheelEvent (QWheelEvent $\ast$ {\em event})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\subsubsection[{wheelEvent}]{\setlength{\rightskip}{0pt plus 5cm}void GLWidget::wheelEvent (
+\begin{DoxyParamCaption}
+\item[{QWheelEvent $\ast$}]{ event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
 \label{class_g_l_widget_ab11fb26fd97e5bf66989f072760b1617}
 Reacts to a mouse wheel event. Mouse wheel events are translated into zoom factor changes. 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 
 glwidget.h\item 
-glwidget.cpp\end{DoxyCompactItemize}
+glwidget.cpp\item 
+moc\_\-glwidget.cpp\end{DoxyCompactItemize}

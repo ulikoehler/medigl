@@ -32,6 +32,8 @@ void \hyperlink{class_fast_image_adcf6d77e79c1f75f2420c6db0d96951d}{spreadContra
 uint \hyperlink{class_fast_image_a94290d65ff847f0a7e56ac8050133313}{getWidth} ()
 \item 
 uint \hyperlink{class_fast_image_a1b90d63510575306ce345e393574d85c}{getHeight} ()
+\item 
+QImage $\ast$ \hyperlink{class_fast_image_afda157efb702f601288d5e6c2e37a299}{getGrayQImage} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -72,13 +74,18 @@ One instance of this class represents exactly one image. \hyperlink{class_fast_i
 
 \hyperlink{class_fast_image}{FastImage} is optimized to process grayscale images -\/ some functions only work on grayscale images
 
-The purpose of this class is to have a fast, scalable abstraction layer between MediGL input data and OpenGL in order to be able to support a variety of image formats. 
+The purpose of this class is to have a fast, scalable abstraction layer between VERTEBRA input data and OpenGL in order to be able to support a variety of image formats. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_fast_image_a1ee91a3ac8ddcdfed90e9906bb3f0681}{
 \index{FastImage@{FastImage}!FastImage@{FastImage}}
 \index{FastImage@{FastImage}!FastImage@{FastImage}}
-\subsubsection[{FastImage}]{\setlength{\rightskip}{0pt plus 5cm}FastImage::FastImage (QImage $\ast$ {\em img}, \/  bool {\em enableGrayCache} = {\ttfamily true})}}
+\subsubsection[{FastImage}]{\setlength{\rightskip}{0pt plus 5cm}FastImage::FastImage (
+\begin{DoxyParamCaption}
+\item[{QImage $\ast$}]{ img, }
+\item[{bool}]{ enableGrayCache = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a1ee91a3ac8ddcdfed90e9906bb3f0681}
 Creates a new \hyperlink{class_fast_image}{FastImage} instance from a QImage. Uses the data from the QImage instance to fill the cache 
 \begin{DoxyParams}{Parameters}
@@ -86,7 +93,13 @@ Creates a new \hyperlink{class_fast_image}{FastImage} instance from a QImage. Us
 \hypertarget{class_fast_image_ab9530428f52635d4f87d9b1cc33e10cd}{
 \index{FastImage@{FastImage}!FastImage@{FastImage}}
 \index{FastImage@{FastImage}!FastImage@{FastImage}}
-\subsubsection[{FastImage}]{\setlength{\rightskip}{0pt plus 5cm}FastImage::FastImage (uint {\em width}, \/  uint {\em height}, \/  bool {\em enableGrayCache} = {\ttfamily true})}}
+\subsubsection[{FastImage}]{\setlength{\rightskip}{0pt plus 5cm}FastImage::FastImage (
+\begin{DoxyParamCaption}
+\item[{uint}]{ width, }
+\item[{uint}]{ height, }
+\item[{bool}]{ enableGrayCache = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_ab9530428f52635d4f87d9b1cc33e10cd}
 Creates a new \hyperlink{class_fast_image}{FastImage} instance with given width and height but without any content. Use setPixel(...) to set the pixels 
 \begin{DoxyParams}{Parameters}
@@ -94,7 +107,11 @@ Creates a new \hyperlink{class_fast_image}{FastImage} instance with given width 
 \hypertarget{class_fast_image_ae2937f18d549ffc788abaa1a5bf6f492}{
 \index{FastImage@{FastImage}!$\sim$FastImage@{$\sim$FastImage}}
 \index{$\sim$FastImage@{$\sim$FastImage}!FastImage@{FastImage}}
-\subsubsection[{$\sim$FastImage}]{\setlength{\rightskip}{0pt plus 5cm}FastImage::$\sim$FastImage ()}}
+\subsubsection[{$\sim$FastImage}]{\setlength{\rightskip}{0pt plus 5cm}FastImage::$\sim$FastImage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_ae2937f18d549ffc788abaa1a5bf6f492}
 Releases all memory occupied by this \hyperlink{class_fast_image}{FastImage} instance 
 
@@ -102,17 +119,43 @@ Releases all memory occupied by this \hyperlink{class_fast_image}{FastImage} ins
 \hypertarget{class_fast_image_a7da37f6c5c99feea80c6a699c7b51bd8}{
 \index{FastImage@{FastImage}!getGray@{getGray}}
 \index{getGray@{getGray}!FastImage@{FastImage}}
-\subsubsection[{getGray}]{\setlength{\rightskip}{0pt plus 5cm}char FastImage::getGray (uint {\em x}, \/  uint {\em y})}}
+\subsubsection[{getGray}]{\setlength{\rightskip}{0pt plus 5cm}char FastImage::getGray (
+\begin{DoxyParamCaption}
+\item[{uint}]{ x, }
+\item[{uint}]{ y}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a7da37f6c5c99feea80c6a699c7b51bd8}
 Gets the gray value (8 bit) for specific x and y pixel coordinates. The request is served from the gray cache if it has been enabled for this instance \hypertarget{class_fast_image_a6975ad540e89b98fda1b7a3bd3f812ea}{
 \index{FastImage@{FastImage}!getGray32bit@{getGray32bit}}
 \index{getGray32bit@{getGray32bit}!FastImage@{FastImage}}
-\subsubsection[{getGray32bit}]{\setlength{\rightskip}{0pt plus 5cm}double FastImage::getGray32bit (uint {\em x}, \/  uint {\em y})}}
+\subsubsection[{getGray32bit}]{\setlength{\rightskip}{0pt plus 5cm}double FastImage::getGray32bit (
+\begin{DoxyParamCaption}
+\item[{uint}]{ x, }
+\item[{uint}]{ y}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a6975ad540e89b98fda1b7a3bd3f812ea}
-Gets the gray value (8 bit) for specific x and y pixel coordinates. The request is served from the gray cache if it has been enabled for this instance \hypertarget{class_fast_image_a1b90d63510575306ce345e393574d85c}{
+Gets the gray value (8 bit) for specific x and y pixel coordinates. The request is served from the gray cache if it has been enabled for this instance \hypertarget{class_fast_image_afda157efb702f601288d5e6c2e37a299}{
+\index{FastImage@{FastImage}!getGrayQImage@{getGrayQImage}}
+\index{getGrayQImage@{getGrayQImage}!FastImage@{FastImage}}
+\subsubsection[{getGrayQImage}]{\setlength{\rightskip}{0pt plus 5cm}QImage $\ast$ FastImage::getGrayQImage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_fast_image_afda157efb702f601288d5e6c2e37a299}
+\begin{DoxyReturn}{Returns}
+A QImage pointer generated from the data of this \hyperlink{class_fast_image}{FastImage} 
+\end{DoxyReturn}
+\hypertarget{class_fast_image_a1b90d63510575306ce345e393574d85c}{
 \index{FastImage@{FastImage}!getHeight@{getHeight}}
 \index{getHeight@{getHeight}!FastImage@{FastImage}}
-\subsubsection[{getHeight}]{\setlength{\rightskip}{0pt plus 5cm}uint FastImage::getHeight ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{getHeight}]{\setlength{\rightskip}{0pt plus 5cm}uint FastImage::getHeight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_fast_image_a1b90d63510575306ce345e393574d85c}
 \begin{DoxyReturn}{Returns}
 The height of this image 
@@ -120,14 +163,23 @@ The height of this image
 \hypertarget{class_fast_image_a09e6df8ae76ddffb813048157f887ee6}{
 \index{FastImage@{FastImage}!getRgba@{getRgba}}
 \index{getRgba@{getRgba}!FastImage@{FastImage}}
-\subsubsection[{getRgba}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t FastImage::getRgba (uint {\em x}, \/  uint {\em y})}}
+\subsubsection[{getRgba}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t FastImage::getRgba (
+\begin{DoxyParamCaption}
+\item[{uint}]{ x, }
+\item[{uint}]{ y}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a09e6df8ae76ddffb813048157f887ee6}
 Gets the RGBA value for a specific pixel in this \hyperlink{class_fast_image}{FastImage} instance.
 
 This function does NOT check if the x and y parameters are in the bounds of this \hyperlink{class_fast_image}{FastImage} instance for sake of performance \hypertarget{class_fast_image_a94290d65ff847f0a7e56ac8050133313}{
 \index{FastImage@{FastImage}!getWidth@{getWidth}}
 \index{getWidth@{getWidth}!FastImage@{FastImage}}
-\subsubsection[{getWidth}]{\setlength{\rightskip}{0pt plus 5cm}uint FastImage::getWidth ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{getWidth}]{\setlength{\rightskip}{0pt plus 5cm}uint FastImage::getWidth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_fast_image_a94290d65ff847f0a7e56ac8050133313}
 \begin{DoxyReturn}{Returns}
 The width of this image 
@@ -135,7 +187,13 @@ The width of this image
 \hypertarget{class_fast_image_a018ae53445320129fa129b80e805842c}{
 \index{FastImage@{FastImage}!setGrayPixel@{setGrayPixel}}
 \index{setGrayPixel@{setGrayPixel}!FastImage@{FastImage}}
-\subsubsection[{setGrayPixel}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::setGrayPixel (uint {\em x}, \/  uint {\em y}, \/  uint32\_\-t {\em val})}}
+\subsubsection[{setGrayPixel}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::setGrayPixel (
+\begin{DoxyParamCaption}
+\item[{uint}]{ x, }
+\item[{uint}]{ y, }
+\item[{uint32\_\-t}]{ val}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a018ae53445320129fa129b80e805842c}
 Sets a pixel to a specific gray value. The color buffer is not affected. 
 \begin{DoxyParams}{Parameters}
@@ -143,18 +201,25 @@ Sets a pixel to a specific gray value. The color buffer is not affected.
 \hypertarget{class_fast_image_a1e0ef4ac5b61cc6d96c9cd9c4bada344}{
 \index{FastImage@{FastImage}!setGrayPixel@{setGrayPixel}}
 \index{setGrayPixel@{setGrayPixel}!FastImage@{FastImage}}
-\subsubsection[{setGrayPixel}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::setGrayPixel (uint {\em x}, \/  uint {\em y}, \/  unsigned char {\em val})}}
+\subsubsection[{setGrayPixel}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::setGrayPixel (
+\begin{DoxyParamCaption}
+\item[{uint}]{ x, }
+\item[{uint}]{ y, }
+\item[{unsigned char}]{ val}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a1e0ef4ac5b61cc6d96c9cd9c4bada344}
 Sets a pixel to a specific gray value. The color buffer is not affected. 
 \begin{DoxyParams}{Parameters}
 \item[{\em x}]The x coordinate of the pixel to set \item[{\em y}]The x coordinate of the pixel to set \item[{\em val}]The grayscale value to set the pixel to \end{DoxyParams}
 
 
-Here is the caller graph for this function:\nopagebreak
+Here is the caller graph for this function:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=182pt]{class_fast_image_a1e0ef4ac5b61cc6d96c9cd9c4bada344_icgraph}
+\includegraphics[width=400pt]{class_fast_image_a1e0ef4ac5b61cc6d96c9cd9c4bada344_icgraph}
 \end{center}
 \end{figure}
 
@@ -162,7 +227,13 @@ Here is the caller graph for this function:\nopagebreak
 \hypertarget{class_fast_image_a647ac3b76f0198da77cd2e7afa46e1c4}{
 \index{FastImage@{FastImage}!setPixel@{setPixel}}
 \index{setPixel@{setPixel}!FastImage@{FastImage}}
-\subsubsection[{setPixel}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::setPixel (uint {\em x}, \/  uint {\em y}, \/  uint32\_\-t {\em val})}}
+\subsubsection[{setPixel}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::setPixel (
+\begin{DoxyParamCaption}
+\item[{uint}]{ x, }
+\item[{uint}]{ y, }
+\item[{uint32\_\-t}]{ val}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_a647ac3b76f0198da77cd2e7afa46e1c4}
 Sets a pixel in this \hyperlink{class_fast_image}{FastImage} instance to a specific value and updates the gray cache if it is enabled 
 \begin{DoxyParams}{Parameters}
@@ -170,7 +241,11 @@ Sets a pixel in this \hyperlink{class_fast_image}{FastImage} instance to a speci
 \hypertarget{class_fast_image_adcf6d77e79c1f75f2420c6db0d96951d}{
 \index{FastImage@{FastImage}!spreadContrast@{spreadContrast}}
 \index{spreadContrast@{spreadContrast}!FastImage@{FastImage}}
-\subsubsection[{spreadContrast}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::spreadContrast ()}}
+\subsubsection[{spreadContrast}]{\setlength{\rightskip}{0pt plus 5cm}void FastImage::spreadContrast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
 \label{class_fast_image_adcf6d77e79c1f75f2420c6db0d96951d}
 Performs a constrast spreading on the gray data of this \hyperlink{class_fast_image}{FastImage}.
 
@@ -178,11 +253,12 @@ The algorithm used has a linear complexity
 
 Note: The color data is not affected! 
 
-Here is the caller graph for this function:\nopagebreak
+Here is the caller graph for this function:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=187pt]{class_fast_image_adcf6d77e79c1f75f2420c6db0d96951d_icgraph}
+\includegraphics[width=400pt]{class_fast_image_adcf6d77e79c1f75f2420c6db0d96951d_icgraph}
 \end{center}
 \end{figure}
 

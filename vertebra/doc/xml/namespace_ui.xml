@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
   <compounddef id="namespace_ui" kind="namespace">
     <compoundname>Ui</compoundname>
+    <innerclass refid="class_ui_1_1_vertebra_dialog" prot="public">Ui::VertebraDialog</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/uli/dev/medigl/medigl/medidialog.h" line="11"/>
+    <location file="/home/uli/dev/medigl/vertebra/ui_vertebradialog.h" line="185"/>
   </compounddef>
 </doxygen>

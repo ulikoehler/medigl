@@ -11,7 +11,7 @@
 \item 
 \hyperlink{class_d_i_c_o_m_image_file_ae4778b6e6ed2c36f47fe3e785b55bb2e}{DICOMImageFile} (string filename)
 \item 
-\hyperlink{class_fast_image}{FastImage} $\ast$ \hyperlink{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad}{getFastImage} (uint frame)
+\hyperlink{class_fast_image}{FastImage} $\ast$ \hyperlink{class_d_i_c_o_m_image_file_aac6cfe1b8babedd17543fd3a8971f86b}{getFastImage} (uint frame, bool contrastExtension, bool enableWindow=false, double windowCenter=0.0, double windowWidth=0.0)
 \item 
 uint \hyperlink{class_d_i_c_o_m_image_file_a4eb4186345395c61c7964e588a08e057}{getWidth} ()
 \item 
@@ -53,31 +53,48 @@ Wrapper class for easy use of the DICOM file format (DICOM images only) Uses the
 \hypertarget{class_d_i_c_o_m_image_file_ae4778b6e6ed2c36f47fe3e785b55bb2e}{
 \index{DICOMImageFile@{DICOMImageFile}!DICOMImageFile@{DICOMImageFile}}
 \index{DICOMImageFile@{DICOMImageFile}!DICOMImageFile@{DICOMImageFile}}
-\subsubsection[{DICOMImageFile}]{\setlength{\rightskip}{0pt plus 5cm}DICOMImageFile::DICOMImageFile (string {\em filename})}}
+\subsubsection[{DICOMImageFile}]{\setlength{\rightskip}{0pt plus 5cm}DICOMImageFile::DICOMImageFile (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}}
 \label{class_d_i_c_o_m_image_file_ae4778b6e6ed2c36f47fe3e785b55bb2e}
 Constructs a new \hyperlink{class_d_i_c_o_m_image_file}{DICOMImageFile} instance by a given filename Occuring errors are logged to cerr. \hypertarget{class_d_i_c_o_m_image_file_af210a193559ee3287aa1f9c4bf13d3ab}{
 \index{DICOMImageFile@{DICOMImageFile}!$\sim$DICOMImageFile@{$\sim$DICOMImageFile}}
 \index{$\sim$DICOMImageFile@{$\sim$DICOMImageFile}!DICOMImageFile@{DICOMImageFile}}
-\subsubsection[{$\sim$DICOMImageFile}]{\setlength{\rightskip}{0pt plus 5cm}DICOMImageFile::$\sim$DICOMImageFile ()}}
+\subsubsection[{$\sim$DICOMImageFile}]{\setlength{\rightskip}{0pt plus 5cm}DICOMImageFile::$\sim$DICOMImageFile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
 \label{class_d_i_c_o_m_image_file_af210a193559ee3287aa1f9c4bf13d3ab}
 Releases all resources acquired by this \hyperlink{class_d_i_c_o_m_image_file}{DICOMImageFile} instance 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad}{
+\hypertarget{class_d_i_c_o_m_image_file_aac6cfe1b8babedd17543fd3a8971f86b}{
 \index{DICOMImageFile@{DICOMImageFile}!getFastImage@{getFastImage}}
 \index{getFastImage@{getFastImage}!DICOMImageFile@{DICOMImageFile}}
-\subsubsection[{getFastImage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FastImage} $\ast$ DICOMImageFile::getFastImage (uint {\em frame})}}
-\label{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad}
+\subsubsection[{getFastImage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FastImage} $\ast$ DICOMImageFile::getFastImage (
+\begin{DoxyParamCaption}
+\item[{uint}]{ frame, }
+\item[{bool}]{ contrastExtension, }
+\item[{bool}]{ enableWindow = {\ttfamily false}, }
+\item[{double}]{ windowCenter = {\ttfamily 0.0}, }
+\item[{double}]{ windowWidth = {\ttfamily 0.0}}
+\end{DoxyParamCaption}
+)}}
+\label{class_d_i_c_o_m_image_file_aac6cfe1b8babedd17543fd3a8971f86b}
 Constructs a new \hyperlink{class_fast_image}{FastImage} instance with the contents of a specific file this DICOM image file 
 \begin{DoxyParams}{Parameters}
-\item[{\em frame}]The number of the frame (beginning with 0) to use \end{DoxyParams}
+\item[{\em frame}]The number of the frame (beginning with 0) to use \item[{\em contrastExtension}]Whether to spread the values in the resulting grayscale image to the full available range. Not recommendened when using a Hounsfield window \item[{\em enableWindow}]Whether to use a Hounsfield window \item[{\em windowCenter}]The center of the Hounsfield window, if enabled \item[{\em windowWidth}]The width of the Hounsfield window, if enabled \end{DoxyParams}
 
 
-Here is the call graph for this function:\nopagebreak
+Here is the call graph for this function:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=187pt]{class_d_i_c_o_m_image_file_a05f3f6fc5046ade1848a4d3c6561f6ad_cgraph}
+\includegraphics[width=400pt]{class_d_i_c_o_m_image_file_aac6cfe1b8babedd17543fd3a8971f86b_cgraph}
 \end{center}
 \end{figure}
 
@@ -85,7 +102,11 @@ Here is the call graph for this function:\nopagebreak
 \hypertarget{class_d_i_c_o_m_image_file_aec56b3e9d86b2af4206e38406714941f}{
 \index{DICOMImageFile@{DICOMImageFile}!getFrameCount@{getFrameCount}}
 \index{getFrameCount@{getFrameCount}!DICOMImageFile@{DICOMImageFile}}
-\subsubsection[{getFrameCount}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getFrameCount ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{getFrameCount}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getFrameCount (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_d_i_c_o_m_image_file_aec56b3e9d86b2af4206e38406714941f}
 \begin{DoxyReturn}{Returns}
 The frame count of this image 
@@ -93,7 +114,11 @@ The frame count of this image
 \hypertarget{class_d_i_c_o_m_image_file_abebf0dfb003c75c06c3955e65dd5b9a6}{
 \index{DICOMImageFile@{DICOMImageFile}!getHeight@{getHeight}}
 \index{getHeight@{getHeight}!DICOMImageFile@{DICOMImageFile}}
-\subsubsection[{getHeight}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getHeight ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{getHeight}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getHeight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_d_i_c_o_m_image_file_abebf0dfb003c75c06c3955e65dd5b9a6}
 \begin{DoxyReturn}{Returns}
 The height of this image 
@@ -101,7 +126,11 @@ The height of this image
 \hypertarget{class_d_i_c_o_m_image_file_a4eb4186345395c61c7964e588a08e057}{
 \index{DICOMImageFile@{DICOMImageFile}!getWidth@{getWidth}}
 \index{getWidth@{getWidth}!DICOMImageFile@{DICOMImageFile}}
-\subsubsection[{getWidth}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getWidth ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\subsubsection[{getWidth}]{\setlength{\rightskip}{0pt plus 5cm}uint DICOMImageFile::getWidth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_d_i_c_o_m_image_file_a4eb4186345395c61c7964e588a08e057}
 \begin{DoxyReturn}{Returns}
 The width of this image 
