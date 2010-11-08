@@ -212,7 +212,6 @@ void GLWidget::renderPointCloud()
     bool back = (xRot < -90 || xRot > 90) || (yRot < -90 || yRot > 90);
     if(back) //Viewing the backside
     {
-        cout << "back" << endl;
         for(uint z = images.size() - 1; z > 0; z--)
         {
             FastImage* img = images[z];
