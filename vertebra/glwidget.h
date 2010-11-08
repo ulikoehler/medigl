@@ -14,17 +14,6 @@
 #include <ctime>
 #include "fastimage.h"
 
-//If no rendering method is defined, define a default
-#ifndef RENDER_3DTEXTURE
-#ifndef RENDER_POINTS
-#ifndef RENDER_LINES
-#ifndef RENDER_2DTEXTURE
-#define RENDER_POINTS
-#endif
-#endif
-#endif
-#endif
-
 
 using namespace std;
 
@@ -153,19 +142,6 @@ private:
     void normalizeAngle(int *angle);
     void incrZoomFactor(int delta);
 
-#ifdef RENDER_3DTEXTURE
-    void build3dTexture();
-#endif
-
-    //
-    //
-    // Rendering functions
-    //
-    //
-#ifdef RENDER_3DTEXTURE
-    void render3DTex();
-#endif
-
     /**
      * Rendering function; has to be called inside paintGL() when all neccessary transformations have been done.
      * This rendering function uses the PointCloud algorithm: Each pixel is rendered as GLPoint.
@@ -210,10 +186,6 @@ private:
     vector<FastImage*> images;
     uint width;
     uint height;
-
-#ifdef RENDER_3DTEXTURE
-    uint texptr3d; //GL internal pointer, no pointer to the 3d texture in the local memory
-#endif
 
     float xRot;
     float yRot;

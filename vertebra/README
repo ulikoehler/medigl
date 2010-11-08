@@ -1,0 +1,41 @@
+For details how to compile and run VERTEBRA, see the INSTALL file.
+
+This application is proof-of-concept software under GPLv3. It's intention is to be a proof
+of the implementability of tumor classification concepts described in the author's german
+paper "3D-Tumorvisualisation"
+
+You can run Doxygen on this directory to generate a documentation in various formats (see the Doxygen documentation for details).
+The Doxygen documentation mainly covers implemenation details - this README on the other hand describes the user interface and some key concepts. Of course, the source code itself contains a lot of interesting comments, too.
+Also take a look at the autor's paper for details: http://github.com/ulikoehler/Facharbeit - besides from the "paper" git branch there is the "master" branch containing some extra features.
+
+VERTEBRA USER INTERFACE
+
+When starting VERTEBRA, you can see a black rectangle on the left - this is the OpenGL widget where the visualisation itself will be displayed
+At the right of the GL widget you can find the control widgets:
+
+-Open DICOM/images: Pops up a file selection dialog - here you can open DICOM or even normal image files to create a visualization from: The visualization is created immediately after clicking the "Open" button in this dialog
+-Reset view: Resets the transformation ("movement"), rotation and scalation ("zoom") in the GL widget.
+-Z extent. This variable controls the distance of one image layer from the next one. A productive application could read this distance from the DICOM files but this method allows more flexibility for demonstration purposes.
+-Hounsfield window: Set this BEFORE opening images! Applies a Hounsfield window to DICOM input files (no effect on standard image input files). The window is applied only once
+
+HOW TO NAVIGATE IN VERTEBRA
+
+Vertebra uses the following hotkeys and mouse movements to navigate (all descriptions are based on the viewer's perspective; all transformations are based on the absolute coordinate system):
+-Left/right arrow: Move (translate) left/right
+-Up/down arrow: Move (translate) up/down
+-Page Up/Page Down: Move in/out on the Z axis.
+
+Left mouse drag: Rotate the objects around the x axis for up/down movements and around the y axis for left/right movements
+Right mouse drag: Rotate the objects around the x axis for up/down movements and around the z axis for left/right movements
+
+These navigation algorithms are designed not to be contrary to a normal user's intuitive feelings.
+
+THE VERTEBRA FPS COUNTER
+
+VERTEBRA periodically (=after each 50th rendered frame) prints the number of images per second to stdout (= the commandline where it was started from). .
+The FPS count is calculated as follows: fps = 1/t where t is the time the rendering process takes.
+
+Note that OpenGL doesn't generate frames when.nothing changed - so you probably have to apply some transformatory operations (translate/rotate/scale) before the FPS count is printed.
+The FPS count is usually not exactly equal to the reciprocal of the time rendering one frame takes but measuring it is extremely difficult because OpenGL only calls the rendering function (paintGL())
+when something changed. There are ways of measuring the real FPS count but implementing these methods in VERTEBRA would exceed the complexity of VERTEBRA - please consider that VERTEBRA
+only is a proof-of-concept project and not intended for productive use.

@@ -90,10 +90,6 @@ void GLWidget::initializeGL()
     glAlphaFunc(GL_GREATER, 0.0); //Don't render fully transparent vertices; BIG speed improvement
     //glEnable(GL_CULL_FACE);
 
-#ifdef RENDER_3DTEXTURE
-    build3dTexture();
-#endif
-
     //Enable antialiasing
     glEnable(GL_POINT_SMOOTH);
     glHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);
@@ -145,57 +141,6 @@ void GLWidget::initializeGL()
 
 #define byte char //The same by definition (C standard)
 
-#ifdef RENDER_3DTEXTURE
-void GLWidget::build3dTexture()
-{
-    glEnable(GL_TEXTURE_3D);
-    glGenTextures(1, &texptr3d);
-    glBindTexture(GL_TEXTURE_3D, texptr3d);
-    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_REPEAT);
-
-    uint depth = images.size();
-    const int bytesPerTexel = 4; //RGBA, 8 bit
-
-    //Allocate the memory for the texture.
-    //Note that this code doesn't check if there is enough graphics memory for it!
-    unsigned char* texels = (unsigned char*)malloc(width * height * depth * bytesPerTexel);
-    if(texels == NULL) {cerr << "3D texture texel malloc failed";return;}
-
-    for(uint z = 0; z < depth; z++)
-    {
-        FastImage* img = images[z];
-        for(uint y = 0; y < height; y++)
-        {
-            for(uint x = 0; x < width; x++)
-            {
-                unsigned char gray = img->getGray(x,y);
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z)]     = gray; //R
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 1] = gray; //G
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 2] = gray; //B
-                texels[REL_ADDR_3D(width, height, bytesPerTexel, x, y, z) + 3] = gray; //A
-            }
-        }
-        //delete img;
-    }
-
-    glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
-    glBindTexture(GL_TEXTURE_3D, texptr3d);
-}
-#endif
-
-#ifdef RENDER_3DTEXTURE
-void GLWidget::render3DTex()
-{
-    glEnable(GL_TEXTURE_3D);
-    glBindTexture(GL_TEXTURE_3D, texptr3d);
-    glutSolidCube(3.0);
-}
-#endif
-
 void GLWidget::paintGL()
 {
     //Execute the FPS code
@@ -237,18 +182,7 @@ void GLWidget::paintGL()
         case Texture3D: {render3DTex();}
     }*/
 
-#ifdef RENDER_3DTEXTURE
-    render3DTex();
-#endif
-#ifdef RENDER_POINTS
     renderPointCloud();
-#endif
-#ifdef RENDER_LINES
-    renderLines();
-#endif
-#ifdef RENDER_2DTEXTURE
-    render2DTextures();
-#endif
 
     //If the FPS code shall be executed, measure how long this function call took and print the reciprocal
     if(fpsFrameCount == 50)
@@ -373,7 +307,7 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
          */
     case Qt::Key_Left:
         {
-            xTrans -= translationAmount;
+            xTrans += translationAmount;
             break;
         }
     case Qt::Key_Right:
@@ -383,12 +317,12 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
         }
     case Qt::Key_Up:
         {
-            yTrans += translationAmount;
+            yTrans -= translationAmount;
             break;
         }
     case Qt::Key_Down:
         {
-            yTrans -= translationAmount;
+            yTrans += translationAmount;
             break;
         }
     case Qt::Key_PageDown:

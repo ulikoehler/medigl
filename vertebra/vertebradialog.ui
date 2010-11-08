@@ -25,7 +25,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0">
      <item>
       <widget class="QPushButton" name="openButton">
        <property name="text">
@@ -139,13 +139,6 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="value">
         <double>2000.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="contrastExtensionCheckbox">
-       <property name="text">
-        <string>Contrast extension</string>
        </property>
       </widget>
      </item>
